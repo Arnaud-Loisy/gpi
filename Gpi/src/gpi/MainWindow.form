@@ -40,15 +40,19 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jTabLvlOnglets" alignment="1" max="32767" attributes="0"/>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="jTabLvlOnglets" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jTabLvlOnglets" pref="672" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jTabLvlOnglets" min="-2" pref="461" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -70,12 +74,12 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="878" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="766" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="631" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="420" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -92,14 +96,17 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPaneTableauSupervision" min="-2" max="-2" attributes="0"/>
-                          <Component id="jPanelFiltresSupervision" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButtonDetails" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jPanelFiltresSupervision" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="jButtonDetails" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="682" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="jScrollPaneTableauSupervision" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="404" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -108,7 +115,7 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanelFiltresSupervision" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="169" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="jScrollPaneTableauSupervision" min="-2" pref="248" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButtonDetails" min="-2" max="-2" attributes="0"/>
@@ -190,7 +197,7 @@
                               <Component id="jComboBoxSallesSupervision" max="32767" attributes="0"/>
                               <Component id="jComboBoxBatSupervision" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="150" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Component id="jButtonFiltrerSupervision" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -295,16 +302,16 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jPanelAjoutMachineMaintenance" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="124" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="91" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jPanelAjoutMachineMaintenance" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="jPanelAjoutMachineMaintenance" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Component id="jPanelFiltresMaintenance" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
@@ -613,44 +620,47 @@
                               <Component id="jLabelSalleAjoutMachine" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabelOSAjoutMachine" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jTextFieldHostname" max="32767" attributes="0"/>
-                              <Component id="jComboBoxEtatAjoutMachine" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jComboBoxSalleAjoutMachine" alignment="0" max="32767" attributes="0"/>
+                          <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jButtonValiderAjoutMAchine" max="32767" attributes="0"/>
                               <Component id="jScrollPaneAjoutMachine" max="32767" attributes="0"/>
-                              <Component id="jButtonValiderAjoutMAchine" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jComboBoxEtatAjoutMachine" alignment="0" min="-2" pref="132" max="-2" attributes="0"/>
+                              <Component id="jComboBoxSalleAjoutMachine" max="32767" attributes="0"/>
+                              <Component id="jTextFieldHostname" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="156" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="132" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jTextFieldHostname" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabelHostname" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabelEtatAjoutMachine" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jComboBoxEtatAjoutMachine" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabelSalleAjoutMachine" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jComboBoxSalleAjoutMachine" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabelOSAjoutMachine" min="-2" max="-2" attributes="0"/>
-                              <Component id="jScrollPaneAjoutMachine" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="jLabelOSAjoutMachine" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                              <Component id="jScrollPaneAjoutMachine" pref="0" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Component id="jButtonValiderAjoutMAchine" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="19" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
