@@ -31,7 +31,7 @@ public class MainWindow extends javax.swing.JFrame {
         jPanelSupervision = new javax.swing.JPanel();
         jScrollPaneTableauSupervision = new javax.swing.JScrollPane();
         jTableauSupervision = new javax.swing.JTable();
-        jPanel5 = new javax.swing.JPanel();
+        jPanelFiltresSupervision = new javax.swing.JPanel();
         jComboBoxBatSupervision = new javax.swing.JComboBox();
         jLabelBatiments = new javax.swing.JLabel();
         jButtonFiltrerSupervision = new javax.swing.JButton();
@@ -97,8 +97,8 @@ public class MainWindow extends javax.swing.JFrame {
         ));
         jScrollPaneTableauSupervision.setViewportView(jTableauSupervision);
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Filtres"));
-        jPanel5.setToolTipText("");
+        jPanelFiltresSupervision.setBorder(javax.swing.BorderFactory.createTitledBorder("Filtres"));
+        jPanelFiltresSupervision.setToolTipText("");
 
         jComboBoxBatSupervision.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tous", "TP3", "U4", "U3", "U2", "K5-Burk" }));
 
@@ -115,36 +115,36 @@ public class MainWindow extends javax.swing.JFrame {
 
         jComboBoxSallesSupervision.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tous", "212", "210", "110" }));
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelFiltresSupervisionLayout = new javax.swing.GroupLayout(jPanelFiltresSupervision);
+        jPanelFiltresSupervision.setLayout(jPanelFiltresSupervisionLayout);
+        jPanelFiltresSupervisionLayout.setHorizontalGroup(
+            jPanelFiltresSupervisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelFiltresSupervisionLayout.createSequentialGroup()
                 .addGap(44, 44, 44)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelFiltresSupervisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelBatiments, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelSallesSupervision, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(jPanelFiltresSupervisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jComboBoxSallesSupervision, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jComboBoxBatSupervision, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 150, Short.MAX_VALUE)
                 .addComponent(jButtonFiltrerSupervision)
                 .addContainerGap())
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        jPanelFiltresSupervisionLayout.setVerticalGroup(
+            jPanelFiltresSupervisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelFiltresSupervisionLayout.createSequentialGroup()
+                .addGroup(jPanelFiltresSupervisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBoxBatSupervision, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelBatiments))
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGroup(jPanelFiltresSupervisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelFiltresSupervisionLayout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addComponent(jButtonFiltrerSupervision))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
+                    .addGroup(jPanelFiltresSupervisionLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(jPanelFiltresSupervisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jComboBoxSallesSupervision, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabelSallesSupervision))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -160,7 +160,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanelSupervisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPaneTableauSupervision, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanelFiltresSupervision, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonDetails))
                 .addContainerGap(304, Short.MAX_VALUE))
         );
@@ -168,7 +168,7 @@ public class MainWindow extends javax.swing.JFrame {
             jPanelSupervisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelSupervisionLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelFiltresSupervision, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
                 .addComponent(jScrollPaneTableauSupervision, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -515,9 +515,9 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelSallesSupervision;
     private javax.swing.JList jListOS;
     private javax.swing.JPanel jPaneRecapitulatif;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanelAjoutMachineMaintenance;
     private javax.swing.JPanel jPanelFiltresMaintenance;
+    private javax.swing.JPanel jPanelFiltresSupervision;
     private javax.swing.JPanel jPanelMaintenance;
     private javax.swing.JPanel jPanelOrdinateurMaintenance;
     private javax.swing.JPanel jPanelSupervision;
