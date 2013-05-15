@@ -26,17 +26,76 @@ public class DetailedWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanelNomOrdinateur = new javax.swing.JPanel();
+        jPanelHistorique = new javax.swing.JPanel();
+        jScrollPaneHistorique = new javax.swing.JScrollPane();
+        jTableHistorique = new javax.swing.JTable();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanelNomOrdinateur.setBorder(javax.swing.BorderFactory.createTitledBorder("\"Nom Ordinateur\""));
+
+        javax.swing.GroupLayout jPanelNomOrdinateurLayout = new javax.swing.GroupLayout(jPanelNomOrdinateur);
+        jPanelNomOrdinateur.setLayout(jPanelNomOrdinateurLayout);
+        jPanelNomOrdinateurLayout.setHorizontalGroup(
+            jPanelNomOrdinateurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanelNomOrdinateurLayout.setVerticalGroup(
+            jPanelNomOrdinateurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 149, Short.MAX_VALUE)
+        );
+
+        jPanelHistorique.setBorder(javax.swing.BorderFactory.createTitledBorder("Historique"));
+
+        jTableHistorique.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Type Opération", "Date"
+            }
+        ));
+        jScrollPaneHistorique.setViewportView(jTableHistorique);
+
+        javax.swing.GroupLayout jPanelHistoriqueLayout = new javax.swing.GroupLayout(jPanelHistorique);
+        jPanelHistorique.setLayout(jPanelHistoriqueLayout);
+        jPanelHistoriqueLayout.setHorizontalGroup(
+            jPanelHistoriqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelHistoriqueLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPaneHistorique, javax.swing.GroupLayout.DEFAULT_SIZE, 669, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanelHistoriqueLayout.setVerticalGroup(
+            jPanelHistoriqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelHistoriqueLayout.createSequentialGroup()
+                .addComponent(jScrollPaneHistorique, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 739, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanelNomOrdinateur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelHistorique, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 506, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanelNomOrdinateur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanelHistorique, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -77,5 +136,9 @@ public class DetailedWindow extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel jPanelHistorique;
+    private javax.swing.JPanel jPanelNomOrdinateur;
+    private javax.swing.JScrollPane jScrollPaneHistorique;
+    private javax.swing.JTable jTableHistorique;
     // End of variables declaration//GEN-END:variables
 }
