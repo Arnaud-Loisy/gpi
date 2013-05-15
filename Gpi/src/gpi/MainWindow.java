@@ -68,6 +68,9 @@ public class MainWindow extends javax.swing.JFrame {
         jScrollPaneAjoutMachine = new javax.swing.JScrollPane();
         jListOS = new javax.swing.JList();
         jButtonValiderAjoutMAchine = new javax.swing.JButton();
+        jMenuBar = new javax.swing.JMenuBar();
+        jMenuConfiguration = new javax.swing.JMenu();
+        jMenu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -417,6 +420,14 @@ public class MainWindow extends javax.swing.JFrame {
 
         jTabLvl1.addTab("Maintenance", jPanelMaintenance);
 
+        jMenuConfiguration.setText("Configuration");
+        jMenuBar.add(jMenuConfiguration);
+
+        jMenu.setText("Edit");
+        jMenuBar.add(jMenu);
+
+        setJMenuBar(jMenuBar);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -514,6 +525,9 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelSallesMaintenance;
     private javax.swing.JLabel jLabelSallesSupervision;
     private javax.swing.JList jListOS;
+    private javax.swing.JMenu jMenu;
+    private javax.swing.JMenuBar jMenuBar;
+    private javax.swing.JMenu jMenuConfiguration;
     private javax.swing.JPanel jPaneRecapitulatif;
     private javax.swing.JPanel jPanelAjoutMachineMaintenance;
     private javax.swing.JPanel jPanelFiltresMaintenance;
