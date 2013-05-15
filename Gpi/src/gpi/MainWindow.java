@@ -27,11 +27,7 @@ public class MainWindow extends javax.swing.JFrame {
     private void initComponents() {
 
         jTabLvl1 = new javax.swing.JTabbedPane();
-        jPanelRecapitulatif = new javax.swing.JPanel();
-        jTabLvl2 = new javax.swing.JTabbedPane();
-        jPanel10 = new javax.swing.JPanel();
-        jPanel11 = new javax.swing.JPanel();
-        jPanel12 = new javax.swing.JPanel();
+        jPaneRecapitulatif = new javax.swing.JPanel();
         jPanelSupervision = new javax.swing.JPanel();
         jScrollPaneTableauSupervision = new javax.swing.JScrollPane();
         jTableauSupervision = new javax.swing.JTable();
@@ -75,18 +71,18 @@ public class MainWindow extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jPaneRecapitulatifLayout = new javax.swing.GroupLayout(jPaneRecapitulatif);
+        jPaneRecapitulatif.setLayout(jPaneRecapitulatifLayout);
+        jPaneRecapitulatifLayout.setHorizontalGroup(
+            jPaneRecapitulatifLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 766, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jPaneRecapitulatifLayout.setVerticalGroup(
+            jPaneRecapitulatifLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 552, Short.MAX_VALUE)
         );
 
-        jTabLvl1.addTab("Récapitulatif", jPanelRecapitulatif);
+        jTabLvl1.addTab("Récapitulatif", jPaneRecapitulatif);
 
         jTableauSupervision.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -166,15 +162,15 @@ public class MainWindow extends javax.swing.JFrame {
                     .addComponent(jScrollPaneTableauSupervision, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonDetails))
-                .addContainerGap(292, Short.MAX_VALUE))
+                .addContainerGap(304, Short.MAX_VALUE))
         );
         jPanelSupervisionLayout.setVerticalGroup(
             jPanelSupervisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelSupervisionLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
+                .addComponent(jScrollPaneTableauSupervision, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonDetails)
                 .addGap(33, 33, 33))
@@ -404,12 +400,12 @@ public class MainWindow extends javax.swing.JFrame {
                     .addComponent(jPanelFiltresMaintenance, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(jPanelAjoutMachineMaintenance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(124, Short.MAX_VALUE))
         );
         jPanelMaintenanceLayout.setVerticalGroup(
             jPanelMaintenanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelMaintenanceLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(95, Short.MAX_VALUE)
                 .addGroup(jPanelMaintenanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanelAjoutMachineMaintenance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanelMaintenanceLayout.createSequentialGroup()
@@ -518,21 +514,17 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelSallesMaintenance;
     private javax.swing.JLabel jLabelSallesSupervision;
     private javax.swing.JList jListOS;
-    private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
-    private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPaneRecapitulatif;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanelAjoutMachineMaintenance;
     private javax.swing.JPanel jPanelFiltresMaintenance;
     private javax.swing.JPanel jPanelMaintenance;
     private javax.swing.JPanel jPanelOrdinateurMaintenance;
-    private javax.swing.JPanel jPanelRecapitulatif;
     private javax.swing.JPanel jPanelSupervision;
     private javax.swing.JProgressBar jProgressBarInstall;
     private javax.swing.JScrollPane jScrollPaneAjoutMachine;
     private javax.swing.JScrollPane jScrollPaneTableauSupervision;
     private javax.swing.JTabbedPane jTabLvl1;
-    private javax.swing.JTabbedPane jTabLvl2;
     private javax.swing.JTable jTableauSupervision;
     private javax.swing.JTextField jTextFieldHostname;
     // End of variables declaration//GEN-END:variables
