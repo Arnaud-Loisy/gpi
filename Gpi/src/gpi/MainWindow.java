@@ -26,7 +26,7 @@ public class MainWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabLvl1 = new javax.swing.JTabbedPane();
+        jTabLvlOnglets = new javax.swing.JTabbedPane();
         jPaneRecapitulatif = new javax.swing.JPanel();
         jPanelSupervision = new javax.swing.JPanel();
         jScrollPaneTableauSupervision = new javax.swing.JScrollPane();
@@ -78,14 +78,14 @@ public class MainWindow extends javax.swing.JFrame {
         jPaneRecapitulatif.setLayout(jPaneRecapitulatifLayout);
         jPaneRecapitulatifLayout.setHorizontalGroup(
             jPaneRecapitulatifLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 766, Short.MAX_VALUE)
+            .addGap(0, 878, Short.MAX_VALUE)
         );
         jPaneRecapitulatifLayout.setVerticalGroup(
             jPaneRecapitulatifLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 552, Short.MAX_VALUE)
+            .addGap(0, 631, Short.MAX_VALUE)
         );
 
-        jTabLvl1.addTab("Récapitulatif", jPaneRecapitulatif);
+        jTabLvlOnglets.addTab("Récapitulatif", jPaneRecapitulatif);
 
         jTableauSupervision.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -165,21 +165,21 @@ public class MainWindow extends javax.swing.JFrame {
                     .addComponent(jScrollPaneTableauSupervision, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanelFiltresSupervision, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonDetails))
-                .addContainerGap(304, Short.MAX_VALUE))
+                .addContainerGap(404, Short.MAX_VALUE))
         );
         jPanelSupervisionLayout.setVerticalGroup(
             jPanelSupervisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelSupervisionLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanelFiltresSupervision, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 169, Short.MAX_VALUE)
                 .addComponent(jScrollPaneTableauSupervision, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonDetails)
                 .addGap(33, 33, 33))
         );
 
-        jTabLvl1.addTab("Supervision", jPanelSupervision);
+        jTabLvlOnglets.addTab("Supervision", jPanelSupervision);
 
         jPanelFiltresMaintenance.setBorder(javax.swing.BorderFactory.createTitledBorder("Filtres"));
         jPanelFiltresMaintenance.setToolTipText("");
@@ -408,7 +408,7 @@ public class MainWindow extends javax.swing.JFrame {
         jPanelMaintenanceLayout.setVerticalGroup(
             jPanelMaintenanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelMaintenanceLayout.createSequentialGroup()
-                .addContainerGap(95, Short.MAX_VALUE)
+                .addContainerGap(91, Short.MAX_VALUE)
                 .addGroup(jPanelMaintenanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanelAjoutMachineMaintenance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanelMaintenanceLayout.createSequentialGroup()
@@ -418,7 +418,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addGap(133, 133, 133))
         );
 
-        jTabLvl1.addTab("Maintenance", jPanelMaintenance);
+        jTabLvlOnglets.addTab("Maintenance", jPanelMaintenance);
 
         jMenuConfiguration.setText("Configuration");
         jMenuBar.add(jMenuConfiguration);
@@ -432,13 +432,13 @@ public class MainWindow extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabLvl1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jTabLvlOnglets, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabLvl1)
+                .addComponent(jTabLvlOnglets, javax.swing.GroupLayout.DEFAULT_SIZE, 672, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -538,7 +538,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JProgressBar jProgressBarInstall;
     private javax.swing.JScrollPane jScrollPaneAjoutMachine;
     private javax.swing.JScrollPane jScrollPaneTableauSupervision;
-    private javax.swing.JTabbedPane jTabLvl1;
+    private javax.swing.JTabbedPane jTabLvlOnglets;
     private javax.swing.JTable jTableauSupervision;
     private javax.swing.JTextField jTextFieldHostname;
     // End of variables declaration//GEN-END:variables
