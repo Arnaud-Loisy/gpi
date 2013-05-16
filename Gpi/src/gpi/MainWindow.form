@@ -19,6 +19,9 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+      <Dimension value="[810, 514]"/>
+    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="jMenuBar"/>
@@ -51,7 +54,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="jTabLvlOnglets" pref="461" max="32767" attributes="0"/>
+              <Component id="jTabLvlOnglets" pref="469" max="32767" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -74,12 +77,12 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="787" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="766" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="420" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="428" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -102,7 +105,7 @@
                           <Component id="jPanelFiltresSupervision" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Component id="jButtonDetails" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="703" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="682" max="32767" attributes="0"/>
                           </Group>
                           <Component id="jScrollPaneTableauSupervision" max="32767" attributes="0"/>
                       </Group>
@@ -114,9 +117,9 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Component id="jPanelFiltresSupervision" min="-2" pref="124" max="-2" attributes="0"/>
+                      <Component id="jPanelFiltresSupervision" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Component id="jScrollPaneTableauSupervision" pref="206" max="32767" attributes="0"/>
+                      <Component id="jScrollPaneTableauSupervision" pref="214" max="32767" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Component id="jButtonDetails" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
@@ -220,8 +223,8 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jComboBoxBatSupervision" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabelBatiments" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabelBatiments1" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jComboBoxBatSupervision1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelBatiments1" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
@@ -332,7 +335,7 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jPanelAjoutMachineMaintenance" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="33" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
