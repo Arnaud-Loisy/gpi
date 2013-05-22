@@ -9,12 +9,24 @@ package gpi;
  * @author jeremy
  */
 public class ConfigurationWindow extends javax.swing.JFrame {
-
+	
+	public MainWindow mainWindow;
+	
     /**
      * Creates new form ConfigurationWindow
      */
     public ConfigurationWindow() {
         initComponents();
+    }
+	
+    /**
+     * Creates new form ConfigurationWindow
+     */
+    public ConfigurationWindow(MainWindow mainWindow) {
+        initComponents();
+		this.mainWindow = mainWindow;
+		this.jListBatiments.setModel(this.mainWindow.parcInfo.getBatiments());
+		this.jListSalles.setModel(this.mainWindow.parcInfo.salles);
     }
 
     /**

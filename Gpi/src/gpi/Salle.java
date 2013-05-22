@@ -22,9 +22,7 @@ public class Salle {
 
     public void setOrdinateurs(DefaultListModel ordinateurs) {
         this.ordinateurs = ordinateurs;
-    }
-    
-    
+    }    
 
     public String getNom() {
         return Nom;
@@ -38,6 +36,10 @@ public class Salle {
     {
         
     }
+	
+	public String toString() {
+		return this.Nom;
+	}
     
     
 }

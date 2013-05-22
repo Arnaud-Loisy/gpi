@@ -11,15 +11,15 @@ package gpi;
  * @author jeremy
  */
 public class MainWindow extends javax.swing.JFrame {
-
-	public ConfigurationWindow window_configuration;
+	
+	public ParcInfo parcInfo;
 	
     /**
      * Creates new form MainWindow
      */
-    public MainWindow() {
+    public MainWindow(ParcInfo _parcInfo) {
         initComponents();
-		window_configuration = new ConfigurationWindow();
+		this.parcInfo = _parcInfo;
     }
 
     /**
@@ -90,7 +90,7 @@ public class MainWindow extends javax.swing.JFrame {
         );
         jPaneRecapitulatifLayout.setVerticalGroup(
             jPaneRecapitulatifLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 436, Short.MAX_VALUE)
+            .addGap(0, 444, Short.MAX_VALUE)
         );
 
         jTabLvlOnglets.addTab("Récapitulatif", jPaneRecapitulatif);
@@ -162,11 +162,12 @@ public class MainWindow extends javax.swing.JFrame {
         jPanelFiltresSupervisionLayout.setVerticalGroup(
             jPanelFiltresSupervisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelFiltresSupervisionLayout.createSequentialGroup()
-                .addGroup(jPanelFiltresSupervisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBoxBatSupervision, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelBatiments)
-                    .addComponent(jComboBoxBatSupervision1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelBatiments1))
+                .addGroup(jPanelFiltresSupervisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelBatiments1)
+                    .addGroup(jPanelFiltresSupervisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jComboBoxBatSupervision, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelBatiments)
+                        .addComponent(jComboBoxBatSupervision1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jPanelFiltresSupervisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelFiltresSupervisionLayout.createSequentialGroup()
                         .addGap(24, 24, 24)
@@ -201,7 +202,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanelFiltresSupervision, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPaneTableauSupervision, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
+                .addComponent(jScrollPaneTableauSupervision, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonDetails)
                 .addGap(33, 33, 33))
@@ -485,7 +486,7 @@ public class MainWindow extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabLvlOnglets, javax.swing.GroupLayout.PREFERRED_SIZE, 477, Short.MAX_VALUE)
+                .addComponent(jTabLvlOnglets, javax.swing.GroupLayout.PREFERRED_SIZE, 485, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -514,7 +515,8 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void jMenuConfigurationMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenuConfigurationMenuSelected
         // TODO add your handling code here:
-		this.window_configuration.setVisible(true);
+		ConfigurationWindow configuration = new ConfigurationWindow(this);
+		configuration.setVisible(true);
     }//GEN-LAST:event_jMenuConfigurationMenuSelected
 
     /**
@@ -547,7 +549,7 @@ public class MainWindow extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainWindow().setVisible(true);
+                //new MainWindow().setVisible(true);
             }
         });
     }

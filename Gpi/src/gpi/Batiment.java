@@ -13,15 +13,16 @@ import javax.swing.DefaultListModel;
 public class Batiment {
     private String Nom;
     private DefaultListModel salles;
+	
     public void afficherSalles(){
         
     }
     
-    public void afficherOrdinateurs(){
-        for(int i=0;i<salles.getSize();i++){
-           
-           
-        }
+	public DefaultListModel getListeSalles() {
+		return this.salles;
+	}
+    public void ajouterSalle(Salle salle){
+		this.salles.addElement(salle);
     }
     
 }
