@@ -6,6 +6,7 @@ package gpi;
 
 import java.util.ArrayList;
 import java.util.Date;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -15,13 +16,33 @@ public class Ordinateur {
     private String nom;
     private String modele;
     private String fabriquant;
+    private String numSerie;
     private Date dateInstall;
     private ArrayList<ArrayList<String>> historique;
-
+    private DefaultListModel Os;    
     public String getNom() {
         return nom;
     }
 
+    public String getNumSerie() {
+        return numSerie;
+    }
+
+    public void setNumSerie(String numSerie) {
+        this.numSerie = numSerie;
+    }
+
+    public DefaultListModel getOs() {
+        return Os;
+    }
+
+    public void setOs(DefaultListModel Os) {
+        this.Os = Os;
+    }
+
+  
+
+   
     public void setNom(String nom) {
         this.nom = nom;
     }
@@ -58,11 +79,8 @@ public class Ordinateur {
         this.historique = historique;
     }
     
-    public void ajouterOS (){
-    
+    public void ajouterOS (OS op){
+    Os.addElement(op);
     }
     
-    public void getOS(){
-        
-    }
 }
