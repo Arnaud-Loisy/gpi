@@ -4,17 +4,22 @@
  */
 package gpi;
 
+//import javax.swing.DefaultListModel;
+
 /**
  *
  * @author jeremy
  */
 public class MainWindow extends javax.swing.JFrame {
 
+	public ConfigurationWindow window_configuration;
+	
     /**
      * Creates new form MainWindow
      */
     public MainWindow() {
         initComponents();
+		window_configuration = new ConfigurationWindow();
     }
 
     /**
@@ -85,7 +90,7 @@ public class MainWindow extends javax.swing.JFrame {
         );
         jPaneRecapitulatifLayout.setVerticalGroup(
             jPaneRecapitulatifLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 428, Short.MAX_VALUE)
+            .addGap(0, 436, Short.MAX_VALUE)
         );
 
         jTabLvlOnglets.addTab("Récapitulatif", jPaneRecapitulatif);
@@ -102,6 +107,10 @@ public class MainWindow extends javax.swing.JFrame {
             }
         ));
         jScrollPaneTableauSupervision.setViewportView(jTableauSupervision);
+        jTableauSupervision.getColumnModel().getColumn(0).setHeaderValue("Bâtiment");
+        jTableauSupervision.getColumnModel().getColumn(1).setHeaderValue("Salle");
+        jTableauSupervision.getColumnModel().getColumn(2).setHeaderValue("Ordinateurs");
+        jTableauSupervision.getColumnModel().getColumn(3).setHeaderValue("OS");
 
         jPanelFiltresSupervision.setBorder(javax.swing.BorderFactory.createTitledBorder("Filtres"));
         jPanelFiltresSupervision.setToolTipText("");
@@ -190,9 +199,9 @@ public class MainWindow extends javax.swing.JFrame {
             jPanelSupervisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelSupervisionLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanelFiltresSupervision, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelFiltresSupervision, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPaneTableauSupervision, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
+                .addComponent(jScrollPaneTableauSupervision, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonDetails)
                 .addGap(33, 33, 33))
@@ -366,6 +375,11 @@ public class MainWindow extends javax.swing.JFrame {
         jScrollPaneAjoutMachine.setViewportView(jListOS);
 
         jButtonValiderAjoutMAchine.setText("Valider");
+        jButtonValiderAjoutMAchine.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonValiderAjoutMAchineActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelAjoutMachineMaintenanceLayout = new javax.swing.GroupLayout(jPanelAjoutMachineMaintenance);
         jPanelAjoutMachineMaintenance.setLayout(jPanelAjoutMachineMaintenanceLayout);
@@ -442,6 +456,15 @@ public class MainWindow extends javax.swing.JFrame {
         jTabLvlOnglets.addTab("Maintenance", jPanelMaintenance);
 
         jMenuConfiguration.setText("Configuration");
+        jMenuConfiguration.addMenuListener(new javax.swing.event.MenuListener() {
+            public void menuSelected(javax.swing.event.MenuEvent evt) {
+                jMenuConfigurationMenuSelected(evt);
+            }
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuCanceled(javax.swing.event.MenuEvent evt) {
+            }
+        });
         jMenuBar.add(jMenuConfiguration);
 
         jMenu.setText("Edit");
@@ -462,7 +485,7 @@ public class MainWindow extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabLvlOnglets, javax.swing.GroupLayout.PREFERRED_SIZE, 469, Short.MAX_VALUE)
+                .addComponent(jTabLvlOnglets, javax.swing.GroupLayout.PREFERRED_SIZE, 477, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -484,6 +507,15 @@ public class MainWindow extends javax.swing.JFrame {
     private void jComboBoxOSMaintenanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxOSMaintenanceActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxOSMaintenanceActionPerformed
+
+    private void jButtonValiderAjoutMAchineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonValiderAjoutMAchineActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonValiderAjoutMAchineActionPerformed
+
+    private void jMenuConfigurationMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenuConfigurationMenuSelected
+        // TODO add your handling code here:
+		this.window_configuration.setVisible(true);
+    }//GEN-LAST:event_jMenuConfigurationMenuSelected
 
     /**
      * @param args the command line arguments

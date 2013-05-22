@@ -26,44 +26,25 @@ public class ConfigurationWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPaneSalles = new javax.swing.JScrollPane();
-        jTableSalles = new javax.swing.JTable();
-        jScrollPaneBatiments = new javax.swing.JScrollPane();
-        jTableBatiments = new javax.swing.JTable();
         jButtonNouveauBatiment = new javax.swing.JButton();
         jButtonNouvelleSalle = new javax.swing.JButton();
         jButtonSupprimerSalle = new javax.swing.JButton();
         jButtonBatiment = new javax.swing.JButton();
+        jScrollPaneBatiments = new javax.swing.JScrollPane();
+        jListBatiments = new javax.swing.JList();
+        jLabelSalles = new javax.swing.JLabel();
+        jLabelBatiments = new javax.swing.JLabel();
+        jScrollPaneSalles = new javax.swing.JScrollPane();
+        jListSalles = new javax.swing.JList();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
         setResizable(false);
-
-        jTableSalles.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null}
-            },
-            new String [] {
-                "Salles"
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
             }
-        ));
-        jScrollPaneSalles.setViewportView(jTableSalles);
-
-        jTableBatiments.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null}
-            },
-            new String [] {
-                "Bâtiments"
-            }
-        ));
-        jScrollPaneBatiments.setViewportView(jTableBatiments);
+        });
 
         jButtonNouveauBatiment.setText("Nouveau bâtiment");
 
@@ -73,16 +54,41 @@ public class ConfigurationWindow extends javax.swing.JFrame {
 
         jButtonBatiment.setText("Supprimer bâtiment");
 
+        jListBatiments.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        jListBatiments.setName(""); // NOI18N
+        jScrollPaneBatiments.setViewportView(jListBatiments);
+
+        jLabelSalles.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelSalles.setText("Salles");
+
+        jLabelBatiments.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelBatiments.setText("Bâtiments");
+
+        jListSalles.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPaneSalles.setViewportView(jListSalles);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPaneBatiments, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPaneBatiments)
+                    .addComponent(jLabelBatiments, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPaneSalles, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabelSalles, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPaneSalles))
+                .addGap(0, 30, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jButtonNouveauBatiment, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonNouvelleSalle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -92,24 +98,33 @@ public class ConfigurationWindow extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButtonNouveauBatiment, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabelSalles, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelBatiments, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPaneBatiments, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonNouveauBatiment)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonNouvelleSalle)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonBatiment)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonSupprimerSalle))
-                    .addComponent(jScrollPaneSalles, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 545, Short.MAX_VALUE)
-                    .addComponent(jScrollPaneBatiments, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap())
+                    .addComponent(jScrollPaneSalles, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+		//this.dispose();
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments
@@ -150,9 +165,11 @@ public class ConfigurationWindow extends javax.swing.JFrame {
     private javax.swing.JButton jButtonNouveauBatiment;
     private javax.swing.JButton jButtonNouvelleSalle;
     private javax.swing.JButton jButtonSupprimerSalle;
+    private javax.swing.JLabel jLabelBatiments;
+    private javax.swing.JLabel jLabelSalles;
+    private javax.swing.JList jListBatiments;
+    private javax.swing.JList jListSalles;
     private javax.swing.JScrollPane jScrollPaneBatiments;
     private javax.swing.JScrollPane jScrollPaneSalles;
-    private javax.swing.JTable jTableBatiments;
-    private javax.swing.JTable jTableSalles;
     // End of variables declaration//GEN-END:variables
 }
