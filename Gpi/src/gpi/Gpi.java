@@ -15,5 +15,7 @@ public class Gpi {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        MainWindow fenetre_principale = new MainWindow();
+        fenetre_principale.setVisible(true);
     }
 }
