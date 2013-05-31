@@ -12,11 +12,6 @@
             <EventHandler event="menuSelected" listener="javax.swing.event.MenuListener" parameters="javax.swing.event.MenuEvent" handler="jMenuConfigurationMenuSelected"/>
           </Events>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Edit"/>
-          </Properties>
-        </Menu>
       </SubComponents>
     </Menu>
   </NonVisualComponents>
@@ -58,7 +53,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jTabLvlOnglets" min="-2" pref="450" max="-2" attributes="0"/>
-              <EmptySpace pref="20" max="32767" attributes="0"/>
+              <EmptySpace pref="28" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -100,7 +95,7 @@
                       <Component id="jLabelRecapSalles" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                       <Component id="jLabelRecapOrdinateurs" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="334" max="32767" attributes="0"/>
+                      <EmptySpace pref="309" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -155,7 +150,7 @@
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Component id="jPanelFiltresSupervision" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Component id="jScrollPaneTableauSupervision" pref="211" max="32767" attributes="0"/>
+                      <Component id="jScrollPaneTableauSupervision" pref="173" max="32767" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Component id="jButtonDetails" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
@@ -247,7 +242,7 @@
                                   <Component id="jLabelBatiments1" min="-2" pref="35" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jComboBoxBatSupervision1" min="-2" pref="151" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="309" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -566,7 +561,7 @@
                               <Component id="jComboBoxStockMaintenance" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabelEtatMaintenance" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="37" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jComboBoxOSMaintenance" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jButtonChangerOS" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -695,7 +690,7 @@
                           <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jButtonValiderAjoutMAchine" max="32767" attributes="0"/>
-                              <Component id="jScrollPaneAjoutMachine" pref="183" max="32767" attributes="0"/>
+                              <Component id="jScrollPaneAjoutMachine" pref="200" max="32767" attributes="0"/>
                               <Component id="jComboBoxEtatAjoutMachine" alignment="0" max="32767" attributes="0"/>
                               <Component id="jComboBoxSalleAjoutMachine" max="32767" attributes="0"/>
                               <Component id="jTextFieldHostname" max="32767" attributes="0"/>

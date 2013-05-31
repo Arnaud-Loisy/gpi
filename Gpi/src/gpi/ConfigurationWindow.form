@@ -38,7 +38,7 @@
                   <Component id="jLabelSalles" min="-2" pref="145" max="-2" attributes="0"/>
                   <Component id="jScrollPaneSalles" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace min="0" pref="269" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="36" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="1" max="-2" attributes="0">
                   <Component id="jButtonNouveauBatiment" max="32767" attributes="0"/>
                   <Component id="jButtonNouvelleSalle" alignment="1" max="32767" attributes="0"/>

@@ -27,11 +27,11 @@ public class Gpi {
 		Salle salle5 = new Salle("207");
 		Salle salle6 = new Salle("206");
 		
-		Ordinateur ordi1 = new Ordinateur("Mercure");
-		Ordinateur ordi2 = new Ordinateur("Venus");
-		Ordinateur ordi3 = new Ordinateur("Saturne");
-		Ordinateur ordi4 = new Ordinateur("Pluton");
-		Ordinateur ordi5 = new Ordinateur("Mars");
+		Ordinateur ordi1 = new Ordinateur("Mercure", "E6500", "Dell", "1234567");
+		Ordinateur ordi2 = new Ordinateur("Venus", "E6400", "Dell", "122424");
+		Ordinateur ordi3 = new Ordinateur("Saturne", "E6300", "Dell", "125643654");
+		Ordinateur ordi4 = new Ordinateur("Mars", "E6200", "Dell", "1265467899");
+		Ordinateur ordi5 = new Ordinateur("Pluton", "Zenbook", "Asus", "12965467");
 		
 		salle1.affecterOrdinateur(ordi1);
 		salle2.affecterOrdinateur(ordi2);

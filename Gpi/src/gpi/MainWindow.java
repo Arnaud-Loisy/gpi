@@ -88,7 +88,6 @@ public class MainWindow extends javax.swing.JFrame {
         jButtonValiderAjoutMAchine = new javax.swing.JButton();
         jMenuBar = new javax.swing.JMenuBar();
         jMenuConfiguration = new javax.swing.JMenu();
-        jMenu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(810, 514));
@@ -120,7 +119,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addComponent(jLabelRecapSalles)
                 .addGap(8, 8, 8)
                 .addComponent(jLabelRecapOrdinateurs)
-                .addContainerGap(334, Short.MAX_VALUE))
+                .addContainerGap(309, Short.MAX_VALUE))
         );
 
         jTabLvlOnglets.addTab("Récapitulatif", jPaneRecapitulatif);
@@ -183,7 +182,7 @@ public class MainWindow extends javax.swing.JFrame {
                         .addComponent(jLabelBatiments1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jComboBoxBatSupervision1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 309, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanelFiltresSupervisionLayout.setVerticalGroup(
@@ -229,7 +228,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanelFiltresSupervision, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPaneTableauSupervision, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
+                .addComponent(jScrollPaneTableauSupervision, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonDetails)
                 .addGap(33, 33, 33))
@@ -371,7 +370,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addGroup(jPanelOrdinateurMaintenanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBoxStockMaintenance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelEtatMaintenance))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanelOrdinateurMaintenanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBoxOSMaintenance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonChangerOS)
@@ -423,7 +422,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanelAjoutMachineMaintenanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButtonValiderAjoutMAchine, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPaneAjoutMachine, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
+                    .addComponent(jScrollPaneAjoutMachine, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                     .addComponent(jComboBoxEtatAjoutMachine, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jComboBoxSalleAjoutMachine, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jTextFieldHostname))
@@ -488,17 +487,12 @@ public class MainWindow extends javax.swing.JFrame {
             public void menuSelected(javax.swing.event.MenuEvent evt) {
                 jMenuConfigurationMenuSelected(evt);
             }
-            public void menuCanceled(javax.swing.event.MenuEvent evt) {
-            }
             public void menuDeselected(javax.swing.event.MenuEvent evt) {
             }
             public void menuCanceled(javax.swing.event.MenuEvent evt) {
             }
         });
         jMenuBar.add(jMenuConfiguration);
-
-        jMenu.setText("Edit");
-        jMenuBar.add(jMenu);
 
         setJMenuBar(jMenuBar);
 
@@ -516,7 +510,7 @@ public class MainWindow extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jTabLvlOnglets, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         pack();
@@ -574,9 +568,12 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void jButtonValiderAjoutMAchineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonValiderAjoutMAchineActionPerformed
 		// TODO add your handling code here:
-		Ordinateur ordinateur = new Ordinateur(this.jTextFieldHostname.getText());
+		Ordinateur ordinateur = new Ordinateur(this.jTextFieldHostname.getText(), "E6500", "DELL", "2634565365");
 		String NomOS = this.jComboBoxOSMaintenance.getSelectedItem().toString();
 		OS os = new OS();
+		DefaultComboBoxModel<OS> modele = new DefaultComboBoxModel();
+		modele.addElement(os);
+		ordinateur.setOs(modele);
     }//GEN-LAST:event_jButtonValiderAjoutMAchineActionPerformed
 
     private void jMenuConfigurationMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenuConfigurationMenuSelected
@@ -655,7 +652,6 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelSallesMaintenance;
     private javax.swing.JLabel jLabelSallesSupervision;
     private javax.swing.JList jListOS;
-    private javax.swing.JMenu jMenu;
     private javax.swing.JMenuBar jMenuBar;
     private javax.swing.JMenu jMenuConfiguration;
     private javax.swing.JPanel jPaneRecapitulatif;
