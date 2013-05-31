@@ -34,7 +34,7 @@ public class ConfigurationWindow extends javax.swing.JFrame {
 		this.jListBatiments.setModel(this.mainWindow.parcInfo.getBatiments());
 		this.jListSalles.setModel(this.mainWindow.parcInfo.salles);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		this.setLocationRelativeTo(null);
+		//this.setLocationRelativeTo(null);
 	}
 
 	/**
@@ -59,7 +59,6 @@ public class ConfigurationWindow extends javax.swing.JFrame {
         jButtonAssocier = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setAlwaysOnTop(true);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
