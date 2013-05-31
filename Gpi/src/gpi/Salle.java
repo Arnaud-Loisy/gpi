@@ -8,7 +8,7 @@ import javax.swing.DefaultComboBoxModel;
 
 /**
  *
- * @author darkey
+ * @author Arnaud Loisy
  */
 public class Salle {
 
