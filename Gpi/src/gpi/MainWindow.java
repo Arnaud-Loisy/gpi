@@ -125,6 +125,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         jTabLvlOnglets.addTab("Récapitulatif", jPaneRecapitulatif);
 
+        jTableauSupervision.setAutoCreateRowSorter(true);
         jTableauSupervision.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -491,6 +492,8 @@ public class MainWindow extends javax.swing.JFrame {
             }
             public void menuDeselected(javax.swing.event.MenuEvent evt) {
             }
+            public void menuCanceled(javax.swing.event.MenuEvent evt) {
+            }
         });
         jMenuBar.add(jMenuConfiguration);
 
@@ -513,7 +516,7 @@ public class MainWindow extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jTabLvlOnglets, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();

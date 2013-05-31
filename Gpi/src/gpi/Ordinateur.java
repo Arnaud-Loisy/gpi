@@ -20,6 +20,10 @@ public class Ordinateur {
 	private Date dateInstall;
 	private DefaultComboBoxModel Os;
 
+	public Ordinateur(String nom) {
+		this.nom = nom;
+	}
+
 	public String getNom() {
 		return nom;
 	}

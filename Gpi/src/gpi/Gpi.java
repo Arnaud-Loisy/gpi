@@ -17,6 +17,39 @@ public class Gpi {
         // TODO code application logic here
 		ParcInfo parcInfo = new ParcInfo();
 		
+		Batiment batiment1 = new Batiment("U4");
+		Batiment batiment2 = new Batiment("U3");
+		
+		Salle salle1 = new Salle("212");
+		Salle salle2 = new Salle("210");
+		Salle salle3 = new Salle("209");
+		Salle salle4 = new Salle("208");
+		Salle salle5 = new Salle("207");
+		Salle salle6 = new Salle("206");
+		
+		Ordinateur ordi1 = new Ordinateur("Mercure");
+		Ordinateur ordi2 = new Ordinateur("Venus");
+		Ordinateur ordi3 = new Ordinateur("Saturne");
+		Ordinateur ordi4 = new Ordinateur("Pluton");
+		Ordinateur ordi5 = new Ordinateur("Mars");
+		
+		salle1.affecterOrdinateur(ordi1);
+		salle2.affecterOrdinateur(ordi2);
+		salle3.affecterOrdinateur(ordi3);
+		salle3.affecterOrdinateur(ordi4);
+		salle4.affecterOrdinateur(ordi5);
+		
+		batiment1.ajouterNouvelleSalle(salle1);
+		batiment1.ajouterNouvelleSalle(salle2);
+		batiment1.ajouterNouvelleSalle(salle3);
+		batiment2.ajouterNouvelleSalle(salle4);
+		batiment2.ajouterNouvelleSalle(salle5);
+		batiment2.ajouterNouvelleSalle(salle6);
+		
+		parcInfo.ajouterNouveauBatiment(batiment1);
+		parcInfo.ajouterNouveauBatiment(batiment2);
+		
+		
         MainWindow fenetre_principale = new MainWindow(parcInfo);
         fenetre_principale.setVisible(true);
     }
