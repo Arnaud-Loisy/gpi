@@ -4,42 +4,43 @@
  */
 package gpi;
 
-import java.util.ArrayList;
-import javax.swing.DefaultListModel;
+import javax.swing.DefaultComboBoxModel;
 
 /**
  *
  * @author darkey
  */
 public class Salle {
-    private String Nom;
-    private ArrayList <Ordinateur> ordis;
-    private DefaultListModel ordinateurs;
 
-    public DefaultListModel getOrdinateurs() {
-        return ordinateurs;
-    }
+	private String nom;
+	private DefaultComboBoxModel ordinateurs;
 
-    public void setOrdinateurs(DefaultListModel ordinateurs) {
-        this.ordinateurs = ordinateurs;
-    }    
-
-    public String getNom() {
-        return Nom;
-    }
-
-    public void setNom(String Nom) {
-        this.Nom = Nom;
-    }
-    
-    public void affecterOrdinateur()
-    {
-        
-    }
-	
-	public String toString() {
-		return this.Nom;
+	public Salle(String nom) {
+		this.nom = nom;
 	}
-    
-    
+
+	public DefaultComboBoxModel getOrdinateurs() {
+		return ordinateurs;
+	}
+
+	public void setOrdinateurs(DefaultComboBoxModel ordinateurs) {
+		this.ordinateurs = ordinateurs;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public void affecterOrdinateur(Ordinateur ordinateur) {
+		this.ordinateurs.addElement(ordinateur);
+	}
+
+	@Override
+	public String toString() {
+		return this.nom;
+	}
 }

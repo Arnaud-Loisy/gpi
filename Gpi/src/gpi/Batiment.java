@@ -4,25 +4,47 @@
  */
 package gpi;
 
-import javax.swing.DefaultListModel;
+import javax.swing.DefaultComboBoxModel;
 
 /**
  *
  * @author darkey
  */
 public class Batiment {
-    private String Nom;
-    private DefaultListModel salles;
-	
-    public void afficherSalles(){
-        
-    }
-    
-	public DefaultListModel getListeSalles() {
+
+	private String nom;
+	private DefaultComboBoxModel<Salle> salles;
+
+	public Batiment(String nom) {
+		this.salles = new DefaultComboBoxModel();
+		this.nom = nom;
+	}
+
+	@Override
+	public String toString() {
+		return this.nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public DefaultComboBoxModel getSalles() {
 		return this.salles;
 	}
-    public void ajouterSalle(Salle salle){
+
+	public DefaultComboBoxModel getListeSalles() {
+		return this.salles;
+	}
+
+	public void ajouterNouvelleSalle(Salle salle) {
 		this.salles.addElement(salle);
-    }
-    
+	}
+	
+	public boolean contientSalle(Salle salle) {
+		if (this.salles.getIndexOf(salle) < 0)
+			return false;
+		
+		return true;
+	}
 }

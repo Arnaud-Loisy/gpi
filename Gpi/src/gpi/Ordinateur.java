@@ -6,81 +6,79 @@ package gpi;
 
 import java.util.ArrayList;
 import java.util.Date;
-import javax.swing.DefaultListModel;
+import javax.swing.DefaultComboBoxModel;
 
 /**
  *
  * @author darkey
  */
 public class Ordinateur {
-    private String nom;
-    private String modele;
-    private String fabriquant;
-    private String numSerie;
-    private Date dateInstall;
-    private ArrayList<ArrayList<String>> historique;
-    private DefaultListModel Os;    
-    public String getNom() {
-        return nom;
-    }
 
-    public String getNumSerie() {
-        return numSerie;
-    }
+	private String nom;
+	private String modele;
+	private String fabriquant;
+	private String numSerie;
+	private Date dateInstall;
+	private ArrayList<ArrayList<String>> historique;
+	private DefaultComboBoxModel Os;
 
-    public void setNumSerie(String numSerie) {
-        this.numSerie = numSerie;
-    }
+	public String getNom() {
+		return nom;
+	}
 
-    public DefaultListModel getOs() {
-        return Os;
-    }
+	public String getNumSerie() {
+		return numSerie;
+	}
 
-    public void setOs(DefaultListModel Os) {
-        this.Os = Os;
-    }
+	public void setNumSerie(String numSerie) {
+		this.numSerie = numSerie;
+	}
 
-  
+	public DefaultComboBoxModel getOs() {
+		return Os;
+	}
 
-   
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
+	public void setOs(DefaultComboBoxModel Os) {
+		this.Os = Os;
+	}
 
-    public String getModele() {
-        return modele;
-    }
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
 
-    public void setModele(String modele) {
-        this.modele = modele;
-    }
+	public String getModele() {
+		return modele;
+	}
 
-    public String getFabriquant() {
-        return fabriquant;
-    }
+	public void setModele(String modele) {
+		this.modele = modele;
+	}
 
-    public void setFabriquant(String fabriquant) {
-        this.fabriquant = fabriquant;
-    }
+	public String getFabriquant() {
+		return fabriquant;
+	}
 
-    public Date getDateInstall() {
-        return dateInstall;
-    }
+	public void setFabriquant(String fabriquant) {
+		this.fabriquant = fabriquant;
+	}
 
-    public void setDateInstall(Date dateInstall) {
-        this.dateInstall = dateInstall;
-    }
+	public Date getDateInstall() {
+		return dateInstall;
+	}
 
-    public ArrayList<ArrayList<String>> getHistorique() {
-        return historique;
-    }
+	public void setDateInstall(Date dateInstall) {
+		this.dateInstall = dateInstall;
+	}
 
-    public void setHistorique(ArrayList<ArrayList<String>> historique) {
-        this.historique = historique;
-    }
-    
-    public void ajouterOS (OS op){
-    Os.addElement(op);
-    }
-    
+	public ArrayList<ArrayList<String>> getHistorique() {
+		return historique;
+	}
+
+	public void setHistorique(ArrayList<ArrayList<String>> historique) {
+		this.historique = historique;
+	}
+
+	public void ajouterOS(OS op) {
+		Os.addElement(op);
+	}
 }
