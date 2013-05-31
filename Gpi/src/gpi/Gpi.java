@@ -37,7 +37,7 @@ public class Gpi {
 		salle2.affecterOrdinateur(ordi2);
 		salle3.affecterOrdinateur(ordi3);
 		salle3.affecterOrdinateur(ordi4);
-		salle4.affecterOrdinateur(ordi5);
+		salle5.affecterOrdinateur(ordi5);
 		
 		parcInfo.ajouterNouveauBatiment(batiment1);
 		parcInfo.ajouterNouveauBatiment(batiment2);
