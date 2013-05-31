@@ -80,15 +80,48 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="766" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jLabelRecapBatiment" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jLabelRecapSalles" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jLabelRecapOrdinateurs" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="366" max="32767" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="409" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                      <Component id="jLabelRecapBatiment" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabelRecapSalles" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                      <Component id="jLabelRecapOrdinateurs" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="334" max="32767" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
           </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="jLabelRecapBatiment">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Vous avez 0 Batiments en service "/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelRecapSalles">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Vous avez 0 Salles en service "/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelRecapOrdinateurs">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Vous avez 0 Ordinateurs dont 0 en Service, 0 en Stock et 0 en panne "/>
+              </Properties>
+            </Component>
+          </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="jPanelSupervision">
           <Constraints>
@@ -120,9 +153,9 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Component id="jPanelFiltresSupervision" min="-2" pref="124" max="-2" attributes="0"/>
+                      <Component id="jPanelFiltresSupervision" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Component id="jScrollPaneTableauSupervision" pref="195" max="32767" attributes="0"/>
+                      <Component id="jScrollPaneTableauSupervision" pref="211" max="32767" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Component id="jButtonDetails" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
@@ -245,7 +278,7 @@
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="28" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -533,7 +566,7 @@
                               <Component id="jComboBoxStockMaintenance" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabelEtatMaintenance" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="37" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jComboBoxOSMaintenance" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jButtonChangerOS" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -662,7 +695,7 @@
                           <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jButtonValiderAjoutMAchine" max="32767" attributes="0"/>
-                              <Component id="jScrollPaneAjoutMachine" pref="132" max="32767" attributes="0"/>
+                              <Component id="jScrollPaneAjoutMachine" pref="183" max="32767" attributes="0"/>
                               <Component id="jComboBoxEtatAjoutMachine" alignment="0" max="32767" attributes="0"/>
                               <Component id="jComboBoxSalleAjoutMachine" max="32767" attributes="0"/>
                               <Component id="jTextFieldHostname" max="32767" attributes="0"/>
