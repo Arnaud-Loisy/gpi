@@ -149,4 +149,9 @@ public class Ordinateur {
 	public void ajouterOS(OS op) {
 		Os.addElement(op);
 	}
+        @Override
+        public String toString()
+        {
+            return this.nom;
+        }
 }
