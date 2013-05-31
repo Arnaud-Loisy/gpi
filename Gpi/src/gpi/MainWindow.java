@@ -75,7 +75,7 @@ public class MainWindow extends javax.swing.JFrame {
         jProgressBarInstall = new javax.swing.JProgressBar();
         jLabelEtatMaintenance = new javax.swing.JLabel();
         jComboBoxStockMaintenance = new javax.swing.JComboBox();
-        jPanelAjoutMachineMaintenance = new javax.swing.JPanel();
+        jPanelFabriquant = new javax.swing.JPanel();
         jTextFieldHostname = new javax.swing.JTextField();
         jLabelHostname = new javax.swing.JLabel();
         jLabelEtatAjoutMachine = new javax.swing.JLabel();
@@ -86,6 +86,12 @@ public class MainWindow extends javax.swing.JFrame {
         jScrollPaneAjoutMachine = new javax.swing.JScrollPane();
         jListOS = new javax.swing.JList();
         jButtonValiderAjoutMAchine = new javax.swing.JButton();
+        jTextFieldModele = new javax.swing.JTextField();
+        jLabelModele = new javax.swing.JLabel();
+        jTextFieldSerial = new javax.swing.JTextField();
+        jLabelSerial = new javax.swing.JLabel();
+        jLabelFabriquant = new javax.swing.JLabel();
+        jTextFieldFabriquant = new javax.swing.JTextField();
         jMenuBar = new javax.swing.JMenuBar();
         jMenuConfiguration = new javax.swing.JMenu();
 
@@ -108,7 +114,7 @@ public class MainWindow extends javax.swing.JFrame {
                     .addComponent(jLabelRecapBatiment, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelRecapSalles, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelRecapOrdinateurs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(366, Short.MAX_VALUE))
+                .addContainerGap(385, Short.MAX_VALUE))
         );
         jPaneRecapitulatifLayout.setVerticalGroup(
             jPaneRecapitulatifLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -119,7 +125,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addComponent(jLabelRecapSalles)
                 .addGap(8, 8, 8)
                 .addComponent(jLabelRecapOrdinateurs)
-                .addContainerGap(309, Short.MAX_VALUE))
+                .addContainerGap(334, Short.MAX_VALUE))
         );
 
         jTabLvlOnglets.addTab("Récapitulatif", jPaneRecapitulatif);
@@ -228,7 +234,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanelFiltresSupervision, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPaneTableauSupervision, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                .addComponent(jScrollPaneTableauSupervision, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonDetails)
                 .addGap(33, 33, 33))
@@ -370,7 +376,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addGroup(jPanelOrdinateurMaintenanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBoxStockMaintenance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelEtatMaintenance))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addGroup(jPanelOrdinateurMaintenanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBoxOSMaintenance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonChangerOS)
@@ -380,7 +386,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addGap(18, 18, 18))
         );
 
-        jPanelAjoutMachineMaintenance.setBorder(javax.swing.BorderFactory.createTitledBorder("Ajout Machine"));
+        jPanelFabriquant.setBorder(javax.swing.BorderFactory.createTitledBorder("Ajout Machine"));
 
         jLabelHostname.setText("Nom d'hote");
 
@@ -408,48 +414,95 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanelAjoutMachineMaintenanceLayout = new javax.swing.GroupLayout(jPanelAjoutMachineMaintenance);
-        jPanelAjoutMachineMaintenance.setLayout(jPanelAjoutMachineMaintenanceLayout);
-        jPanelAjoutMachineMaintenanceLayout.setHorizontalGroup(
-            jPanelAjoutMachineMaintenanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelAjoutMachineMaintenanceLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addGroup(jPanelAjoutMachineMaintenanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabelHostname)
-                    .addComponent(jLabelEtatAjoutMachine)
-                    .addComponent(jLabelSalleAjoutMachine)
-                    .addComponent(jLabelOSAjoutMachine))
-                .addGap(18, 18, 18)
-                .addGroup(jPanelAjoutMachineMaintenanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonValiderAjoutMAchine, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPaneAjoutMachine, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                    .addComponent(jComboBoxEtatAjoutMachine, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jComboBoxSalleAjoutMachine, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextFieldHostname))
-                .addGap(132, 132, 132))
+        jLabelModele.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabelModele.setText("Modèle");
+
+        jLabelSerial.setText("N° de Serie");
+
+        jLabelFabriquant.setText("Fabriquant");
+
+        jTextFieldFabriquant.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldFabriquantActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelFabriquantLayout = new javax.swing.GroupLayout(jPanelFabriquant);
+        jPanelFabriquant.setLayout(jPanelFabriquantLayout);
+        jPanelFabriquantLayout.setHorizontalGroup(
+            jPanelFabriquantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFabriquantLayout.createSequentialGroup()
+                .addGroup(jPanelFabriquantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanelFabriquantLayout.createSequentialGroup()
+                        .addGroup(jPanelFabriquantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelFabriquantLayout.createSequentialGroup()
+                                .addGap(16, 16, 16)
+                                .addGroup(jPanelFabriquantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabelSerial, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabelModele, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFabriquantLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(jPanelFabriquantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabelFabriquant, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabelHostname, javax.swing.GroupLayout.Alignment.TRAILING))))
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanelFabriquantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldFabriquant, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextFieldSerial, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextFieldModele)
+                            .addComponent(jTextFieldHostname)))
+                    .addGroup(jPanelFabriquantLayout.createSequentialGroup()
+                        .addGroup(jPanelFabriquantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelFabriquantLayout.createSequentialGroup()
+                                .addGap(53, 53, 53)
+                                .addGroup(jPanelFabriquantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabelSalleAjoutMachine)
+                                    .addComponent(jLabelOSAjoutMachine)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFabriquantLayout.createSequentialGroup()
+                                .addGap(51, 51, 51)
+                                .addComponent(jLabelEtatAjoutMachine)))
+                        .addGap(31, 31, 31)
+                        .addGroup(jPanelFabriquantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButtonValiderAjoutMAchine, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPaneAjoutMachine, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
+                            .addComponent(jComboBoxSalleAjoutMachine, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboBoxEtatAjoutMachine, javax.swing.GroupLayout.Alignment.LEADING, 0, 205, Short.MAX_VALUE))))
+                .addGap(116, 116, 116))
         );
-        jPanelAjoutMachineMaintenanceLayout.setVerticalGroup(
-            jPanelAjoutMachineMaintenanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelAjoutMachineMaintenanceLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelAjoutMachineMaintenanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        jPanelFabriquantLayout.setVerticalGroup(
+            jPanelFabriquantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelFabriquantLayout.createSequentialGroup()
+                .addGroup(jPanelFabriquantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldHostname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelHostname))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelAjoutMachineMaintenanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelEtatAjoutMachine)
-                    .addComponent(jComboBoxEtatAjoutMachine, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanelFabriquantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldModele, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelModele))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelAjoutMachineMaintenanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelSalleAjoutMachine)
-                    .addComponent(jComboBoxSalleAjoutMachine, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanelFabriquantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldSerial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelSerial))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelAjoutMachineMaintenanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelAjoutMachineMaintenanceLayout.createSequentialGroup()
-                        .addComponent(jLabelOSAjoutMachine)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPaneAjoutMachine, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGroup(jPanelFabriquantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldFabriquant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelFabriquant))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelFabriquantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanelFabriquantLayout.createSequentialGroup()
+                        .addComponent(jLabelEtatAjoutMachine)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE))
+                    .addGroup(jPanelFabriquantLayout.createSequentialGroup()
+                        .addComponent(jComboBoxEtatAjoutMachine, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanelFabriquantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jComboBoxSalleAjoutMachine, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelSalleAjoutMachine))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addGroup(jPanelFabriquantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPaneAjoutMachine, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelOSAjoutMachine))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonValiderAjoutMAchine)
                 .addContainerGap())
         );
@@ -464,20 +517,20 @@ public class MainWindow extends javax.swing.JFrame {
                     .addComponent(jPanelOrdinateurMaintenance, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanelFiltresMaintenance, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addComponent(jPanelAjoutMachineMaintenance, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanelFabriquant, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanelMaintenanceLayout.setVerticalGroup(
             jPanelMaintenanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelMaintenanceLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelMaintenanceLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelMaintenanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanelAjoutMachineMaintenance, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelMaintenanceLayout.createSequentialGroup()
+                    .addComponent(jPanelFabriquant, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanelMaintenanceLayout.createSequentialGroup()
                         .addComponent(jPanelFiltresMaintenance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
-                        .addComponent(jPanelOrdinateurMaintenance, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(47, 47, 47))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanelOrdinateurMaintenance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(31, 31, 31))
         );
 
         jTabLvlOnglets.addTab("Maintenance", jPanelMaintenance);
@@ -487,9 +540,9 @@ public class MainWindow extends javax.swing.JFrame {
             public void menuSelected(javax.swing.event.MenuEvent evt) {
                 jMenuConfigurationMenuSelected(evt);
             }
-            public void menuDeselected(javax.swing.event.MenuEvent evt) {
-            }
             public void menuCanceled(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
             }
         });
         jMenuBar.add(jMenuConfiguration);
@@ -583,6 +636,10 @@ public class MainWindow extends javax.swing.JFrame {
 		//configuration.toFront();
     }//GEN-LAST:event_jMenuConfigurationMenuSelected
 
+    private void jTextFieldFabriquantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldFabriquantActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldFabriquantActionPerformed
+
 	/**
 	 * @param args the command line arguments
 	 */
@@ -641,7 +698,9 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelBatiments1;
     private javax.swing.JLabel jLabelEtatAjoutMachine;
     private javax.swing.JLabel jLabelEtatMaintenance;
+    private javax.swing.JLabel jLabelFabriquant;
     private javax.swing.JLabel jLabelHostname;
+    private javax.swing.JLabel jLabelModele;
     private javax.swing.JLabel jLabelOSAjoutMachine;
     private javax.swing.JLabel jLabelOSOrdinateur;
     private javax.swing.JLabel jLabelRecapBatiment;
@@ -651,11 +710,12 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelSalleOrdiMaintenance;
     private javax.swing.JLabel jLabelSallesMaintenance;
     private javax.swing.JLabel jLabelSallesSupervision;
+    private javax.swing.JLabel jLabelSerial;
     private javax.swing.JList jListOS;
     private javax.swing.JMenuBar jMenuBar;
     private javax.swing.JMenu jMenuConfiguration;
     private javax.swing.JPanel jPaneRecapitulatif;
-    private javax.swing.JPanel jPanelAjoutMachineMaintenance;
+    private javax.swing.JPanel jPanelFabriquant;
     private javax.swing.JPanel jPanelFiltresMaintenance;
     private javax.swing.JPanel jPanelFiltresSupervision;
     private javax.swing.JPanel jPanelMaintenance;
@@ -666,6 +726,9 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPaneTableauSupervision;
     private javax.swing.JTabbedPane jTabLvlOnglets;
     private javax.swing.JTable jTableauSupervision;
+    private javax.swing.JTextField jTextFieldFabriquant;
     private javax.swing.JTextField jTextFieldHostname;
+    private javax.swing.JTextField jTextFieldModele;
+    private javax.swing.JTextField jTextFieldSerial;
     // End of variables declaration//GEN-END:variables
 }

@@ -8,50 +8,30 @@ import java.util.Date;
 
 /**
  *
- * @author Arnaud Loisy
+ * @author darkey
  */
 public class Historique {
-    /**
-     * 
-     * @param action une chaine contenant le type d'action à tracer dans l'historique
-     * @param date la date de l'action effectuée
-     */
-    public Historique(String action, Date date) {
-        this.action = action;
+
+    public Historique(String Action, Date date) {
+        this.Action = Action;
         this.date = date;
     }
-    
-    private String action;
+    private String Action;
     private Date date;
-/**
- * 
- * @return la type d'une action 
- */
+
     public String getAction() {
-        return action;
+        return Action;
     }
-/**
- * parametre le type d'une action
- * @param Action 
- */
+
     public void setAction(String Action) {
-        this.action = Action;
+        this.Action = Action;
     }
-    /**
-     * 
-     * @return la date d'une action
-     */
+
     public Date getDate() {
         return date;
     }
-    /**
-     * paramettre la date d'une action
-     * @param date 
-     */
+
     public void setDate(Date date) {
         this.date = date;
     }
-    
-    
-    
 }
