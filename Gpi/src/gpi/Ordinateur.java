@@ -4,7 +4,6 @@
  */
 package gpi;
 
-import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
 
@@ -19,7 +18,6 @@ public class Ordinateur {
 	private String fabriquant;
 	private String numSerie;
 	private Date dateInstall;
-	private ArrayList<ArrayList<String>> historique;
 	private DefaultComboBoxModel Os;
 
 	public String getNom() {
@@ -70,13 +68,9 @@ public class Ordinateur {
 		this.dateInstall = dateInstall;
 	}
 
-	public ArrayList<ArrayList<String>> getHistorique() {
-		return historique;
-	}
+	
 
-	public void setHistorique(ArrayList<ArrayList<String>> historique) {
-		this.historique = historique;
-	}
+	
 
 	public void ajouterOS(OS op) {
 		Os.addElement(op);
