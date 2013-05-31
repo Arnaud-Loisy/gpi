@@ -14,8 +14,13 @@ public class Salle {
 
 	private String nom;
 	private DefaultComboBoxModel ordinateurs;
+	
+	public Salle(){
+		this.ordinateurs = new DefaultComboBoxModel();
+	}
 
 	public Salle(String nom) {
+		this.ordinateurs = new DefaultComboBoxModel();
 		this.nom = nom;
 	}
 

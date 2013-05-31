@@ -16,10 +16,12 @@ public class ParcInfo implements Serializable {
 	private static final long serialVersionUID = 00001L;
 	private DefaultComboBoxModel<Batiment> batiments;
 	public DefaultComboBoxModel<Salle> salles;
+	public DefaultComboBoxModel<Ordinateur> ordinateurs;
 
 	public ParcInfo() {
 		this.batiments = new DefaultComboBoxModel();
 		this.salles = new DefaultComboBoxModel();
+		this.ordinateurs = new DefaultComboBoxModel();
 	}
 
 	public ParcInfo(DefaultComboBoxModel batiments) {
