@@ -39,15 +39,15 @@ public class Gpi {
 		salle3.affecterOrdinateur(ordi4);
 		salle4.affecterOrdinateur(ordi5);
 		
-		batiment1.ajouterNouvelleSalle(salle1);
-		batiment1.ajouterNouvelleSalle(salle2);
-		batiment1.ajouterNouvelleSalle(salle3);
-		batiment2.ajouterNouvelleSalle(salle4);
-		batiment2.ajouterNouvelleSalle(salle5);
-		batiment2.ajouterNouvelleSalle(salle6);
-		
 		parcInfo.ajouterNouveauBatiment(batiment1);
 		parcInfo.ajouterNouveauBatiment(batiment2);
+		
+		parcInfo.ajouterNouvelleSalle(batiment1, salle1);
+		parcInfo.ajouterNouvelleSalle(batiment1, salle2);
+		parcInfo.ajouterNouvelleSalle(batiment1, salle3);
+		parcInfo.ajouterNouvelleSalle(batiment2, salle4);
+		parcInfo.ajouterNouvelleSalle(batiment2, salle5);
+		parcInfo.ajouterNouvelleSalle(batiment2, salle6);
 		
 		
         MainWindow fenetre_principale = new MainWindow(parcInfo);

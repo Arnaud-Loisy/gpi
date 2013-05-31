@@ -521,30 +521,24 @@ public class MainWindow extends javax.swing.JFrame {
 		System.out.println("nbBatiments : " + nbBatiments);
 
 		for (int i = 0; i < nbBatiments; i++) {
-			Vector ligne = new Vector();
+			Vector ligne = null;
+			ligne = new Vector();
 			Batiment batiment = null;
 			batiment = (Batiment) this.parcInfo.getBatiments().getElementAt(i);
-			System.out.println("nomBatiment : " + batiment.toString());
 			int nbSalles = batiment.getSalles().getSize();
-			System.out.println("nbSalles : " + nbSalles);
-
-			ligne.add(batiment);
-
-			for (int j = 0; j < nbSalles; j++) {
-				if ((j > 0) && (nbSalles > 1)) {
-					Vector ligne2 = new Vector();
-					ligne2.add(batiment);
-					Salle salle = (Salle) batiment.getSalles().getElementAt(j);
-					ligne2.add(salle);
-					modele.addRow(ligne2);
-				} else {
-					Salle salle = (Salle) batiment.getSalles().getElementAt(j);
-					ligne.add(salle);
+			
+			if (nbSalles > 0)
+			{
+				for (int j = 0; j<nbSalles; j++)
+				{
+					ligne.add(batiment);
+					ligne.add(batiment.getSalles().getElementAt(j));
 					modele.addRow(ligne);
 				}
 			}
-
-			if (nbSalles == 0) {
+			else
+			{
+				ligne.add(batiment);
 				modele.addRow(ligne);
 			}
 		}
