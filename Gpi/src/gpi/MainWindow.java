@@ -549,10 +549,28 @@ public class MainWindow extends javax.swing.JFrame {
 				// Pour toutes les salles du batiment
 				for (int j = 0; j < nbSalles; j++) {
 					Salle salle = (Salle) batiment.getSalles().getElementAt(j);
-					ligne.add(batiment);
-					ligne.add(salle);
-					modele.addRow(ligne);
+
+					int nbOrdinateurs = salle.getOrdinateurs().getSize();
+
+					if (nbOrdinateurs > 0) {
+						for (int k = 0; k < nbOrdinateurs; k++) {
+							Ordinateur ordinateur = (Ordinateur) salle.getOrdinateurs().getElementAt(k);
+							ligne.add(batiment);
+							ligne.add(salle);
+							ligne.add(ordinateur);
+							modele.addRow(ligne);
+						}
+					}
+
+					if (nbOrdinateurs == 0) {
+						ligne.add(batiment);
+						ligne.add(salle);
+						modele.addRow(ligne);
+					}
+
 					salle = null;
+					ligne = null;
+					ligne = new Vector();
 				}
 			} else {
 				ligne.add(batiment);
