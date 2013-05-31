@@ -22,6 +22,10 @@ public class Ordinateur {
 	private ArrayList<ArrayList<String>> historique;
 	private DefaultComboBoxModel Os;
 
+	public Ordinateur(String nom) {
+		this.nom = nom;
+	}
+
 	public String getNom() {
 		return nom;
 	}

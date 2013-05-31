@@ -50,6 +50,7 @@ public class ParcInfo implements Serializable {
 		int index = this.batiments.getIndexOf(batiment);
 
 		((Batiment) this.batiments.getElementAt(index)).ajouterNouvelleSalle(salle);
+		this.salles.addElement(salle);
 	}
 
 	public void ajouterNouvelleSalle(Salle salle) {
