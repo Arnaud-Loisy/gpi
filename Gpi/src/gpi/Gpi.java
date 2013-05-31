@@ -4,6 +4,10 @@
  */
 package gpi;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.UnsupportedLookAndFeelException;
+
 /**
  *
  * @author jeremy
@@ -48,8 +52,11 @@ public class Gpi {
 		parcInfo.ajouterNouvelleSalle(batiment2, salle4);
 		parcInfo.ajouterNouvelleSalle(batiment2, salle5);
 		parcInfo.ajouterNouvelleSalle(batiment2, salle6);
-		
-		
+        try {
+            javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getSystemLookAndFeelClassName());
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
+            Logger.getLogger(Gpi.class.getName()).log(Level.SEVERE, null, ex);
+        }
         MainWindow fenetre_principale = new MainWindow(parcInfo);
         fenetre_principale.setVisible(true);
     }
