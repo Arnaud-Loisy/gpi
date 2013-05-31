@@ -515,29 +515,28 @@ public class MainWindow extends javax.swing.JFrame {
 		modele.addColumn(new String("Ordinateurs"));
 		modele.addColumn(new String("OS"));
 
-
-
 		int nbBatiments = this.parcInfo.getBatiments().getSize();
 		System.out.println("nbBatiments : " + nbBatiments);
 
+		// Pour tous les batiments
 		for (int i = 0; i < nbBatiments; i++) {
 			Vector ligne = null;
 			ligne = new Vector();
 			Batiment batiment = null;
 			batiment = (Batiment) this.parcInfo.getBatiments().getElementAt(i);
 			int nbSalles = batiment.getSalles().getSize();
-			
-			if (nbSalles > 0)
-			{
-				for (int j = 0; j<nbSalles; j++)
-				{
+
+			// Si le bâtiment a au moins 1 salle
+			if (nbSalles > 0) {
+				// Pour toutes les salles du batiment
+				for (int j = 0; j < nbSalles; j++) {
+					Salle salle = (Salle) batiment.getSalles().getElementAt(j);
 					ligne.add(batiment);
-					ligne.add(batiment.getSalles().getElementAt(j));
+					ligne.add(salle);
 					modele.addRow(ligne);
+					salle = null;
 				}
-			}
-			else
-			{
+			} else {
 				ligne.add(batiment);
 				modele.addRow(ligne);
 			}
@@ -551,6 +550,9 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void jButtonValiderAjoutMAchineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonValiderAjoutMAchineActionPerformed
 		// TODO add your handling code here:
+		Ordinateur ordinateur = new Ordinateur(this.jTextFieldHostname.getText());
+		String NomOS = this.jComboBoxOSMaintenance.getSelectedItem().toString();
+		OS os = new OS();
     }//GEN-LAST:event_jButtonValiderAjoutMAchineActionPerformed
 
     private void jMenuConfigurationMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenuConfigurationMenuSelected
