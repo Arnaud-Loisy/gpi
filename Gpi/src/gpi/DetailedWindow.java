@@ -9,7 +9,21 @@ package gpi;
  * @author jeremy
  */
 public class DetailedWindow extends javax.swing.JFrame {
+	
+	private Ordinateur ordinateur;
 
+    /**
+     * Creates new form DetailedWindow
+     */
+    public DetailedWindow(Ordinateur ordinateur) {
+        initComponents();
+		this.ordinateur = ordinateur;
+		this.jLabelFabricantGeneralites.setText(this.jLabelFabricantGeneralites + " " + this.ordinateur.getFabriquant());
+		this.jLabelModeleGeneralites.setText(this.jLabelModeleGeneralites + " " + this.ordinateur.getModele());
+		this.jLabelNSerieGeneralites.setText(this.jLabelNSerieGeneralites + " " + this.ordinateur.getNumSerie());
+		this.jLabelNomGeneralites.setText(this.jLabelNomGeneralites + " " + this.ordinateur.getNom());
+    }
+	
     /**
      * Creates new form DetailedWindow
      */
@@ -36,7 +50,7 @@ public class DetailedWindow extends javax.swing.JFrame {
         jScrollPaneHistorique = new javax.swing.JScrollPane();
         jTableHistorique = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanelGeneralites.setBorder(javax.swing.BorderFactory.createTitledBorder("Généralités"));
 
@@ -114,7 +128,7 @@ public class DetailedWindow extends javax.swing.JFrame {
         jPanelHistoriqueLayout.setVerticalGroup(
             jPanelHistoriqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelHistoriqueLayout.createSequentialGroup()
-                .addComponent(jScrollPaneHistorique, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+                .addComponent(jScrollPaneHistorique, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -172,7 +186,7 @@ public class DetailedWindow extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DetailedWindow().setVisible(true);
+                //new DetailedWindow().setVisible(true);
             }
         });
     }
