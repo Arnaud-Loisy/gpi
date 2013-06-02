@@ -4,13 +4,14 @@
  */
 package gpi;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author darkey
  */
-public class Historique {
+public class Historique implements Serializable {
 
     public Historique(String Action, Date date) {
         this.Action = Action;

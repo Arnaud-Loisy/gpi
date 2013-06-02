@@ -19,7 +19,7 @@ public class Gpi {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-		ParcInfo parcInfo = new ParcInfo();
+		/*ParcInfo parcInfo = new ParcInfo();
 		
 		Batiment batiment0 = new Batiment("Entrepot");
 		Batiment batiment1 = new Batiment("U4");
@@ -56,6 +56,10 @@ public class Gpi {
 		parcInfo.ajouterNouvelOrdinateur(ordi3, salle3);
 		parcInfo.ajouterNouvelOrdinateur(ordi4, salle3);
 		parcInfo.ajouterNouvelOrdinateur(ordi5, salle5);
+		
+		Sauvegarde.sauvegarder(parcInfo);*/
+		
+		ParcInfo parcInfo = Sauvegarde.charger();
 		
         try {
             javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getSystemLookAndFeelClassName());

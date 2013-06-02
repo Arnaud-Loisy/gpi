@@ -4,11 +4,13 @@
  */
 package gpi;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Arnaud Loisy
  */
-public class OS {
+public class OS implements Serializable {
     
     private String Nom;
     private String Version;

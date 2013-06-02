@@ -4,6 +4,7 @@
  */
 package gpi;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
@@ -12,7 +13,7 @@ import javax.swing.DefaultComboBoxModel;
  *
  * @author darkey
  */
-public class Ordinateur {
+public class Ordinateur implements Serializable {
 
 	private String nom;
 	private String modele;
