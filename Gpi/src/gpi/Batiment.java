@@ -19,7 +19,7 @@ public class Batiment implements Serializable{
         
         /**
          * 
-         * @param nom 
+         * @param nom le com du batiment à créer
          */
 	public Batiment(String nom) {
 		this.salles = new DefaultComboBoxModel();
@@ -59,7 +59,7 @@ public class Batiment implements Serializable{
         
         /**
          * ajoute une nouvelle salle à la liste de salles
-         * @param salle 
+         * @param salle  la salle à ajouter
          */
 	public void ajouterNouvelleSalle(Salle salle) {
 		this.salles.addElement(salle);
