@@ -20,6 +20,7 @@ public class Ordinateur implements Serializable {
 	private String fabriquant;
 	private String numSerie;
 	private Date dateInstall;
+	private Date dateAcquisition;
 	private OS Os;
 	private ArrayList<Historique> historique;
 	private String etat;
@@ -169,6 +170,15 @@ public class Ordinateur implements Serializable {
 	 */
 	public void setDateInstall(Date dateInstall) {
 		this.dateInstall = dateInstall;
+	}
+
+	/**
+	 * definit la date d'installation d'un ordinateur
+	 *
+	 * @param dateAcquisition la date d'acquisition de l'ordinateur
+	 */
+	public void setDateAcquisition(Date dateAcquisition) {
+		this.dateAcquisition = dateAcquisition;
 	}
 
 	/**

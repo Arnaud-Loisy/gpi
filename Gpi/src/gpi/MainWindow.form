@@ -92,7 +92,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="jTabLvlOnglets" max="32767" attributes="0"/>
+              <Component id="jTabLvlOnglets" pref="531" max="32767" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -726,7 +726,7 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="jButtonChangerEtat">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Changer l&apos;OS"/>
+                    <Property name="text" type="java.lang.String" value="Changer l&apos;&#xe9;tat"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonChangerEtatActionPerformed"/>
@@ -785,8 +785,8 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jComboBoxSalleAjoutMachine" max="32767" attributes="0"/>
                                       <Component id="jComboBoxEtatAjoutMachine" max="32767" attributes="0"/>
-                                      <Component id="jScrollPaneAjoutMachine" alignment="0" pref="354" max="32767" attributes="0"/>
-                                      <Component id="jButtonValiderAjoutMAchine" alignment="0" pref="354" max="32767" attributes="0"/>
+                                      <Component id="jScrollPaneAjoutMachine" alignment="0" pref="349" max="32767" attributes="0"/>
+                                      <Component id="jButtonValiderAjoutMAchine" alignment="0" pref="349" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -817,16 +817,14 @@
                               <Component id="jTextFieldSerial" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jLabelEtatAjoutMachine" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jComboBoxEtatAjoutMachine" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jComboBoxSalleAjoutMachine" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabelSalleAjoutMachine" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jComboBoxEtatAjoutMachine" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelEtatAjoutMachine" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jComboBoxSalleAjoutMachine" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelSalleAjoutMachine" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
