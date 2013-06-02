@@ -33,15 +33,21 @@ public class Gpi {
 		Salle salle5 = new Salle("207");
 		Salle salle6 = new Salle("206");
 		
-		Ordinateur ordi1 = new Ordinateur("Mercure", "E6500", "Dell", "1234567");
+                OS os1 = new OS("Sans OS", "1");
+                OS os2 = new OS("Windows XP", "1");
+                OS os3 = new OS("Windows 7", "1");
+                OS os4 = new OS("Windows 8", "1");
+                OS os5 = new OS("Mac Os X", "1");
+                
+		Ordinateur ordi1 = new Ordinateur("Mercure", "E6500", "Dell", "1234567",os1);
 		ordi1.setEtat("Stock");
-		Ordinateur ordi2 = new Ordinateur("Venus", "E6400", "Dell", "122424");
+		Ordinateur ordi2 = new Ordinateur("Venus", "E6400", "Dell", "122424",os2);
 		ordi2.setEtat("En Panne");
-		Ordinateur ordi3 = new Ordinateur("Saturne", "E6300", "Dell", "125643654");
+		Ordinateur ordi3 = new Ordinateur("Saturne", "E6300", "Dell", "125643654",os3);
 		ordi3.setEtat("En Panne");
-		Ordinateur ordi4 = new Ordinateur("Mars", "E6200", "Dell", "1265467899");
+		Ordinateur ordi4 = new Ordinateur("Mars", "E6200", "Dell", "1265467899",os4);
 		ordi4.setEtat("Installé");
-		Ordinateur ordi5 = new Ordinateur("Pluton", "Zenbook", "Asus", "12965467");
+		Ordinateur ordi5 = new Ordinateur("Pluton", "Zenbook", "Asus", "12965467",os5);
 		ordi5.setEtat("Installé");
 		
 		parcInfo.ajouterNouveauBatiment(batiment0);
