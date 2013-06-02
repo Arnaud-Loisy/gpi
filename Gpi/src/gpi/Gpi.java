@@ -34,10 +34,15 @@ public class Gpi {
 		Salle salle6 = new Salle("206");
 		
 		Ordinateur ordi1 = new Ordinateur("Mercure", "E6500", "Dell", "1234567");
+		ordi1.setEtat("Stock");
 		Ordinateur ordi2 = new Ordinateur("Venus", "E6400", "Dell", "122424");
+		ordi2.setEtat("En Panne");
 		Ordinateur ordi3 = new Ordinateur("Saturne", "E6300", "Dell", "125643654");
+		ordi3.setEtat("En Panne");
 		Ordinateur ordi4 = new Ordinateur("Mars", "E6200", "Dell", "1265467899");
+		ordi4.setEtat("Installé");
 		Ordinateur ordi5 = new Ordinateur("Pluton", "Zenbook", "Asus", "12965467");
+		ordi5.setEtat("Installé");
 		
 		parcInfo.ajouterNouveauBatiment(batiment0);
 		parcInfo.ajouterNouveauBatiment(batiment1);
@@ -51,7 +56,7 @@ public class Gpi {
 		parcInfo.ajouterNouvelleSalle(batiment2, salle5);
 		parcInfo.ajouterNouvelleSalle(batiment2, salle6);
 		
-		parcInfo.ajouterNouvelOrdinateur(ordi1, salle1);
+		parcInfo.ajouterNouvelOrdinateur(ordi1, salle0);
 		parcInfo.ajouterNouvelOrdinateur(ordi2, salle2);
 		parcInfo.ajouterNouvelOrdinateur(ordi3, salle3);
 		parcInfo.ajouterNouvelOrdinateur(ordi4, salle3);

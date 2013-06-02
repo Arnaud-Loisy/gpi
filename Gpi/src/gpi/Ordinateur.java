@@ -177,6 +177,10 @@ public class Ordinateur implements Serializable {
 	public void ajouterOS(OS op) {
 		Os.addElement(op);
 	}
+	
+	public String getEtat() {
+		return this.etat;
+	}
 
 	@Override
 	public String toString() {

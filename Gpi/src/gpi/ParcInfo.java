@@ -139,4 +139,30 @@ public class ParcInfo implements Serializable {
 		((Salle) this.salles.getElementAt(index)).affecterOrdinateur(ordinateur);
 		this.ordinateurs.addElement(ordinateur);
 	}
+
+	public int nbOrdinateurs(String etat) {
+		int somme = 0;
+		for (int i = 0; i < this.ordinateurs.getSize(); i++) {
+			if (this.ordinateurs.getElementAt(i).getEtat() == etat) {
+				somme += 1;
+			}
+		}
+
+		return somme;
+	}
+
+	public int nbOrdinateurs() {
+		return this.ordinateurs.getSize();
+	}
+
+	public int nbSalles() {
+		return this.salles.getSize();
+	}
+
+	public int nbBatiments() {
+		System.out.println("ZIG");
+		int size = this.batiments.getSize();
+		System.out.println("ZIG");
+		return size;
+	}
 }

@@ -64,7 +64,7 @@
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="jMenuBar"/>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -100,10 +100,16 @@
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JTabbedPane" name="jTabLvlOnglets">
+      <Events>
+        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jTabLvlOngletsStateChanged"/>
+      </Events>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
         <Container class="javax.swing.JPanel" name="jPaneRecapitulatif">
+          <Events>
+            <EventHandler event="componentShown" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="jPaneRecapitulatifComponentShown"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="R&#xe9;capitulatif">
@@ -188,9 +194,9 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Component id="jPanelFiltresSupervision" min="-2" max="-2" attributes="0"/>
+                      <Component id="jPanelFiltresSupervision" min="-2" pref="118" max="-2" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Component id="jScrollPaneTableauSupervision" pref="254" max="32767" attributes="0"/>
+                      <Component id="jScrollPaneTableauSupervision" pref="266" max="32767" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Component id="jButtonDetails" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
@@ -282,7 +288,8 @@
                                   <Component id="jLabelBatiments1" min="-2" pref="35" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jComboBoxBatSupervision1" min="-2" pref="151" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="328" max="32767" attributes="0"/>
+                                  <EmptySpace pref="165" max="32767" attributes="0"/>
+                                  <Component id="jButtonFiltrerSupervision1" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -292,28 +299,25 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabelBatiments1" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jComboBoxBatSupervision" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabelBatiments" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jComboBoxBatSupervision1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jComboBoxBatSupervision" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelBatiments" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jComboBoxBatSupervision1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelBatiments1" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                                  <Component id="jButtonFiltrerSupervision" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jComboBoxSallesSupervision" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabelSallesSupervision" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jComboBoxSallesSupervision" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelSallesSupervision" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="jButtonFiltrerSupervision1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jButtonFiltrerSupervision" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -340,7 +344,7 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="jButtonFiltrerSupervision">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Filtrer"/>
+                    <Property name="text" type="java.lang.String" value="Affichage (Avec filtres)"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonFiltrerSupervisionActionPerformed"/>
@@ -379,6 +383,14 @@
                       </StringArray>
                     </Property>
                   </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="jButtonFiltrerSupervision1">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Affichage (Sans filtres)"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonFiltrerSupervision1ActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

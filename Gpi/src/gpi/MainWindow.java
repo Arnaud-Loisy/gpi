@@ -31,7 +31,6 @@ public class MainWindow extends javax.swing.JFrame {
 		this.jComboBoxSallesSupervision.setModel(this.parcInfo.getSalles());
 		this.jComboBoxSalleAjoutMachine.setModel(new DefaultComboBoxModel());
 		this.jComboBoxSalleAjoutMachine.addItem("Stock");
-		this.setLocationRelativeTo(null);
 	}
 
 	/**
@@ -59,6 +58,7 @@ public class MainWindow extends javax.swing.JFrame {
         jComboBoxSallesSupervision = new javax.swing.JComboBox();
         jLabelBatiments1 = new javax.swing.JLabel();
         jComboBoxBatSupervision1 = new javax.swing.JComboBox();
+        jButtonFiltrerSupervision1 = new javax.swing.JButton();
         jButtonDetails = new javax.swing.JButton();
         jPanelMaintenance = new javax.swing.JPanel();
         jPanelFiltresMaintenance = new javax.swing.JPanel();
@@ -108,6 +108,18 @@ public class MainWindow extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(810, 514));
 
+        jTabLvlOnglets.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jTabLvlOngletsStateChanged(evt);
+            }
+        });
+
+        jPaneRecapitulatif.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jPaneRecapitulatifComponentShown(evt);
+            }
+        });
+
         jLabelRecapBatiment.setText("Vous avez 0 Batiments en service ");
 
         jLabelRecapSalles.setText("Vous avez 0 Salles en service ");
@@ -135,7 +147,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addComponent(jLabelRecapSalles)
                 .addGap(8, 8, 8)
                 .addComponent(jLabelRecapOrdinateurs)
-                .addContainerGap(366, Short.MAX_VALUE))
+                .addContainerGap(374, Short.MAX_VALUE))
         );
 
         jTabLvlOnglets.addTab("Récapitulatif", jPaneRecapitulatif);
@@ -161,7 +173,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         jLabelBatiments.setText("Bâtiments");
 
-        jButtonFiltrerSupervision.setText("Filtrer");
+        jButtonFiltrerSupervision.setText("Affichage (Avec filtres)");
         jButtonFiltrerSupervision.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonFiltrerSupervisionActionPerformed(evt);
@@ -175,6 +187,13 @@ public class MainWindow extends javax.swing.JFrame {
         jLabelBatiments1.setText("OS");
 
         jComboBoxBatSupervision1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tous", "Windows 7", "Windows 8", "Linux" }));
+
+        jButtonFiltrerSupervision1.setText("Affichage (Sans filtres)");
+        jButtonFiltrerSupervision1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonFiltrerSupervision1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelFiltresSupervisionLayout = new javax.swing.GroupLayout(jPanelFiltresSupervision);
         jPanelFiltresSupervision.setLayout(jPanelFiltresSupervisionLayout);
@@ -198,28 +217,29 @@ public class MainWindow extends javax.swing.JFrame {
                         .addComponent(jLabelBatiments1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jComboBoxBatSupervision1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 328, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 165, Short.MAX_VALUE)
+                        .addComponent(jButtonFiltrerSupervision1)))
                 .addContainerGap())
         );
         jPanelFiltresSupervisionLayout.setVerticalGroup(
             jPanelFiltresSupervisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelFiltresSupervisionLayout.createSequentialGroup()
-                .addGroup(jPanelFiltresSupervisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelBatiments1)
-                    .addGroup(jPanelFiltresSupervisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jComboBoxBatSupervision, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabelBatiments)
-                        .addComponent(jComboBoxBatSupervision1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(jPanelFiltresSupervisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelFiltresSupervisionLayout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jButtonFiltrerSupervision))
-                    .addGroup(jPanelFiltresSupervisionLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanelFiltresSupervisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBoxSallesSupervision, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelSallesSupervision))))
-                .addContainerGap(6, Short.MAX_VALUE))
+                .addGroup(jPanelFiltresSupervisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBoxBatSupervision, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelBatiments)
+                    .addComponent(jComboBoxBatSupervision1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelBatiments1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelFiltresSupervisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBoxSallesSupervision, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelSallesSupervision))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFiltresSupervisionLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonFiltrerSupervision1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonFiltrerSupervision)
+                .addGap(20, 20, 20))
         );
 
         jButtonDetails.setText("Détails");
@@ -242,9 +262,9 @@ public class MainWindow extends javax.swing.JFrame {
             jPanelSupervisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelSupervisionLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanelFiltresSupervision, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelFiltresSupervision, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPaneTableauSupervision, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
+                .addComponent(jScrollPaneTableauSupervision, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonDetails)
                 .addGap(33, 33, 33))
@@ -515,7 +535,7 @@ public class MainWindow extends javax.swing.JFrame {
                     .addComponent(jLabelOSAjoutMachine))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonValiderAjoutMAchine)
-                .addContainerGap(6, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanelMaintenanceLayout = new javax.swing.GroupLayout(jPanelMaintenance);
@@ -541,7 +561,7 @@ public class MainWindow extends javax.swing.JFrame {
                         .addComponent(jPanelFiltresMaintenance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanelOrdinateurMaintenance, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(31, 32, Short.MAX_VALUE))
         );
 
         jTabLvlOnglets.addTab("Maintenance", jPanelMaintenance);
@@ -602,11 +622,12 @@ public class MainWindow extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabLvlOnglets)
+                .addComponent(jTabLvlOnglets, javax.swing.GroupLayout.DEFAULT_SIZE, 515, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonMaJMaintenanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMaJMaintenanceActionPerformed
@@ -619,81 +640,6 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void jButtonFiltrerSupervisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFiltrerSupervisionActionPerformed
 		// TODO add your handling code here:
-		DefaultTableModel modele = new DefaultTableModel();
-
-		modele.addColumn(new String("Bâtiments"));
-		modele.addColumn(new String("Salles"));
-		modele.addColumn(new String("Ordinateurs"));
-		modele.addColumn(new String("OS"));
-
-		int nbBatiments = this.parcInfo.getBatiments().getSize();
-		System.out.println("nbBatiments : " + nbBatiments);
-
-		// Pour tous les batiments
-		for (int i = 0; i < nbBatiments; i++) {
-			Vector ligne = null;
-			Batiment batiment = null;
-			batiment = (Batiment) this.parcInfo.getBatiments().getElementAt(i);
-			int nbSalles = batiment.getSalles().getSize();
-
-			// Si le bâtiment a au moins 1 salle
-			if (nbSalles > 0) {
-				// Pour toutes les salles du batiment
-				for (int j = 0; j < nbSalles; j++) {
-					Salle salle = (Salle) batiment.getSalles().getElementAt(j);
-
-					int nbOrdinateurs = salle.getOrdinateurs().getSize();
-
-					// Si la salle a au moins 1 ordinateur
-					if (nbOrdinateurs > 0) {
-						for (int k = 0; k < nbOrdinateurs; k++) {
-							Ordinateur ordinateur = (Ordinateur) salle.getOrdinateurs().getElementAt(k);
-
-							int nbOS = ordinateur.getOs().getSize();
-
-							// Si l'ordinateur a au moins 1 OS
-							if (nbOS > 0) {
-								for (int l = 0; l < nbOS; l++) {
-									OS os = (OS) ordinateur.getOs().getElementAt(l);
-									
-									ligne = new Vector();
-
-									ligne.add(batiment);
-									ligne.add(salle);
-									ligne.add(ordinateur);
-									ligne.add(os);
-									modele.addRow(ligne);
-								}
-							}
-							
-							if (nbOS == 0)
-							{
-								ligne = new Vector();
-								
-								ligne.add(batiment);
-								ligne.add(salle);
-								ligne.add(ordinateur);
-								modele.addRow(ligne);
-							}
-						}
-					}
-
-					if (nbOrdinateurs == 0) {
-						ligne = new Vector();
-
-						ligne.add(batiment);
-						ligne.add(salle);
-						modele.addRow(ligne);
-					}
-				}
-			} else {
-				ligne = new Vector();
-
-				ligne.add(batiment);
-				modele.addRow(ligne);
-			}
-		}
-		this.jTableauSupervision.setModel(modele);
     }//GEN-LAST:event_jButtonFiltrerSupervisionActionPerformed
 
     private void jComboBoxOSMaintenanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxOSMaintenanceActionPerformed
@@ -704,9 +650,9 @@ public class MainWindow extends javax.swing.JFrame {
 		// TODO add your handling code here:
 		Ordinateur ordinateur = new Ordinateur(this.jTextFieldHostname.getText(), this.jTextFieldModele.getText(), this.jTextFieldFabriquant.getText(), this.jTextFieldSerial.getText());
 		String NomOS = this.jListOS.getSelectedValue().toString();
-		
+
 		OS os = new OS(NomOS, "2");
-		
+
 		DefaultComboBoxModel<OS> modele = new DefaultComboBoxModel();
 		modele.addElement(os);
 		ordinateur.setOs(modele);
@@ -763,6 +709,101 @@ public class MainWindow extends javax.swing.JFrame {
 		System.exit(0);
     }//GEN-LAST:event_jMenuItemQuitterActionPerformed
 
+    private void jPaneRecapitulatifComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPaneRecapitulatifComponentShown
+		// TODO add your handling code here:
+		System.out.println("prout1");
+		this.jLabelRecapBatiment.setText("Vous avez " + this.parcInfo.nbBatiments() + " Batiments en service");
+		System.out.println("prout1");
+		this.jLabelRecapOrdinateurs.setText("Vous avez " + this.parcInfo.nbOrdinateurs() + " Ordinateurs dont "
+				+ this.parcInfo.nbOrdinateurs("Installé") + " en Service, "
+				+ this.parcInfo.nbOrdinateurs("Stock") + " en Stock et "
+				+ this.parcInfo.nbOrdinateurs("En Panne") + " en panne");
+		System.out.println("prout1");
+		this.jLabelRecapSalles.setText("Vous avez " + this.parcInfo.nbSalles() + " Salles en service");
+    }//GEN-LAST:event_jPaneRecapitulatifComponentShown
+
+    private void jTabLvlOngletsStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabLvlOngletsStateChanged
+		// TODO add your handling code here:
+    }//GEN-LAST:event_jTabLvlOngletsStateChanged
+
+    private void jButtonFiltrerSupervision1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFiltrerSupervision1ActionPerformed
+		// TODO add your handling code here:
+		DefaultTableModel modele = new DefaultTableModel();
+
+		modele.addColumn(new String("Bâtiments"));
+		modele.addColumn(new String("Salles"));
+		modele.addColumn(new String("Ordinateurs"));
+		modele.addColumn(new String("OS"));
+
+		int nbBatiments = this.parcInfo.getBatiments().getSize();
+		System.out.println("nbBatiments : " + nbBatiments);
+
+		// Pour tous les batiments
+		for (int i = 0; i < nbBatiments; i++) {
+			Vector ligne = null;
+			Batiment batiment = null;
+			batiment = (Batiment) this.parcInfo.getBatiments().getElementAt(i);
+			int nbSalles = batiment.getSalles().getSize();
+
+			// Si le bâtiment a au moins 1 salle
+			if (nbSalles > 0) {
+				// Pour toutes les salles du batiment
+				for (int j = 0; j < nbSalles; j++) {
+					Salle salle = (Salle) batiment.getSalles().getElementAt(j);
+
+					int nbOrdinateurs = salle.getOrdinateurs().getSize();
+
+					// Si la salle a au moins 1 ordinateur
+					if (nbOrdinateurs > 0) {
+						for (int k = 0; k < nbOrdinateurs; k++) {
+							Ordinateur ordinateur = (Ordinateur) salle.getOrdinateurs().getElementAt(k);
+
+							int nbOS = ordinateur.getOs().getSize();
+
+							// Si l'ordinateur a au moins 1 OS
+							if (nbOS > 0) {
+								for (int l = 0; l < nbOS; l++) {
+									OS os = (OS) ordinateur.getOs().getElementAt(l);
+
+									ligne = new Vector();
+
+									ligne.add(batiment);
+									ligne.add(salle);
+									ligne.add(ordinateur);
+									ligne.add(os);
+									modele.addRow(ligne);
+								}
+							}
+
+							if (nbOS == 0) {
+								ligne = new Vector();
+
+								ligne.add(batiment);
+								ligne.add(salle);
+								ligne.add(ordinateur);
+								modele.addRow(ligne);
+							}
+						}
+					}
+
+					if (nbOrdinateurs == 0) {
+						ligne = new Vector();
+
+						ligne.add(batiment);
+						ligne.add(salle);
+						modele.addRow(ligne);
+					}
+				}
+			} else {
+				ligne = new Vector();
+
+				ligne.add(batiment);
+				modele.addRow(ligne);
+			}
+		}
+		this.jTableauSupervision.setModel(modele);
+    }//GEN-LAST:event_jButtonFiltrerSupervision1ActionPerformed
+
 	/**
 	 * @param args the command line arguments
 	 */
@@ -802,6 +843,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton jButtonDetails;
     private javax.swing.JButton jButtonFiltrerMaintenance;
     private javax.swing.JButton jButtonFiltrerSupervision;
+    private javax.swing.JButton jButtonFiltrerSupervision1;
     private javax.swing.JButton jButtonMaJMaintenance;
     private javax.swing.JButton jButtonTransfererMaintenance;
     private javax.swing.JButton jButtonValiderAjoutMAchine;
