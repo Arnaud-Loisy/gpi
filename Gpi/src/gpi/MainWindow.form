@@ -92,7 +92,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="jTabLvlOnglets" pref="515" max="32767" attributes="0"/>
+              <Component id="jTabLvlOnglets" pref="523" max="32767" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -141,7 +141,7 @@
                       <Component id="jLabelRecapSalles" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                       <Component id="jLabelRecapOrdinateurs" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="374" max="32767" attributes="0"/>
+                      <EmptySpace pref="382" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -196,7 +196,7 @@
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Component id="jPanelFiltresSupervision" min="-2" pref="118" max="-2" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Component id="jScrollPaneTableauSupervision" pref="266" max="32767" attributes="0"/>
+                      <Component id="jScrollPaneTableauSupervision" pref="274" max="32767" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Component id="jButtonDetails" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
@@ -336,6 +336,10 @@
                       </StringArray>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jComboBoxBatSupervisionItemStateChanged"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxBatSupervisionActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabelBatiments">
                   <Properties>
@@ -440,7 +444,7 @@
                               <Component id="jPanelOrdinateurMaintenance" max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="31" pref="32" max="32767" attributes="0"/>
+                      <EmptySpace min="31" pref="40" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

@@ -40,6 +40,7 @@ public class Ordinateur implements Serializable {
 		this.fabriquant = fabriquant;
 		this.numSerie = numSerie;
 		this.Os = new DefaultComboBoxModel();
+		this.historique = new ArrayList<Historique>();
 	}
 
 	/**
@@ -185,5 +186,10 @@ public class Ordinateur implements Serializable {
 	@Override
 	public String toString() {
 		return this.nom;
+	}
+	
+	public void ajouterOperationHistorique(String action, Date date) {
+		Historique hist = new Historique(action, date);
+		this.historique.add(hist);
 	}
 }

@@ -6,12 +6,16 @@ package gpi;
 
 //import javax.swing.DefaultComboBoxModel;
 import java.awt.FileDialog;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
+import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -24,6 +28,8 @@ public class MainWindow extends javax.swing.JFrame {
 	public ParcInfo parcInfo;
 	public DefaultComboBoxModel<Batiment> cbm_batiments;
 	public DefaultComboBoxModel<Salle> cbm_salles;
+	
+	public int compteur = 0;
 
 	/**
 	 * Creates new form MainWindow
@@ -182,7 +188,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addComponent(jLabelRecapSalles)
                 .addGap(8, 8, 8)
                 .addComponent(jLabelRecapOrdinateurs)
-                .addContainerGap(374, Short.MAX_VALUE))
+                .addContainerGap(382, Short.MAX_VALUE))
         );
 
         jTabLvlOnglets.addTab("Récapitulatif", jPaneRecapitulatif);
@@ -205,6 +211,16 @@ public class MainWindow extends javax.swing.JFrame {
         jPanelFiltresSupervision.setToolTipText("");
 
         jComboBoxBatSupervision.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tous", "TP3", "U4", "U3", "U2", "K5-Burk" }));
+        jComboBoxBatSupervision.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBoxBatSupervisionItemStateChanged(evt);
+            }
+        });
+        jComboBoxBatSupervision.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxBatSupervisionActionPerformed(evt);
+            }
+        });
 
         jLabelBatiments.setText("Bâtiments");
 
@@ -304,7 +320,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanelFiltresSupervision, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPaneTableauSupervision, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
+                .addComponent(jScrollPaneTableauSupervision, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonDetails)
                 .addGap(33, 33, 33))
@@ -601,7 +617,7 @@ public class MainWindow extends javax.swing.JFrame {
                         .addComponent(jPanelFiltresMaintenance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanelOrdinateurMaintenance, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(31, 32, Short.MAX_VALUE))
+                .addGap(31, 40, Short.MAX_VALUE))
         );
 
         jTabLvlOnglets.addTab("Maintenance", jPanelMaintenance);
@@ -662,7 +678,7 @@ public class MainWindow extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabLvlOnglets, javax.swing.GroupLayout.DEFAULT_SIZE, 515, Short.MAX_VALUE)
+                .addComponent(jTabLvlOnglets, javax.swing.GroupLayout.DEFAULT_SIZE, 523, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -672,6 +688,29 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void jButtonMaJMaintenanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMaJMaintenanceActionPerformed
 		// TODO add your handling code here:
+		Date date = new Date();
+		Ordinateur ordinateur = (Ordinateur) this.jComboBoxOrdinateursMaintenance.getSelectedItem();
+		
+		ordinateur.ajouterOperationHistorique("Mise à jour du système", date);
+		/*
+		final Timer timer = new Timer(1000, new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+                if(compteur == 3) {
+                    timer.stop();
+					compteur = 0;
+                }
+                else{
+                   compteur++;
+					System.out.println(compteur);
+                   }
+            }	
+		});
+		
+		timer.start();		*/
+		
+		JOptionPane.showMessageDialog(this, "Opération effectuée avec succès !", "Information", JOptionPane.INFORMATION_MESSAGE);
+		
     }//GEN-LAST:event_jButtonMaJMaintenanceActionPerformed
 
     private void jButtonFiltrerMaintenanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFiltrerMaintenanceActionPerformed
@@ -961,6 +1000,14 @@ public class MainWindow extends javax.swing.JFrame {
 		DetailedWindow details = new DetailedWindow(ordinateur);
 		details.setVisible(true);
     }//GEN-LAST:event_jButtonDetailsActionPerformed
+
+    private void jComboBoxBatSupervisionItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxBatSupervisionItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxBatSupervisionItemStateChanged
+
+    private void jComboBoxBatSupervisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxBatSupervisionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxBatSupervisionActionPerformed
 
 	/**
 	 * @param args the command line arguments
