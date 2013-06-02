@@ -86,7 +86,7 @@ public class Ordinateur implements Serializable {
 
 	/**
 	 *
-	 * @return le systeme d'exploitation d'un ordinateur
+	 * @return Os le systeme d'exploitation d'un ordinateur
 	 */
 	public DefaultComboBoxModel getOs() {
 		return this.Os;
@@ -121,7 +121,7 @@ public class Ordinateur implements Serializable {
 
 	/**
 	 *
-	 * @return le modèle d'un ordinateur
+	 * @return modele le modèle d'un ordinateur
 	 */
 	public String getModele() {
 		return modele;
@@ -138,7 +138,7 @@ public class Ordinateur implements Serializable {
 
 	/**
 	 *
-	 * @return le frabriquant d'un ordinateur
+	 * @return fabriquant le frabriquant d'un ordinateur
 	 */
 	public String getFabriquant() {
 		return fabriquant;
@@ -155,7 +155,7 @@ public class Ordinateur implements Serializable {
 
 	/**
 	 *
-	 * @return la date d'installation d'un ordinateur
+	 * @return dateInstall la date d'installation d'un ordinateur
 	 */
 	public Date getDateInstall() {
 		return dateInstall;
@@ -178,16 +178,26 @@ public class Ordinateur implements Serializable {
 	public void ajouterOS(OS op) {
 		Os.addElement(op);
 	}
-	
+	/**
+         * 
+         * @return etat l'état d'un ordinateur
+         */
 	public String getEtat() {
 		return this.etat;
 	}
-
+        /**
+         * surcharge de la methode toString pour afficher le nom d'hôte uniquement
+         * @return nom le nom d'hôte de l'ordinateur
+         */
 	@Override
 	public String toString() {
 		return this.nom;
 	}
-	
+	/**
+         * ajoute à l'historique de l'ordinateur une action effectuée et sa date
+         * @param action la chaine décrivant l'action effectuée
+         * @param date la date de l'action effectuée
+         */
 	public void ajouterOperationHistorique(String action, Date date) {
 		Historique hist = new Historique(action, date);
 		this.historique.add(hist);

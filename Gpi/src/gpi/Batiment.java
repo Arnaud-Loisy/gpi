@@ -25,26 +25,33 @@ public class Batiment implements Serializable{
 		this.salles = new DefaultComboBoxModel();
 		this.nom = nom;
 	}
-
+        
+        /**
+         * Surcharge de la méthode toString pour renvoyer que le nom du bâtiment
+         * @return nom le nom du bâtiment
+         */
 	@Override
 	public String toString() {
 		return this.nom;
 	}
         /**
          * definit le dnom d'un batiment
-         * @param nom 
+         * @param nom le nom à appliquer
          */
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-	
+	/**
+         * renvoie le nom d'un batiment
+         * @return nom le nom d'un batiment
+         */
 	public String getNom() {
 		return this.nom;
 	}
 	
         /**
-         * 
-         * @return renvoi la liste des salles d'un batiment 
+         * renvoi la liste des salles d'un batiment 
+         * @return salles la liste des salles d'un batiment 
          */
 	public DefaultComboBoxModel getSalles() {
 		return this.salles;
