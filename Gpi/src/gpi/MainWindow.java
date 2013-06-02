@@ -36,10 +36,16 @@ public class MainWindow extends javax.swing.JFrame {
 		this.jComboBoxSallesSupervision.setModel(this.parcInfo.getSalles());
 		this.jComboBoxSalleAjoutMachine.setModel(new DefaultComboBoxModel());
 		this.jComboBoxSalleAjoutMachine.addItem("Stock");
+		
+		this.jComboBoxBatimentMaintenance.setModel(this.parcInfo.getBatiments());
+		this.jComboBoxSallesMaintenance.setModel(this.parcInfo.getSalles());
 
 		this.jComboBoxBatSupervision.setSelectedIndex(-1);
 		this.jComboBoxSallesSupervision.setSelectedIndex(-1);
 		this.jComboBoxOsSupervision.setSelectedIndex(-1);
+
+		this.jComboBoxBatimentMaintenance.setSelectedIndex(-1);
+		this.jComboBoxSallesMaintenance.setSelectedIndex(-1);
 	}
 
 	private RowFilter<DefaultTableModel, Object> CreerListeFiltres(ArrayList<String> arguments) {
@@ -272,6 +278,11 @@ public class MainWindow extends javax.swing.JFrame {
         );
 
         jButtonDetails.setText("Détails");
+        jButtonDetails.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDetailsActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelSupervisionLayout = new javax.swing.GroupLayout(jPanelSupervision);
         jPanelSupervision.setLayout(jPanelSupervisionLayout);
@@ -665,6 +676,47 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void jButtonFiltrerMaintenanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFiltrerMaintenanceActionPerformed
 		// TODO add your handling code here:
+		int indexBatiment = this.jComboBoxBatimentMaintenance.getSelectedIndex();
+		int indexSalle = this.jComboBoxSallesMaintenance.getSelectedIndex();
+
+		// Si un batiment est selectionne
+		if (indexBatiment > -1) {
+			// Alors on regarde Si une salle est selectionnee
+			if (indexSalle > -1) { // Si une salle est selectionnee
+				Batiment batiment = (Batiment) this.jComboBoxBatimentMaintenance.getSelectedItem();
+				Salle salle = (Salle) this.jComboBoxSallesMaintenance.getSelectedItem();
+				this.jComboBoxOrdinateursMaintenance.setModel(salle.getOrdinateurs());
+			} else { // Si une salle n'est pas selectionnee
+				JOptionPane.showMessageDialog(this, "Vous devez sélectionner une salle", "Information", JOptionPane.ERROR_MESSAGE);
+			}
+		} /*else {
+			// Sinon, Si une salle est selectionnee et pas un batiment
+			if (indexSalle > -1) {
+				DefaultTableModel modele = (DefaultTableModel) this.jTableauSupervision.getModel();
+
+				RowFilter<DefaultTableModel, Object> filter = null;
+
+				String nomSalle = ((Salle) this.jComboBoxSallesSupervision.getSelectedItem()).getNom();
+
+				// Creation des filtres
+				ArrayList<String> arguments = new ArrayList<String>();
+				arguments.add(nomSalle);
+
+				TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<DefaultTableModel>(modele);
+				sorter.setRowFilter(CreerListeFiltres(arguments));
+				this.jTableauSupervision.setRowSorter(sorter);
+			} else {
+				// Alors on regarde Si un OS est selectionne
+				if (indexOs > -1) {
+				} else { // Un OS n'est pas selectionne
+					JOptionPane.showMessageDialog(this, "Vous n'avez sélectionné aucun filtre", "Information", JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		}*/
+
+		this.jComboBoxBatSupervision.setSelectedIndex(-1);
+		this.jComboBoxSallesSupervision.setSelectedIndex(-1);
+		this.jComboBoxOsSupervision.setSelectedIndex(-1);
     }//GEN-LAST:event_jButtonFiltrerMaintenanceActionPerformed
 
     private void jButtonFiltrerSupervisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFiltrerSupervisionActionPerformed
@@ -901,6 +953,14 @@ public class MainWindow extends javax.swing.JFrame {
 		this.jComboBoxSallesSupervision.setSelectedIndex(-1);
 		this.jComboBoxOsSupervision.setSelectedIndex(-1);
     }//GEN-LAST:event_jButtonPasFiltrerSupervisionActionPerformed
+
+    private void jButtonDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDetailsActionPerformed
+        // TODO add your handling code here:
+		Ordinateur ordinateur = null;
+		ordinateur = (Ordinateur) this.jTableauSupervision.getValueAt(this.jTableauSupervision.getSelectedRow(), 2);
+		DetailedWindow details = new DetailedWindow(ordinateur);
+		details.setVisible(true);
+    }//GEN-LAST:event_jButtonDetailsActionPerformed
 
 	/**
 	 * @param args the command line arguments

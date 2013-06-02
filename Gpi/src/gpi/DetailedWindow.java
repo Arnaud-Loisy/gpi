@@ -18,10 +18,11 @@ public class DetailedWindow extends javax.swing.JFrame {
     public DetailedWindow(Ordinateur ordinateur) {
         initComponents();
 		this.ordinateur = ordinateur;
-		this.jLabelFabricantGeneralites.setText(this.jLabelFabricantGeneralites + " " + this.ordinateur.getFabriquant());
-		this.jLabelModeleGeneralites.setText(this.jLabelModeleGeneralites + " " + this.ordinateur.getModele());
-		this.jLabelNSerieGeneralites.setText(this.jLabelNSerieGeneralites + " " + this.ordinateur.getNumSerie());
-		this.jLabelNomGeneralites.setText(this.jLabelNomGeneralites + " " + this.ordinateur.getNom());
+		this.jLabelFabricantGeneralites.setText(this.jLabelFabricantGeneralites.getText() + " " + this.ordinateur.getFabriquant());
+		this.jLabelModeleGeneralites.setText(this.jLabelModeleGeneralites.getText() + " " + this.ordinateur.getModele());
+		this.jLabelNSerieGeneralites.setText(this.jLabelNSerieGeneralites.getText() + " " + this.ordinateur.getNumSerie());
+		this.jLabelNomGeneralites.setText(this.jLabelNomGeneralites.getText() + " " + this.ordinateur.getNom());
+		this.jLabelDateInstallGeneralites.setText(this.jLabelDateInstallGeneralites.getText() + " " + this.ordinateur.getDateInstall().toString());
     }
 	
     /**
@@ -122,13 +123,13 @@ public class DetailedWindow extends javax.swing.JFrame {
             jPanelHistoriqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelHistoriqueLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPaneHistorique, javax.swing.GroupLayout.DEFAULT_SIZE, 557, Short.MAX_VALUE)
+                .addComponent(jScrollPaneHistorique, javax.swing.GroupLayout.DEFAULT_SIZE, 756, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanelHistoriqueLayout.setVerticalGroup(
             jPanelHistoriqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelHistoriqueLayout.createSequentialGroup()
-                .addComponent(jScrollPaneHistorique, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
+                .addComponent(jScrollPaneHistorique, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -154,6 +155,7 @@ public class DetailedWindow extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
