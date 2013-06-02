@@ -59,7 +59,7 @@ public class Gpi {
 		
 		Sauvegarde.sauvegarder(parcInfo);*/
 		
-		ParcInfo parcInfo = Sauvegarde.charger();
+		ParcInfo parcInfo = Sauvegarde.charger("parcInfo.serial");
 		
         try {
             javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getSystemLookAndFeelClassName());

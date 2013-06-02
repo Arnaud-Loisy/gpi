@@ -5,6 +5,7 @@
 package gpi;
 
 //import javax.swing.DefaultComboBoxModel;
+import java.awt.FileDialog;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
@@ -96,7 +97,13 @@ public class MainWindow extends javax.swing.JFrame {
         jLabelFabriquant = new javax.swing.JLabel();
         jTextFieldFabriquant = new javax.swing.JTextField();
         jMenuBar = new javax.swing.JMenuBar();
-        jMenuConfiguration = new javax.swing.JMenu();
+        jMenuFichier = new javax.swing.JMenu();
+        jMenuItemCharger = new javax.swing.JMenuItem();
+        jMenuItemSauvegarder = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        jMenuItemQuitter = new javax.swing.JMenuItem();
+        jMenuOptions = new javax.swing.JMenu();
+        jMenuItemConfiguration = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(810, 514));
@@ -128,7 +135,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addComponent(jLabelRecapSalles)
                 .addGap(8, 8, 8)
                 .addComponent(jLabelRecapOrdinateurs)
-                .addContainerGap(358, Short.MAX_VALUE))
+                .addContainerGap(366, Short.MAX_VALUE))
         );
 
         jTabLvlOnglets.addTab("Récapitulatif", jPaneRecapitulatif);
@@ -212,7 +219,7 @@ public class MainWindow extends javax.swing.JFrame {
                         .addGroup(jPanelFiltresSupervisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jComboBoxSallesSupervision, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabelSallesSupervision))))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(6, Short.MAX_VALUE))
         );
 
         jButtonDetails.setText("Détails");
@@ -237,7 +244,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanelFiltresSupervision, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPaneTableauSupervision, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
+                .addComponent(jScrollPaneTableauSupervision, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonDetails)
                 .addGap(33, 33, 33))
@@ -508,7 +515,7 @@ public class MainWindow extends javax.swing.JFrame {
                     .addComponent(jLabelOSAjoutMachine))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonValiderAjoutMAchine)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(6, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanelMaintenanceLayout = new javax.swing.GroupLayout(jPanelMaintenance);
@@ -539,17 +546,46 @@ public class MainWindow extends javax.swing.JFrame {
 
         jTabLvlOnglets.addTab("Maintenance", jPanelMaintenance);
 
-        jMenuConfiguration.setText("Configuration");
-        jMenuConfiguration.addMenuListener(new javax.swing.event.MenuListener() {
-            public void menuSelected(javax.swing.event.MenuEvent evt) {
-                jMenuConfigurationMenuSelected(evt);
-            }
-            public void menuDeselected(javax.swing.event.MenuEvent evt) {
-            }
-            public void menuCanceled(javax.swing.event.MenuEvent evt) {
+        jMenuFichier.setText("Fichier");
+
+        jMenuItemCharger.setText("Charger");
+        jMenuItemCharger.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemChargerActionPerformed(evt);
             }
         });
-        jMenuBar.add(jMenuConfiguration);
+        jMenuFichier.add(jMenuItemCharger);
+
+        jMenuItemSauvegarder.setText("Sauvegarder");
+        jMenuItemSauvegarder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemSauvegarderActionPerformed(evt);
+            }
+        });
+        jMenuFichier.add(jMenuItemSauvegarder);
+        jMenuFichier.add(jSeparator1);
+
+        jMenuItemQuitter.setText("Quitter");
+        jMenuItemQuitter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemQuitterActionPerformed(evt);
+            }
+        });
+        jMenuFichier.add(jMenuItemQuitter);
+
+        jMenuBar.add(jMenuFichier);
+
+        jMenuOptions.setText("Options");
+
+        jMenuItemConfiguration.setText("Configuration");
+        jMenuItemConfiguration.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemConfigurationActionPerformed(evt);
+            }
+        });
+        jMenuOptions.add(jMenuItemConfiguration);
+
+        jMenuBar.add(jMenuOptions);
 
         setJMenuBar(jMenuBar);
 
@@ -661,13 +697,6 @@ public class MainWindow extends javax.swing.JFrame {
 		}
     }//GEN-LAST:event_jButtonValiderAjoutMAchineActionPerformed
 
-    private void jMenuConfigurationMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenuConfigurationMenuSelected
-		// TODO add your handling code here:
-		ConfigurationWindow configuration = new ConfigurationWindow(this);
-		configuration.setVisible(true);
-		//configuration.toFront();
-    }//GEN-LAST:event_jMenuConfigurationMenuSelected
-
     private void jTextFieldFabriquantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldFabriquantActionPerformed
 		// TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldFabriquantActionPerformed
@@ -681,6 +710,35 @@ public class MainWindow extends javax.swing.JFrame {
 			this.jComboBoxSalleAjoutMachine.setModel(this.parcInfo.getSalles());
 		}
     }//GEN-LAST:event_jComboBoxEtatAjoutMachineItemStateChanged
+
+    private void jMenuItemChargerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemChargerActionPerformed
+		// TODO add your handling code here:
+		FileDialog fileDialog = new FileDialog(this, "Choix du fichier à charger", FileDialog.LOAD);
+		fileDialog.setVisible(true);
+		String fichier = fileDialog.getDirectory() + fileDialog.getFile();
+		System.out.println(fichier);
+		this.parcInfo = null;
+		this.parcInfo = Sauvegarde.charger(fichier);
+    }//GEN-LAST:event_jMenuItemChargerActionPerformed
+
+    private void jMenuItemSauvegarderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSauvegarderActionPerformed
+		// TODO add your handling code here:
+		FileDialog fileDialog = new FileDialog(this, "Choix du fichier à sauvegarder", FileDialog.SAVE);
+		fileDialog.setVisible(true);
+		String fichier = fileDialog.getDirectory() + fileDialog.getFile();
+		Sauvegarde.sauvegarder(this.parcInfo, fichier);
+    }//GEN-LAST:event_jMenuItemSauvegarderActionPerformed
+
+    private void jMenuItemConfigurationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConfigurationActionPerformed
+        // TODO add your handling code here:
+		ConfigurationWindow configuration = new ConfigurationWindow(this);
+		configuration.setVisible(true);
+    }//GEN-LAST:event_jMenuItemConfigurationActionPerformed
+
+    private void jMenuItemQuitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemQuitterActionPerformed
+        // TODO add your handling code here:
+		System.exit(0);
+    }//GEN-LAST:event_jMenuItemQuitterActionPerformed
 
 	/**
 	 * @param args the command line arguments
@@ -755,7 +813,12 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelSerial;
     private javax.swing.JList jListOS;
     private javax.swing.JMenuBar jMenuBar;
-    private javax.swing.JMenu jMenuConfiguration;
+    private javax.swing.JMenu jMenuFichier;
+    private javax.swing.JMenuItem jMenuItemCharger;
+    private javax.swing.JMenuItem jMenuItemConfiguration;
+    private javax.swing.JMenuItem jMenuItemQuitter;
+    private javax.swing.JMenuItem jMenuItemSauvegarder;
+    private javax.swing.JMenu jMenuOptions;
     private javax.swing.JPanel jPaneRecapitulatif;
     private javax.swing.JPanel jPanelFabriquant;
     private javax.swing.JPanel jPanelFiltresMaintenance;
@@ -766,6 +829,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JProgressBar jProgressBarInstall;
     private javax.swing.JScrollPane jScrollPaneAjoutMachine;
     private javax.swing.JScrollPane jScrollPaneTableauSupervision;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JTabbedPane jTabLvlOnglets;
     private javax.swing.JTable jTableauSupervision;
     private javax.swing.JTextField jTextFieldFabriquant;

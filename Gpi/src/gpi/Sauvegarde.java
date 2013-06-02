@@ -19,10 +19,10 @@ import java.util.logging.Logger;
  */
 public class Sauvegarde {
 
-	public static void sauvegarder(ParcInfo parcInfo) {
+	public static void sauvegarder(ParcInfo parcInfo, String nomFichier) {
 		FileOutputStream fluxFichier = null;
 		try {
-			fluxFichier = new FileOutputStream("parcInfo.serial");
+			fluxFichier = new FileOutputStream(nomFichier);
 
 			// création d'un "flux objet" avec le flux fichier
 			ObjectOutputStream fluxObjet = new ObjectOutputStream(fluxFichier);
@@ -48,12 +48,12 @@ public class Sauvegarde {
 		}
 	}
 
-	public static ParcInfo charger() {
+	public static ParcInfo charger(String nomFichier) {
 		FileInputStream fluxFichier = null;
 		ParcInfo parcInfo = null;
 		try {
 			// création d'un "flux fichier"
-			fluxFichier = new FileInputStream("parcInfo.serial");
+			fluxFichier = new FileInputStream(nomFichier);
 			
 			// création d'un "flux objet" avec le flux fichier
 			ObjectInputStream fluxObjet = new ObjectInputStream(fluxFichier);
