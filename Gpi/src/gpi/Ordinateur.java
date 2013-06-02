@@ -7,7 +7,6 @@ package gpi;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
-import javax.swing.DefaultComboBoxModel;
 
 /**
  *
@@ -21,25 +20,26 @@ public class Ordinateur implements Serializable {
 	private String fabriquant;
 	private String numSerie;
 	private Date dateInstall;
-	private DefaultComboBoxModel Os;
+	private OS Os;
 	private ArrayList<Historique> historique;
 	private String etat;
 
 	/**
 	 * Constructeur d'ordinateur à partir de son nom, modele, frabiquant, numero
-	 * de serie
+	 * de serie, systeme d'exploitation
 	 *
 	 * @param nom
 	 * @param modele
 	 * @param fabriquant
 	 * @param numSerie
+         * @param os
 	 */
-	public Ordinateur(String nom, String modele, String fabriquant, String numSerie) {
+	public Ordinateur(String nom, String modele, String fabriquant, String numSerie, OS os) {
 		this.nom = nom;
 		this.modele = modele;
 		this.fabriquant = fabriquant;
 		this.numSerie = numSerie;
-		this.Os = new DefaultComboBoxModel();
+		this.Os = os;
 		this.historique = new ArrayList<Historique>();
 	}
 
@@ -88,7 +88,7 @@ public class Ordinateur implements Serializable {
 	 *
 	 * @return Os le systeme d'exploitation d'un ordinateur
 	 */
-	public DefaultComboBoxModel getOs() {
+	public OS getOs() {
 		return this.Os;
 	}
 
@@ -97,7 +97,7 @@ public class Ordinateur implements Serializable {
 	 *
 	 * @param Os
 	 */
-	public void setOs(DefaultComboBoxModel Os) {
+	public void setOs(OS Os) {
 		this.Os = Os;
 	}
 
@@ -173,11 +173,11 @@ public class Ordinateur implements Serializable {
 	/**
 	 * methode permettant d'ajouter un systeme d'exploitation à un ordinateur
 	 *
-	 * @param op
-	 */
+	 * @param op le système d'exploitation à ajouter
+	 *//*
 	public void ajouterOS(OS op) {
 		Os.addElement(op);
-	}
+	}*/
 	/**
          * 
          * @return etat l'état d'un ordinateur
