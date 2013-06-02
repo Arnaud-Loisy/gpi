@@ -137,7 +137,10 @@ public class ParcInfo implements Serializable {
 	public void ajouterNouvelOrdinateur(Ordinateur ordinateur, Salle salle) {
 		int index = this.salles.getIndexOf(salle);
 		
-		ordinateur.setDateInstall(new Date());
+		Date date = new Date();
+		
+		ordinateur.setDateInstall(date);
+		ordinateur.ajouterOperationHistorique("Installation initiale", date);
 
 		((Salle) this.salles.getElementAt(index)).affecterOrdinateur(ordinateur);
 		this.ordinateurs.addElement(ordinateur);
@@ -163,9 +166,7 @@ public class ParcInfo implements Serializable {
 	}
 
 	public int nbBatiments() {
-		System.out.println("ZIG");
 		int size = this.batiments.getSize();
-		System.out.println("ZIG");
 		return size;
 	}
 }
