@@ -31,7 +31,7 @@ public class ParcInfo implements Serializable {
 	/**
 	 * Constructeur a partir de liste de batiments
 	 *
-	 * @param batiments
+	 * @param batiments la liste de batiments du parc info 
 	 */
 	public ParcInfo(DefaultComboBoxModel batiments) {
 		this.batiments = batiments;
@@ -46,9 +46,9 @@ public class ParcInfo implements Serializable {
 	}
 
 	/**
-	 * aujoute un nuveau batiment aux batiments existants
+	 * aujoute un nouveau batiment aux batiments existants
 	 *
-	 * @param batiment
+	 * @param batiment le batiment à ajouter
 	 */
 	public void ajouterNouveauBatiment(Batiment batiment) {
 		this.batiments.addElement(batiment);
@@ -57,7 +57,7 @@ public class ParcInfo implements Serializable {
 	/**
 	 * suppression d'un batiment de la liste
 	 *
-	 * @param batiment
+	 * @param batiment le batiment à supprimer
 	 */
 	public void supprimerBatiment(Batiment batiment) {
 		this.batiments.removeElement(batiment);
@@ -66,7 +66,7 @@ public class ParcInfo implements Serializable {
 	/**
 	 * supression d'un batiment de la liste à partir de sa position
 	 *
-	 * @param index
+	 * @param index l'indice du batiment à supprimer
 	 */
 	public void supprimerBatiment(int index) {
 		this.batiments.removeElementAt(index);
@@ -96,7 +96,7 @@ public class ParcInfo implements Serializable {
 	/**
 	 * Ajout d'une salle à la liste de salle existante
 	 *
-	 * @param salle
+	 * @param salle la salle à ajouter
 	 */
 	public void ajouterNouvelleSalle(Salle salle) {
 		this.salles.addElement(salle);
@@ -105,7 +105,7 @@ public class ParcInfo implements Serializable {
 	/**
 	 * supression d'une salle de la liste
 	 *
-	 * @param salle
+	 * @param salle la salle à supprimer
 	 */
 	public void supprimerSalle(Salle salle) {
 		this.salles.removeElement(salle);
@@ -114,7 +114,7 @@ public class ParcInfo implements Serializable {
 	/**
 	 * supprime une salle à partir de sa position dans la liste
 	 *
-	 * @param index
+	 * @param index l'indice de la salle à supprimer
 	 */
 	public void supprimerSalle(int index) {
 		this.salles.removeElementAt(index);
@@ -123,7 +123,7 @@ public class ParcInfo implements Serializable {
 	/**
 	 * ajoute un nouvel ordinateur
 	 *
-	 * @param ordinateur
+	 * @param ordinateur l'ordinateur à ajouter
 	 */
 	public void ajouterNouvelOrdinateur(Ordinateur ordinateur) {
 		this.ordinateurs.addElement(ordinateur);
@@ -132,7 +132,8 @@ public class ParcInfo implements Serializable {
 	/**
 	 * ajoute un nouvel ordinateur
 	 *
-	 * @param ordinateur
+	 * @param ordinateur l'ordinateur à ajouter
+         * @param salle la salle dans laquelle ajouter le nouvel ordinateur
 	 */
 	public void ajouterNouvelOrdinateur(Ordinateur ordinateur, Salle salle) {
 		int index = this.salles.getIndexOf(salle);
@@ -182,7 +183,10 @@ public class ParcInfo implements Serializable {
 		int size = this.batiments.getSize();
 		return size;
 	}
-	
+	/**
+         * 
+         * @return ordinateurs la liste d'ordinateurs du parc informatique
+         */
 	public DefaultComboBoxModel getOrdinateurs() {
 		return this.ordinateurs;
 	}

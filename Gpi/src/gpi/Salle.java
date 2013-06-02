@@ -78,7 +78,10 @@ public class Salle implements Serializable {
 		
 		return true;
 	}
-	
+	/**
+         * Surcharge de la méthode toString pour renvoyer que le nom de la salle
+         * @return nom le nom de la salle
+         */
 	@Override
 	public String toString() {
 		return this.nom;
