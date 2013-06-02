@@ -703,8 +703,10 @@ public class MainWindow extends javax.swing.JFrame {
     private void jButtonValiderAjoutMAchineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonValiderAjoutMAchineActionPerformed
 		// TODO add your handling code here:
 		Ordinateur ordinateur = new Ordinateur(this.jTextFieldHostname.getText(), this.jTextFieldModele.getText(), this.jTextFieldFabriquant.getText(), this.jTextFieldSerial.getText());
-		String NomOS = this.jComboBoxOSMaintenance.getSelectedItem().toString();
-		OS os = new OS();
+		String NomOS = this.jListOS.getSelectedValue().toString();
+		
+		OS os = new OS(NomOS, "2");
+		
 		DefaultComboBoxModel<OS> modele = new DefaultComboBoxModel();
 		modele.addElement(os);
 		ordinateur.setOs(modele);

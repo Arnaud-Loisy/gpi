@@ -15,6 +15,7 @@ import javax.swing.DefaultComboBoxModel;
  */
 public class Ordinateur implements Serializable {
 
+	private static final long serialVersionUID = 14L;
 	private String nom;
 	private String modele;
 	private String fabriquant;
@@ -23,22 +24,6 @@ public class Ordinateur implements Serializable {
 	private DefaultComboBoxModel Os;
 	private ArrayList<Historique> historique;
 	private String etat;
-
-	/**
-	 *
-	 * @return l'historique d'un ordinateur
-	 */
-	public ArrayList<Historique> getHistorique() {
-		return historique;
-	}
-
-	/**
-	 *
-	 * @param historique l'historique d'un ordianteur
-	 */
-	public void setHistorique(ArrayList<Historique> historique) {
-		this.historique = historique;
-	}
 
 	/**
 	 * Constructeur d'ordinateur à partir de son nom, modele, frabiquant, numero
@@ -55,6 +40,22 @@ public class Ordinateur implements Serializable {
 		this.fabriquant = fabriquant;
 		this.numSerie = numSerie;
 		this.Os = new DefaultComboBoxModel();
+	}
+
+	/**
+	 *
+	 * @return l'historique d'un ordinateur
+	 */
+	public ArrayList<Historique> getHistorique() {
+		return historique;
+	}
+
+	/**
+	 *
+	 * @param historique l'historique d'un ordianteur
+	 */
+	public void setHistorique(ArrayList<Historique> historique) {
+		this.historique = historique;
 	}
 
 	/**

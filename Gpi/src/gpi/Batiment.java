@@ -13,6 +13,7 @@ import javax.swing.DefaultComboBoxModel;
  */
 public class Batiment implements Serializable{
 
+	private static final long serialVersionUID = 11L;
 	private String nom;
 	private DefaultComboBoxModel<Salle> salles;
         

@@ -13,6 +13,7 @@ import java.util.Date;
  */
 public class Historique implements Serializable {
 
+	private static final long serialVersionUID = 12L;
     public Historique(String Action, Date date) {
         this.Action = Action;
         this.date = date;

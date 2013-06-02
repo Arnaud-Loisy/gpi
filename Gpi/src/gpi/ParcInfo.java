@@ -13,7 +13,7 @@ import javax.swing.DefaultComboBoxModel;
  */
 public class ParcInfo implements Serializable {
 
-	private static final long serialVersionUID = 00001L;
+	private static final long serialVersionUID = 15L;
 	private DefaultComboBoxModel<Batiment> batiments;
 	public DefaultComboBoxModel<Salle> salles;
 	public DefaultComboBoxModel<Ordinateur> ordinateurs;
