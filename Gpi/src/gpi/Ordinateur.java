@@ -42,6 +42,8 @@ public class Ordinateur implements Serializable {
 		this.numSerie = numSerie;
 		this.Os = os;
 		this.historique = new ArrayList<Historique>();
+		this.dateInstall = null;
+		this.dateAcquisition = null;
 	}
 
 	/**
