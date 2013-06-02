@@ -56,7 +56,7 @@ public class MainWindow extends javax.swing.JFrame {
 		this.jComboBoxBatimentMaintenance.setSelectedIndex(-1);
 		this.jComboBoxSallesMaintenance.setSelectedIndex(-1);
 		this.jComboBoxSalleMaintenance.setSelectedIndex(-1);
-		
+
 		this.jLabelRecapBatiment.setText("Vous avez " + this.parcInfo.nbBatiments() + " Batiments en service");
 		this.jLabelRecapOrdinateurs.setText("Vous avez " + this.parcInfo.nbOrdinateurs() + " Ordinateurs dont "
 				+ this.parcInfo.nbOrdinateurs("Installé") + " en Service, "
@@ -425,7 +425,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         jLabelOSOrdinateur.setText("OS");
 
-        jComboBoxOSMaintenance.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Windows XP", "Windows Vista", "Windows 7", "Windows 8", "Mac Os X", "Linux Debian" }));
+        jComboBoxOSMaintenance.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Windows 8", "Windows 7", "Windows XP", "Windows Vista", "Mac Os", "Linux", "Sans OS" }));
         jComboBoxOSMaintenance.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxOSMaintenanceActionPerformed(evt);
@@ -526,7 +526,7 @@ public class MainWindow extends javax.swing.JFrame {
         });
 
         jListOS.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Windows XP", "Windows Vista", "Windows 7", "Windows 8", "Mac Os X", "Linux Debian" };
+            String[] strings = { "Windows 8", "Windows 7", "Windows XP", "Windows Vista", "Mac Os", "Linux", "Sans OS" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
@@ -650,7 +650,7 @@ public class MainWindow extends javax.swing.JFrame {
                         .addComponent(jPanelFiltresMaintenance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanelOrdinateurMaintenance, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(31, 40, Short.MAX_VALUE))
+                .addGap(31, 46, Short.MAX_VALUE))
         );
 
         jTabLvlOnglets.addTab("Maintenance", jPanelMaintenance);
@@ -711,7 +711,7 @@ public class MainWindow extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabLvlOnglets, javax.swing.GroupLayout.DEFAULT_SIZE, 523, Short.MAX_VALUE)
+                .addComponent(jTabLvlOnglets)
                 .addContainerGap())
         );
 
@@ -741,6 +741,16 @@ public class MainWindow extends javax.swing.JFrame {
 			if (indexSalle > -1) { // Si une salle est selectionnee
 				Salle salle = (Salle) this.jComboBoxSallesMaintenance.getSelectedItem();
 				this.jComboBoxOrdinateursMaintenance.setModel(salle.getOrdinateurs());
+				indexSalle = -1;
+				for (int i = 0; i < this.parcInfo.getSalles().getSize(); i++) {
+					if (((Salle) this.parcInfo.getSalles().getElementAt(i)).contientOrdinateur((Ordinateur)this.jComboBoxOrdinateursMaintenance.getSelectedItem())) {
+						indexSalle = i;
+					}
+				}
+
+				if (indexSalle != -1) {
+					this.jComboBoxSalleMaintenance.setSelectedIndex(indexSalle);
+				}
 			} else { // Si une salle n'est pas selectionnee
 				JOptionPane.showMessageDialog(this, "Vous devez sélectionner une salle", "Information", JOptionPane.ERROR_MESSAGE);
 			}
@@ -975,6 +985,8 @@ public class MainWindow extends javax.swing.JFrame {
 		}
 		this.jTableauSupervision.setModel(modele);
 
+		this.jComboBoxSallesSupervision.setModel(this.parcInfo.getSalles());
+		
 		this.jComboBoxBatSupervision.setSelectedIndex(-1);
 		this.jComboBoxSallesSupervision.setSelectedIndex(-1);
 		this.jComboBoxOsSupervision.setSelectedIndex(-1);
