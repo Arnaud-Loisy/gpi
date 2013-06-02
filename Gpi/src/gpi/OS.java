@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author Arnaud Loisy
+ * @author Arnaud
  */
 public class OS implements Serializable {
 	
@@ -23,7 +23,7 @@ public class OS implements Serializable {
     
     /**
      * 
-     * @return le nom d'un système d'exploitation
+     * @return Nom le nom d'un système d'exploitation
      */
     public String getNom() {
         return Nom;
@@ -38,7 +38,7 @@ public class OS implements Serializable {
     
     /**
      * 
-     * @return la version d'un système d'exploitation 
+     * @return Version la version d'un système d'exploitation 
      */
     public String getVersion() {
         return Version;
@@ -51,7 +51,10 @@ public class OS implements Serializable {
     public void setVersion(String Version) {
         this.Version = Version;
     }
-	
+	/**
+         * Surcharge de la méthode toString pour renvoyer que le nom du système d'exploitation
+         * @return Nom le nom du système d'exploitation
+         */
 	public String toString() {
 		return this.Nom;
 	}

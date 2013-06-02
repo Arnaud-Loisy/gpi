@@ -7,11 +7,10 @@ package gpi;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
-import javax.swing.DefaultComboBoxModel;
 
 /**
  *
- * @author darkey
+ * @author Arnaud
  */
 public class Ordinateur implements Serializable {
 
@@ -21,25 +20,26 @@ public class Ordinateur implements Serializable {
 	private String fabriquant;
 	private String numSerie;
 	private Date dateInstall;
-	private DefaultComboBoxModel Os;
+	private OS Os;
 	private ArrayList<Historique> historique;
 	private String etat;
 
 	/**
 	 * Constructeur d'ordinateur à partir de son nom, modele, frabiquant, numero
-	 * de serie
+	 * de serie, systeme d'exploitation
 	 *
 	 * @param nom
 	 * @param modele
 	 * @param fabriquant
 	 * @param numSerie
+         * @param os
 	 */
-	public Ordinateur(String nom, String modele, String fabriquant, String numSerie) {
+	public Ordinateur(String nom, String modele, String fabriquant, String numSerie, OS os) {
 		this.nom = nom;
 		this.modele = modele;
 		this.fabriquant = fabriquant;
 		this.numSerie = numSerie;
-		this.Os = new DefaultComboBoxModel();
+		this.Os = os;
 		this.historique = new ArrayList<Historique>();
 	}
 
@@ -86,9 +86,9 @@ public class Ordinateur implements Serializable {
 
 	/**
 	 *
-	 * @return le systeme d'exploitation d'un ordinateur
+	 * @return Os le systeme d'exploitation d'un ordinateur
 	 */
-	public DefaultComboBoxModel getOs() {
+	public OS getOs() {
 		return this.Os;
 	}
 
@@ -97,14 +97,14 @@ public class Ordinateur implements Serializable {
 	 *
 	 * @param Os
 	 */
-	public void setOs(DefaultComboBoxModel Os) {
+	public void setOs(OS Os) {
 		this.Os = Os;
 	}
 
 	/**
 	 * definit l'état d'un ordinateur
 	 *
-	 * @param Os
+	 * @param etat le nouvel etat de l'odinateur
 	 */
 	public void setEtat(String etat) {
 		this.etat = etat;
@@ -121,7 +121,7 @@ public class Ordinateur implements Serializable {
 
 	/**
 	 *
-	 * @return le modèle d'un ordinateur
+	 * @return modele le modèle d'un ordinateur
 	 */
 	public String getModele() {
 		return modele;
@@ -138,7 +138,7 @@ public class Ordinateur implements Serializable {
 
 	/**
 	 *
-	 * @return le frabriquant d'un ordinateur
+	 * @return fabriquant le frabriquant d'un ordinateur
 	 */
 	public String getFabriquant() {
 		return fabriquant;
@@ -155,7 +155,7 @@ public class Ordinateur implements Serializable {
 
 	/**
 	 *
-	 * @return la date d'installation d'un ordinateur
+	 * @return dateInstall la date d'installation d'un ordinateur
 	 */
 	public Date getDateInstall() {
 		return dateInstall;
@@ -173,21 +173,31 @@ public class Ordinateur implements Serializable {
 	/**
 	 * methode permettant d'ajouter un systeme d'exploitation à un ordinateur
 	 *
-	 * @param op
-	 */
+	 * @param op le système d'exploitation à ajouter
+	 *//*
 	public void ajouterOS(OS op) {
 		Os.addElement(op);
-	}
-	
+	}*/
+	/**
+         * 
+         * @return etat l'état d'un ordinateur
+         */
 	public String getEtat() {
 		return this.etat;
 	}
-
+        /**
+         * surcharge de la methode toString pour afficher le nom d'hôte uniquement
+         * @return nom le nom d'hôte de l'ordinateur
+         */
 	@Override
 	public String toString() {
 		return this.nom;
 	}
-	
+	/**
+         * ajoute à l'historique de l'ordinateur une action effectuée et sa date
+         * @param action la chaine décrivant l'action effectuée
+         * @param date la date de l'action effectuée
+         */
 	public void ajouterOperationHistorique(String action, Date date) {
 		Historique hist = new Historique(action, date);
 		this.historique.add(hist);

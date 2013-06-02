@@ -10,7 +10,7 @@ import javax.swing.DefaultComboBoxModel;
 
 /**
  *
- * @author darkey
+ * @author Arnaud
  */
 public class ParcInfo implements Serializable {
 
@@ -145,7 +145,11 @@ public class ParcInfo implements Serializable {
 		((Salle) this.salles.getElementAt(index)).affecterOrdinateur(ordinateur);
 		this.ordinateurs.addElement(ordinateur);
 	}
-
+        /**
+         * renvoi le nombre d'ordinateur du parc informatique dans l'état passé en paramètre
+         * @param etat l'état dont on veut le nombre d'ordinateur
+         * @return somme le nombre d'ordinateur dans l'état voulu
+         */
 	public int nbOrdinateurs(String etat) {
 		int somme = 0;
 		for (int i = 0; i < this.ordinateurs.getSize(); i++) {
@@ -156,15 +160,24 @@ public class ParcInfo implements Serializable {
 
 		return somme;
 	}
-
+        /**
+         * renvoie le nombre d'ordinateurs du parc informatique
+         * @return ordinateurs.getSize() le nombre d'ordinateurs du parc informatique
+         */
 	public int nbOrdinateurs() {
 		return this.ordinateurs.getSize();
 	}
-
+        /**
+         * renvoie le nombre de salles du parc informatique
+         * @return salles.getSize() le nombre de salles du parc informatique
+         */
 	public int nbSalles() {
 		return this.salles.getSize();
 	}
-
+        /**
+         * renvoie le nombre de batiments du parc informatique
+         * @return batiments.getSize() le nombre de batiments du parc informatique
+         */
 	public int nbBatiments() {
 		int size = this.batiments.getSize();
 		return size;
