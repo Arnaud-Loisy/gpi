@@ -169,4 +169,8 @@ public class ParcInfo implements Serializable {
 		int size = this.batiments.getSize();
 		return size;
 	}
+	
+	public DefaultComboBoxModel getOrdinateurs() {
+		return this.ordinateurs;
+	}
 }

@@ -46,6 +46,19 @@ public class Salle implements Serializable {
 		this.ordinateurs.addElement(ordinateur);
 	}
 
+	/**
+         * verifie si un ordinateur est présent dans une salle
+         * @param salle la salle verifiée.
+         * @return true si la salle est contenue dans le batiment,
+         * @return false sinon
+         */
+	public boolean contientOrdinateur(Ordinateur ordinateur) {
+		if (this.ordinateurs.getIndexOf(ordinateur) < 0)
+			return false;
+		
+		return true;
+	}
+	
 	@Override
 	public String toString() {
 		return this.nom;

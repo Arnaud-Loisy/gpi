@@ -74,6 +74,7 @@ public class DetailedWindow extends javax.swing.JFrame {
         jTableHistorique = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jPanelGeneralites.setBorder(javax.swing.BorderFactory.createTitledBorder("Généralités"));
 
@@ -121,7 +122,7 @@ public class DetailedWindow extends javax.swing.JFrame {
                 .addComponent(jLabelModeleGeneralites, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelNSerieGeneralites)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         jPanelHistorique.setBorder(javax.swing.BorderFactory.createTitledBorder("Historique"));

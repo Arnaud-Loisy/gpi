@@ -101,6 +101,7 @@
   <SubComponents>
     <Container class="javax.swing.JTabbedPane" name="jTabLvlOnglets">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTabLvlOngletsMouseClicked"/>
         <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jTabLvlOngletsStateChanged"/>
       </Events>
 
@@ -550,6 +551,9 @@
                       </StringArray>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxBatimentMaintenanceActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -571,14 +575,15 @@
                               <Component id="jLabelSalleOrdiMaintenance" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabelEtatMaintenance" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabelOSOrdinateur" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelSalleOrdiMaintenance1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jProgressBarInstall" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jComboBoxStockMaintenance" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jComboBoxSallesMaintance" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jComboBoxEtatMaintenance" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jComboBoxSalleMaintenance" alignment="0" max="32767" attributes="0"/>
                                       <Component id="jComboBoxOrdinateursMaintenance" alignment="0" max="32767" attributes="0"/>
                                       <Component id="jComboBoxOSMaintenance" alignment="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
@@ -608,11 +613,12 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jComboBoxOrdinateursMaintenance" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jButtonMaJMaintenance" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelSalleOrdiMaintenance1" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jButtonTransfererMaintenance" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jComboBoxSallesMaintance" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jComboBoxSalleMaintenance" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabelSalleOrdiMaintenance" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
@@ -626,7 +632,7 @@
                                   </Group>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="jComboBoxStockMaintenance" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jComboBoxEtatMaintenance" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Component id="jComboBoxOSMaintenance" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -639,29 +645,12 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JComboBox" name="jComboBoxSallesMaintance">
-                  <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
-                        <StringItem index="0" value="U2-211"/>
-                        <StringItem index="1" value="U2-212"/>
-                        <StringItem index="2" value="U2-213"/>
-                        <StringItem index="3" value="U3-209"/>
-                      </StringArray>
-                    </Property>
-                  </Properties>
+                <Component class="javax.swing.JComboBox" name="jComboBoxSalleMaintenance">
                 </Component>
                 <Component class="javax.swing.JComboBox" name="jComboBoxOrdinateursMaintenance">
-                  <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
-                        <StringItem index="0" value="Dagobah"/>
-                        <StringItem index="1" value="Tato&#xef;ne"/>
-                        <StringItem index="2" value="Corruscant"/>
-                        <StringItem index="3" value="Hoth"/>
-                      </StringArray>
-                    </Property>
-                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxOrdinateursMaintenanceActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="jButtonTransfererMaintenance">
                   <Properties>
@@ -718,7 +707,7 @@
                     <Property name="text" type="java.lang.String" value="Etat"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="jComboBoxStockMaintenance">
+                <Component class="javax.swing.JComboBox" name="jComboBoxEtatMaintenance">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="3">
@@ -727,6 +716,14 @@
                         <StringItem index="2" value="Install&#xe9;"/>
                       </StringArray>
                     </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxEtatMaintenanceActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabelSalleOrdiMaintenance1">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Nom"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -782,8 +779,8 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jComboBoxSalleAjoutMachine" max="32767" attributes="0"/>
                                       <Component id="jComboBoxEtatAjoutMachine" max="32767" attributes="0"/>
-                                      <Component id="jScrollPaneAjoutMachine" alignment="0" pref="341" max="32767" attributes="0"/>
-                                      <Component id="jButtonValiderAjoutMAchine" alignment="0" pref="341" max="32767" attributes="0"/>
+                                      <Component id="jScrollPaneAjoutMachine" alignment="0" pref="354" max="32767" attributes="0"/>
+                                      <Component id="jButtonValiderAjoutMAchine" alignment="0" pref="354" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>

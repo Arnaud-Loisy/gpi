@@ -15,6 +15,7 @@ import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
+import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
@@ -28,7 +29,6 @@ public class MainWindow extends javax.swing.JFrame {
 	public ParcInfo parcInfo;
 	public DefaultComboBoxModel<Batiment> cbm_batiments;
 	public DefaultComboBoxModel<Salle> cbm_salles;
-	
 	public int compteur = 0;
 
 	/**
@@ -37,14 +37,17 @@ public class MainWindow extends javax.swing.JFrame {
 	public MainWindow(ParcInfo parcInfo) {
 
 		initComponents();
+
 		this.parcInfo = parcInfo;
+
 		this.jComboBoxBatSupervision.setModel(this.parcInfo.getBatiments());
 		this.jComboBoxSallesSupervision.setModel(this.parcInfo.getSalles());
 		this.jComboBoxSalleAjoutMachine.setModel(new DefaultComboBoxModel());
 		this.jComboBoxSalleAjoutMachine.addItem("Stock");
-		
+
 		this.jComboBoxBatimentMaintenance.setModel(this.parcInfo.getBatiments());
 		this.jComboBoxSallesMaintenance.setModel(this.parcInfo.getSalles());
+		this.jComboBoxSalleMaintenance.setModel(this.parcInfo.getSalles());
 
 		this.jComboBoxBatSupervision.setSelectedIndex(-1);
 		this.jComboBoxSallesSupervision.setSelectedIndex(-1);
@@ -52,6 +55,14 @@ public class MainWindow extends javax.swing.JFrame {
 
 		this.jComboBoxBatimentMaintenance.setSelectedIndex(-1);
 		this.jComboBoxSallesMaintenance.setSelectedIndex(-1);
+		this.jComboBoxSalleMaintenance.setSelectedIndex(-1);
+		
+		this.jLabelRecapBatiment.setText("Vous avez " + this.parcInfo.nbBatiments() + " Batiments en service");
+		this.jLabelRecapOrdinateurs.setText("Vous avez " + this.parcInfo.nbOrdinateurs() + " Ordinateurs dont "
+				+ this.parcInfo.nbOrdinateurs("Installé") + " en Service, "
+				+ this.parcInfo.nbOrdinateurs("Stock") + " en Stock et "
+				+ this.parcInfo.nbOrdinateurs("En Panne") + " en panne");
+		this.jLabelRecapSalles.setText("Vous avez " + this.parcInfo.nbSalles() + " Salles en service");
 	}
 
 	private RowFilter<DefaultTableModel, Object> CreerListeFiltres(ArrayList<String> arguments) {
@@ -70,7 +81,7 @@ public class MainWindow extends javax.swing.JFrame {
 			filtresConcatenes = RowFilter.andFilter(liste);
 			return filtresConcatenes;
 		}
-		
+
 		return liste.get(0);
 	}
 
@@ -109,7 +120,7 @@ public class MainWindow extends javax.swing.JFrame {
         jComboBoxSallesMaintenance = new javax.swing.JComboBox();
         jComboBoxBatimentMaintenance = new javax.swing.JComboBox();
         jPanelOrdinateurMaintenance = new javax.swing.JPanel();
-        jComboBoxSallesMaintance = new javax.swing.JComboBox();
+        jComboBoxSalleMaintenance = new javax.swing.JComboBox();
         jComboBoxOrdinateursMaintenance = new javax.swing.JComboBox();
         jButtonTransfererMaintenance = new javax.swing.JButton();
         jButtonMaJMaintenance = new javax.swing.JButton();
@@ -119,7 +130,8 @@ public class MainWindow extends javax.swing.JFrame {
         jButtonChangerOS = new javax.swing.JButton();
         jProgressBarInstall = new javax.swing.JProgressBar();
         jLabelEtatMaintenance = new javax.swing.JLabel();
-        jComboBoxStockMaintenance = new javax.swing.JComboBox();
+        jComboBoxEtatMaintenance = new javax.swing.JComboBox();
+        jLabelSalleOrdiMaintenance1 = new javax.swing.JLabel();
         jPanelFabriquant = new javax.swing.JPanel();
         jTextFieldHostname = new javax.swing.JTextField();
         jLabelHostname = new javax.swing.JLabel();
@@ -149,6 +161,11 @@ public class MainWindow extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(810, 514));
 
+        jTabLvlOnglets.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTabLvlOngletsMouseClicked(evt);
+            }
+        });
         jTabLvlOnglets.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jTabLvlOngletsStateChanged(evt);
@@ -345,6 +362,11 @@ public class MainWindow extends javax.swing.JFrame {
         jComboBoxSallesMaintenance.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tous", "212", "210", "110" }));
 
         jComboBoxBatimentMaintenance.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tous", "TP3", "U4", "U3", "U2", "K5-Burk" }));
+        jComboBoxBatimentMaintenance.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxBatimentMaintenanceActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelFiltresMaintenanceLayout = new javax.swing.GroupLayout(jPanelFiltresMaintenance);
         jPanelFiltresMaintenance.setLayout(jPanelFiltresMaintenanceLayout);
@@ -384,9 +406,11 @@ public class MainWindow extends javax.swing.JFrame {
 
         jPanelOrdinateurMaintenance.setBorder(javax.swing.BorderFactory.createTitledBorder("Ordinateur"));
 
-        jComboBoxSallesMaintance.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "U2-211", "U2-212", "U2-213", "U3-209" }));
-
-        jComboBoxOrdinateursMaintenance.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Dagobah", "Tatoïne", "Corruscant", "Hoth" }));
+        jComboBoxOrdinateursMaintenance.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxOrdinateursMaintenanceActionPerformed(evt);
+            }
+        });
 
         jButtonTransfererMaintenance.setText("Transférer");
 
@@ -414,7 +438,14 @@ public class MainWindow extends javax.swing.JFrame {
 
         jLabelEtatMaintenance.setText("Etat");
 
-        jComboBoxStockMaintenance.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Stock", "En Panne", "Installé" }));
+        jComboBoxEtatMaintenance.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Stock", "En Panne", "Installé" }));
+        jComboBoxEtatMaintenance.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxEtatMaintenanceActionPerformed(evt);
+            }
+        });
+
+        jLabelSalleOrdiMaintenance1.setText("Nom");
 
         javax.swing.GroupLayout jPanelOrdinateurMaintenanceLayout = new javax.swing.GroupLayout(jPanelOrdinateurMaintenance);
         jPanelOrdinateurMaintenance.setLayout(jPanelOrdinateurMaintenanceLayout);
@@ -425,14 +456,15 @@ public class MainWindow extends javax.swing.JFrame {
                 .addGroup(jPanelOrdinateurMaintenanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelSalleOrdiMaintenance)
                     .addComponent(jLabelEtatMaintenance)
-                    .addComponent(jLabelOSOrdinateur))
+                    .addComponent(jLabelOSOrdinateur)
+                    .addComponent(jLabelSalleOrdiMaintenance1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelOrdinateurMaintenanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jProgressBarInstall, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanelOrdinateurMaintenanceLayout.createSequentialGroup()
                         .addGroup(jPanelOrdinateurMaintenanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBoxStockMaintenance, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBoxSallesMaintance, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboBoxEtatMaintenance, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboBoxSalleMaintenance, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jComboBoxOrdinateursMaintenance, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jComboBoxOSMaintenance, 0, 0, Short.MAX_VALUE))
                         .addGroup(jPanelOrdinateurMaintenanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -452,11 +484,12 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanelOrdinateurMaintenanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBoxOrdinateursMaintenance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonMaJMaintenance))
+                    .addComponent(jButtonMaJMaintenance)
+                    .addComponent(jLabelSalleOrdiMaintenance1))
                 .addGap(18, 18, 18)
                 .addGroup(jPanelOrdinateurMaintenanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonTransfererMaintenance)
-                    .addComponent(jComboBoxSallesMaintance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxSalleMaintenance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelSalleOrdiMaintenance))
                 .addGap(8, 8, 8)
                 .addGroup(jPanelOrdinateurMaintenanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -467,7 +500,7 @@ public class MainWindow extends javax.swing.JFrame {
                             .addComponent(jButtonChangerOS)
                             .addComponent(jLabelOSOrdinateur)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelOrdinateurMaintenanceLayout.createSequentialGroup()
-                        .addComponent(jComboBoxStockMaintenance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jComboBoxEtatMaintenance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jComboBoxOSMaintenance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -554,8 +587,8 @@ public class MainWindow extends javax.swing.JFrame {
                         .addGroup(jPanelFabriquantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jComboBoxSalleAjoutMachine, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jComboBoxEtatAjoutMachine, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPaneAjoutMachine, javax.swing.GroupLayout.DEFAULT_SIZE, 341, Short.MAX_VALUE)
-                            .addComponent(jButtonValiderAjoutMAchine, javax.swing.GroupLayout.DEFAULT_SIZE, 341, Short.MAX_VALUE))))
+                            .addComponent(jScrollPaneAjoutMachine, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
+                            .addComponent(jButtonValiderAjoutMAchine, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanelFabriquantLayout.setVerticalGroup(
@@ -690,27 +723,11 @@ public class MainWindow extends javax.swing.JFrame {
 		// TODO add your handling code here:
 		Date date = new Date();
 		Ordinateur ordinateur = (Ordinateur) this.jComboBoxOrdinateursMaintenance.getSelectedItem();
-		
+
 		ordinateur.ajouterOperationHistorique("Mise à jour du système", date);
-		/*
-		final Timer timer = new Timer(1000, new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-                if(compteur == 3) {
-                    timer.stop();
-					compteur = 0;
-                }
-                else{
-                   compteur++;
-					System.out.println(compteur);
-                   }
-            }	
-		});
-		
-		timer.start();		*/
-		
+
 		JOptionPane.showMessageDialog(this, "Opération effectuée avec succès !", "Information", JOptionPane.INFORMATION_MESSAGE);
-		
+
     }//GEN-LAST:event_jButtonMaJMaintenanceActionPerformed
 
     private void jButtonFiltrerMaintenanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFiltrerMaintenanceActionPerformed
@@ -722,40 +739,19 @@ public class MainWindow extends javax.swing.JFrame {
 		if (indexBatiment > -1) {
 			// Alors on regarde Si une salle est selectionnee
 			if (indexSalle > -1) { // Si une salle est selectionnee
-				Batiment batiment = (Batiment) this.jComboBoxBatimentMaintenance.getSelectedItem();
 				Salle salle = (Salle) this.jComboBoxSallesMaintenance.getSelectedItem();
 				this.jComboBoxOrdinateursMaintenance.setModel(salle.getOrdinateurs());
 			} else { // Si une salle n'est pas selectionnee
 				JOptionPane.showMessageDialog(this, "Vous devez sélectionner une salle", "Information", JOptionPane.ERROR_MESSAGE);
 			}
-		} /*else {
-			// Sinon, Si une salle est selectionnee et pas un batiment
-			if (indexSalle > -1) {
-				DefaultTableModel modele = (DefaultTableModel) this.jTableauSupervision.getModel();
+		}
 
-				RowFilter<DefaultTableModel, Object> filter = null;
+		if ((indexBatiment == -1) && (indexSalle == -1)) {
+			this.jComboBoxOrdinateursMaintenance.setModel(this.parcInfo.getOrdinateurs());
+		}
 
-				String nomSalle = ((Salle) this.jComboBoxSallesSupervision.getSelectedItem()).getNom();
-
-				// Creation des filtres
-				ArrayList<String> arguments = new ArrayList<String>();
-				arguments.add(nomSalle);
-
-				TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<DefaultTableModel>(modele);
-				sorter.setRowFilter(CreerListeFiltres(arguments));
-				this.jTableauSupervision.setRowSorter(sorter);
-			} else {
-				// Alors on regarde Si un OS est selectionne
-				if (indexOs > -1) {
-				} else { // Un OS n'est pas selectionne
-					JOptionPane.showMessageDialog(this, "Vous n'avez sélectionné aucun filtre", "Information", JOptionPane.ERROR_MESSAGE);
-				}
-			}
-		}*/
-
-		this.jComboBoxBatSupervision.setSelectedIndex(-1);
-		this.jComboBoxSallesSupervision.setSelectedIndex(-1);
-		this.jComboBoxOsSupervision.setSelectedIndex(-1);
+		//this.jComboBoxBatimentMaintenance.setSelectedIndex(-1);
+		//this.jComboBoxSallesMaintenance.setSelectedIndex(-1);
     }//GEN-LAST:event_jButtonFiltrerMaintenanceActionPerformed
 
     private void jButtonFiltrerSupervisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFiltrerSupervisionActionPerformed
@@ -773,12 +769,12 @@ public class MainWindow extends javax.swing.JFrame {
 
 				String nomBatiment = ((Batiment) this.jComboBoxBatSupervision.getSelectedItem()).getNom();
 				String nomSalle = ((Salle) this.jComboBoxSallesSupervision.getSelectedItem()).getNom();
-				
+
 				// Creation des filtres
 				ArrayList<String> arguments = new ArrayList<String>();
 				arguments.add(nomSalle);
 				arguments.add(nomBatiment);
-						
+
 				// On applique les filtres
 				TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<DefaultTableModel>(modele);
 				sorter.setRowFilter(CreerListeFiltres(arguments));
@@ -788,7 +784,7 @@ public class MainWindow extends javax.swing.JFrame {
 				DefaultTableModel modele = (DefaultTableModel) this.jTableauSupervision.getModel();
 
 				String nomBatiment = ((Batiment) this.jComboBoxBatSupervision.getSelectedItem()).getNom();
-				
+
 				// Creation des filtres
 				ArrayList<String> arguments = new ArrayList<String>();
 				arguments.add(nomBatiment);
@@ -823,9 +819,9 @@ public class MainWindow extends javax.swing.JFrame {
 			}
 		}
 
-		this.jComboBoxBatSupervision.setSelectedIndex(-1);
-		this.jComboBoxSallesSupervision.setSelectedIndex(-1);
-		this.jComboBoxOsSupervision.setSelectedIndex(-1);
+		//this.jComboBoxBatSupervision.setSelectedIndex(-1);
+		//this.jComboBoxSallesSupervision.setSelectedIndex(-1);
+		//this.jComboBoxOsSupervision.setSelectedIndex(-1);
     }//GEN-LAST:event_jButtonFiltrerSupervisionActionPerformed
     private void jComboBoxOSMaintenanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxOSMaintenanceActionPerformed
 		// TODO add your handling code here:
@@ -896,15 +892,6 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void jPaneRecapitulatifComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPaneRecapitulatifComponentShown
 		// TODO add your handling code here:
-		System.out.println("prout1");
-		this.jLabelRecapBatiment.setText("Vous avez " + this.parcInfo.nbBatiments() + " Batiments en service");
-		System.out.println("prout1");
-		this.jLabelRecapOrdinateurs.setText("Vous avez " + this.parcInfo.nbOrdinateurs() + " Ordinateurs dont "
-				+ this.parcInfo.nbOrdinateurs("Installé") + " en Service, "
-				+ this.parcInfo.nbOrdinateurs("Stock") + " en Stock et "
-				+ this.parcInfo.nbOrdinateurs("En Panne") + " en panne");
-		System.out.println("prout1");
-		this.jLabelRecapSalles.setText("Vous avez " + this.parcInfo.nbSalles() + " Salles en service");
     }//GEN-LAST:event_jPaneRecapitulatifComponentShown
 
     private void jTabLvlOngletsStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabLvlOngletsStateChanged
@@ -994,7 +981,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonPasFiltrerSupervisionActionPerformed
 
     private void jButtonDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDetailsActionPerformed
-        // TODO add your handling code here:
+		// TODO add your handling code here:
 		Ordinateur ordinateur = null;
 		ordinateur = (Ordinateur) this.jTableauSupervision.getValueAt(this.jTableauSupervision.getSelectedRow(), 2);
 		DetailedWindow details = new DetailedWindow(ordinateur);
@@ -1002,12 +989,72 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonDetailsActionPerformed
 
     private void jComboBoxBatSupervisionItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxBatSupervisionItemStateChanged
-        // TODO add your handling code here:
+		// TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxBatSupervisionItemStateChanged
 
     private void jComboBoxBatSupervisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxBatSupervisionActionPerformed
-        // TODO add your handling code here:
+		// TODO add your handling code here:    
+		if (this.jComboBoxBatSupervision.getSelectedIndex() == -1) {
+			return;
+		}
+
+		Batiment batiment = (Batiment) this.jComboBoxBatSupervision.getSelectedItem();
+
+		this.jComboBoxSallesSupervision.setModel(batiment.getSalles());
     }//GEN-LAST:event_jComboBoxBatSupervisionActionPerformed
+
+    private void jComboBoxEtatMaintenanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxEtatMaintenanceActionPerformed
+		// TODO add your handling code here:
+		Ordinateur ordinateur = (Ordinateur) this.jComboBoxOrdinateursMaintenance.getSelectedItem();
+		ordinateur.setEtat(this.jComboBoxEtatMaintenance.getSelectedItem().toString());
+    }//GEN-LAST:event_jComboBoxEtatMaintenanceActionPerformed
+
+    private void jComboBoxOrdinateursMaintenanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxOrdinateursMaintenanceActionPerformed
+		// TODO add your handling code here:
+		Ordinateur ordinateur = (Ordinateur) this.jComboBoxOrdinateursMaintenance.getSelectedItem();
+
+		if (ordinateur.getEtat() == "Stock") {
+			this.jComboBoxEtatMaintenance.setSelectedIndex(0);
+		}
+		if (ordinateur.getEtat() == "En Panne") {
+			this.jComboBoxEtatMaintenance.setSelectedIndex(1);
+		}
+		if (ordinateur.getEtat() == "Installé") {
+			this.jComboBoxEtatMaintenance.setSelectedIndex(2);
+		}
+
+		int indexSalle = -1;
+		for (int i = 0; i < this.parcInfo.getSalles().getSize(); i++) {
+			if (((Salle) this.parcInfo.getSalles().getElementAt(i)).contientOrdinateur(ordinateur)) {
+				indexSalle = i;
+			}
+		}
+
+		if (indexSalle != -1) {
+			this.jComboBoxSalleMaintenance.setSelectedIndex(indexSalle);
+		}
+    }//GEN-LAST:event_jComboBoxOrdinateursMaintenanceActionPerformed
+
+    private void jComboBoxBatimentMaintenanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxBatimentMaintenanceActionPerformed
+		// TODO add your handling code here:
+		if (this.jComboBoxBatimentMaintenance.getSelectedIndex() == -1) {
+			return;
+		}
+
+		Batiment batiment = (Batiment) this.jComboBoxBatimentMaintenance.getSelectedItem();
+
+		this.jComboBoxSallesMaintenance.setModel(batiment.getSalles());
+    }//GEN-LAST:event_jComboBoxBatimentMaintenanceActionPerformed
+
+    private void jTabLvlOngletsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabLvlOngletsMouseClicked
+		// TODO add your handling code here:
+		this.jLabelRecapBatiment.setText("Vous avez " + this.parcInfo.nbBatiments() + " Batiments en service");
+		this.jLabelRecapOrdinateurs.setText("Vous avez " + this.parcInfo.nbOrdinateurs() + " Ordinateurs dont "
+				+ this.parcInfo.nbOrdinateurs("Installé") + " en Service, "
+				+ this.parcInfo.nbOrdinateurs("Stock") + " en Stock et "
+				+ this.parcInfo.nbOrdinateurs("En Panne") + " en panne");
+		this.jLabelRecapSalles.setText("Vous avez " + this.parcInfo.nbSalles() + " Salles en service");
+    }//GEN-LAST:event_jTabLvlOngletsMouseClicked
 
 	/**
 	 * @param args the command line arguments
@@ -1069,14 +1116,14 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JComboBox jComboBoxBatSupervision;
     private javax.swing.JComboBox jComboBoxBatimentMaintenance;
     private javax.swing.JComboBox jComboBoxEtatAjoutMachine;
+    private javax.swing.JComboBox jComboBoxEtatMaintenance;
     private javax.swing.JComboBox jComboBoxOSMaintenance;
     private javax.swing.JComboBox jComboBoxOrdinateursMaintenance;
     private javax.swing.JComboBox jComboBoxOsSupervision;
     private javax.swing.JComboBox jComboBoxSalleAjoutMachine;
-    private javax.swing.JComboBox jComboBoxSallesMaintance;
+    private javax.swing.JComboBox jComboBoxSalleMaintenance;
     private javax.swing.JComboBox jComboBoxSallesMaintenance;
     private javax.swing.JComboBox jComboBoxSallesSupervision;
-    private javax.swing.JComboBox jComboBoxStockMaintenance;
     private javax.swing.JLabel jLabelBatimentMaintenance;
     private javax.swing.JLabel jLabelBatiments;
     private javax.swing.JLabel jLabelBatiments1;
@@ -1092,6 +1139,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelRecapSalles;
     private javax.swing.JLabel jLabelSalleAjoutMachine;
     private javax.swing.JLabel jLabelSalleOrdiMaintenance;
+    private javax.swing.JLabel jLabelSalleOrdiMaintenance1;
     private javax.swing.JLabel jLabelSallesMaintenance;
     private javax.swing.JLabel jLabelSallesSupervision;
     private javax.swing.JLabel jLabelSerial;
