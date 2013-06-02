@@ -37,6 +37,11 @@ public class Batiment implements Serializable{
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
+	
+	public String getNom() {
+		return this.nom;
+	}
+	
         /**
          * 
          * @return renvoi la liste des salles d'un batiment 

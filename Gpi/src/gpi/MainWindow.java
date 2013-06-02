@@ -6,9 +6,14 @@ package gpi;
 
 //import javax.swing.DefaultComboBoxModel;
 import java.awt.FileDialog;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -31,6 +36,30 @@ public class MainWindow extends javax.swing.JFrame {
 		this.jComboBoxSallesSupervision.setModel(this.parcInfo.getSalles());
 		this.jComboBoxSalleAjoutMachine.setModel(new DefaultComboBoxModel());
 		this.jComboBoxSalleAjoutMachine.addItem("Stock");
+
+		this.jComboBoxBatSupervision.setSelectedIndex(-1);
+		this.jComboBoxSallesSupervision.setSelectedIndex(-1);
+		this.jComboBoxOsSupervision.setSelectedIndex(-1);
+	}
+
+	private RowFilter<DefaultTableModel, Object> CreerListeFiltres(ArrayList<String> arguments) {
+		List<RowFilter<DefaultTableModel, Object>> liste = new ArrayList<RowFilter<DefaultTableModel, Object>>(arguments.size());
+
+		// Constitution de la liste de filtres
+		for (int i = 0; i < arguments.size(); i++) {
+			RowFilter<DefaultTableModel, Object> filtre = null;
+			filtre = RowFilter.regexFilter(".*" + arguments.get(i) + ".*");
+			liste.add(filtre);
+		}
+
+		RowFilter<DefaultTableModel, Object> filtresConcatenes = null;
+		if (arguments.size() > 1) {
+			// Concatenation de ces filtres
+			filtresConcatenes = RowFilter.andFilter(liste);
+			return filtresConcatenes;
+		}
+		
+		return liste.get(0);
 	}
 
 	/**
@@ -57,8 +86,8 @@ public class MainWindow extends javax.swing.JFrame {
         jLabelSallesSupervision = new javax.swing.JLabel();
         jComboBoxSallesSupervision = new javax.swing.JComboBox();
         jLabelBatiments1 = new javax.swing.JLabel();
-        jComboBoxBatSupervision1 = new javax.swing.JComboBox();
-        jButtonFiltrerSupervision1 = new javax.swing.JButton();
+        jComboBoxOsSupervision = new javax.swing.JComboBox();
+        jButtonPasFiltrerSupervision = new javax.swing.JButton();
         jButtonDetails = new javax.swing.JButton();
         jPanelMaintenance = new javax.swing.JPanel();
         jPanelFiltresMaintenance = new javax.swing.JPanel();
@@ -186,12 +215,12 @@ public class MainWindow extends javax.swing.JFrame {
 
         jLabelBatiments1.setText("OS");
 
-        jComboBoxBatSupervision1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tous", "Windows 7", "Windows 8", "Linux" }));
+        jComboBoxOsSupervision.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tous", "Windows 7", "Windows 8", "Linux" }));
 
-        jButtonFiltrerSupervision1.setText("Affichage (Sans filtres)");
-        jButtonFiltrerSupervision1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonPasFiltrerSupervision.setText("Affichage (Sans filtres)");
+        jButtonPasFiltrerSupervision.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonFiltrerSupervision1ActionPerformed(evt);
+                jButtonPasFiltrerSupervisionActionPerformed(evt);
             }
         });
 
@@ -216,9 +245,9 @@ public class MainWindow extends javax.swing.JFrame {
                         .addGap(47, 47, 47)
                         .addComponent(jLabelBatiments1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBoxBatSupervision1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jComboBoxOsSupervision, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 165, Short.MAX_VALUE)
-                        .addComponent(jButtonFiltrerSupervision1)))
+                        .addComponent(jButtonPasFiltrerSupervision)))
                 .addContainerGap())
         );
         jPanelFiltresSupervisionLayout.setVerticalGroup(
@@ -227,7 +256,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addGroup(jPanelFiltresSupervisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBoxBatSupervision, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelBatiments)
-                    .addComponent(jComboBoxBatSupervision1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxOsSupervision, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelBatiments1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelFiltresSupervisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -236,7 +265,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFiltresSupervisionLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonFiltrerSupervision1)
+                .addComponent(jButtonPasFiltrerSupervision)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonFiltrerSupervision)
                 .addGap(20, 20, 20))
@@ -640,8 +669,76 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void jButtonFiltrerSupervisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFiltrerSupervisionActionPerformed
 		// TODO add your handling code here:
-    }//GEN-LAST:event_jButtonFiltrerSupervisionActionPerformed
 
+		int indexBatiment = this.jComboBoxBatSupervision.getSelectedIndex();
+		int indexSalle = this.jComboBoxSallesSupervision.getSelectedIndex();
+		int indexOs = this.jComboBoxOsSupervision.getSelectedIndex();
+
+		// Si un batiment est selectionne
+		if (indexBatiment > -1) {
+			// Alors on regarde Si une salle est selectionnee
+			if (indexSalle > -1) { // Si une salle est selectionnee
+				DefaultTableModel modele = (DefaultTableModel) this.jTableauSupervision.getModel();
+
+				String nomBatiment = ((Batiment) this.jComboBoxBatSupervision.getSelectedItem()).getNom();
+				String nomSalle = ((Salle) this.jComboBoxSallesSupervision.getSelectedItem()).getNom();
+				
+				// Creation des filtres
+				ArrayList<String> arguments = new ArrayList<String>();
+				arguments.add(nomSalle);
+				arguments.add(nomBatiment);
+						
+				// On applique les filtres
+				TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<DefaultTableModel>(modele);
+				sorter.setRowFilter(CreerListeFiltres(arguments));
+
+				this.jTableauSupervision.setRowSorter(sorter);
+			} else { // Si une salle n'est pas selectionnee
+				DefaultTableModel modele = (DefaultTableModel) this.jTableauSupervision.getModel();
+
+				String nomBatiment = ((Batiment) this.jComboBoxBatSupervision.getSelectedItem()).getNom();
+				
+				// Creation des filtres
+				ArrayList<String> arguments = new ArrayList<String>();
+				arguments.add(nomBatiment);
+
+				// On applique les filtres
+				TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<DefaultTableModel>(modele);
+				sorter.setRowFilter(CreerListeFiltres(arguments));
+				this.jTableauSupervision.setRowSorter(sorter);
+			}
+		} else {
+			// Sinon, Si une salle est selectionnee et pas un batiment
+			if (indexSalle > -1) {
+				DefaultTableModel modele = (DefaultTableModel) this.jTableauSupervision.getModel();
+
+				RowFilter<DefaultTableModel, Object> filter = null;
+
+				String nomSalle = ((Salle) this.jComboBoxSallesSupervision.getSelectedItem()).getNom();
+
+				// Creation des filtres
+				ArrayList<String> arguments = new ArrayList<String>();
+				arguments.add(nomSalle);
+
+				TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<DefaultTableModel>(modele);
+				sorter.setRowFilter(CreerListeFiltres(arguments));
+				this.jTableauSupervision.setRowSorter(sorter);
+			} else {
+				// Alors on regarde Si un OS est selectionne
+				if (indexOs > -1) {
+				} else { // Un OS n'est pas selectionne
+
+					JOptionPane.showMessageDialog(this, "Vous n'avez sélectionné aucun filtre", "Information", JOptionPane.ERROR_MESSAGE);
+				}
+
+
+			}
+		}
+
+		this.jComboBoxBatSupervision.setSelectedIndex(-1);
+		this.jComboBoxSallesSupervision.setSelectedIndex(-1);
+		this.jComboBoxOsSupervision.setSelectedIndex(-1);
+    }//GEN-LAST:event_jButtonFiltrerSupervisionActionPerformed
     private void jComboBoxOSMaintenanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxOSMaintenanceActionPerformed
 		// TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxOSMaintenanceActionPerformed
@@ -726,7 +823,7 @@ public class MainWindow extends javax.swing.JFrame {
 		// TODO add your handling code here:
     }//GEN-LAST:event_jTabLvlOngletsStateChanged
 
-    private void jButtonFiltrerSupervision1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFiltrerSupervision1ActionPerformed
+    private void jButtonPasFiltrerSupervisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPasFiltrerSupervisionActionPerformed
 		// TODO add your handling code here:
 		DefaultTableModel modele = new DefaultTableModel();
 
@@ -802,7 +899,11 @@ public class MainWindow extends javax.swing.JFrame {
 			}
 		}
 		this.jTableauSupervision.setModel(modele);
-    }//GEN-LAST:event_jButtonFiltrerSupervision1ActionPerformed
+
+		this.jComboBoxBatSupervision.setSelectedIndex(-1);
+		this.jComboBoxSallesSupervision.setSelectedIndex(-1);
+		this.jComboBoxOsSupervision.setSelectedIndex(-1);
+    }//GEN-LAST:event_jButtonPasFiltrerSupervisionActionPerformed
 
 	/**
 	 * @param args the command line arguments
@@ -820,14 +921,28 @@ public class MainWindow extends javax.swing.JFrame {
 
 
 
+
+
+
+
+
+
+
+
+
+
 		} catch (ClassNotFoundException ex) {
-			java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+			java.util.logging.Logger.getLogger(MainWindow.class
+					.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		} catch (InstantiationException ex) {
-			java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+			java.util.logging.Logger.getLogger(MainWindow.class
+					.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		} catch (IllegalAccessException ex) {
-			java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+			java.util.logging.Logger.getLogger(MainWindow.class
+					.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		} catch (javax.swing.UnsupportedLookAndFeelException ex) {
-			java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+			java.util.logging.Logger.getLogger(MainWindow.class
+					.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		}
 		//</editor-fold>*/
 
@@ -843,16 +958,16 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton jButtonDetails;
     private javax.swing.JButton jButtonFiltrerMaintenance;
     private javax.swing.JButton jButtonFiltrerSupervision;
-    private javax.swing.JButton jButtonFiltrerSupervision1;
     private javax.swing.JButton jButtonMaJMaintenance;
+    private javax.swing.JButton jButtonPasFiltrerSupervision;
     private javax.swing.JButton jButtonTransfererMaintenance;
     private javax.swing.JButton jButtonValiderAjoutMAchine;
     private javax.swing.JComboBox jComboBoxBatSupervision;
-    private javax.swing.JComboBox jComboBoxBatSupervision1;
     private javax.swing.JComboBox jComboBoxBatimentMaintenance;
     private javax.swing.JComboBox jComboBoxEtatAjoutMachine;
     private javax.swing.JComboBox jComboBoxOSMaintenance;
     private javax.swing.JComboBox jComboBoxOrdianteurMaintenance;
+    private javax.swing.JComboBox jComboBoxOsSupervision;
     private javax.swing.JComboBox jComboBoxSalleAjoutMachine;
     private javax.swing.JComboBox jComboBoxSallesMaintance;
     private javax.swing.JComboBox jComboBoxSallesMaintenance;

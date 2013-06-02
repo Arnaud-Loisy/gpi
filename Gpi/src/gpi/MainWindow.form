@@ -287,9 +287,9 @@
                                   <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                                   <Component id="jLabelBatiments1" min="-2" pref="35" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jComboBoxBatSupervision1" min="-2" pref="151" max="-2" attributes="0"/>
+                                  <Component id="jComboBoxOsSupervision" min="-2" pref="151" max="-2" attributes="0"/>
                                   <EmptySpace pref="165" max="32767" attributes="0"/>
-                                  <Component id="jButtonFiltrerSupervision1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jButtonPasFiltrerSupervision" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -302,7 +302,7 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jComboBoxBatSupervision" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabelBatiments" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jComboBoxBatSupervision1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jComboBoxOsSupervision" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabelBatiments1" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -314,7 +314,7 @@
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jButtonFiltrerSupervision1" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonPasFiltrerSupervision" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jButtonFiltrerSupervision" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
@@ -372,7 +372,7 @@
                     <Property name="text" type="java.lang.String" value="OS"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="jComboBoxBatSupervision1">
+                <Component class="javax.swing.JComboBox" name="jComboBoxOsSupervision">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="4">
@@ -384,12 +384,12 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButtonFiltrerSupervision1">
+                <Component class="javax.swing.JButton" name="jButtonPasFiltrerSupervision">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Affichage (Sans filtres)"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonFiltrerSupervision1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonPasFiltrerSupervisionActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>
