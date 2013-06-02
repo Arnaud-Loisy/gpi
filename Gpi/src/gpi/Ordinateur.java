@@ -103,7 +103,7 @@ public class Ordinateur implements Serializable {
 	/**
 	 * definit l'état d'un ordinateur
 	 *
-	 * @param Os
+	 * @param etat le nouvel etat de l'odinateur
 	 */
 	public void setEtat(String etat) {
 		this.etat = etat;
