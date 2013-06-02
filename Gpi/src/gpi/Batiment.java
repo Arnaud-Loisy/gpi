@@ -4,14 +4,16 @@
  */
 package gpi;
 
+import java.io.Serializable;
 import javax.swing.DefaultComboBoxModel;
 
 /**
  *
  * @author Arnaud Loisy
  */
-public class Batiment {
+public class Batiment implements Serializable{
 
+	private static final long serialVersionUID = 11L;
 	private String nom;
 	private DefaultComboBoxModel<Salle> salles;
         

@@ -5,6 +5,7 @@
 package gpi;
 
 //import javax.swing.DefaultComboBoxModel;
+import java.awt.FileDialog;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
@@ -23,11 +24,13 @@ public class MainWindow extends javax.swing.JFrame {
 	 * Creates new form MainWindow
 	 */
 	public MainWindow(ParcInfo parcInfo) {
-            
+
 		initComponents();
 		this.parcInfo = parcInfo;
 		this.jComboBoxBatSupervision.setModel(this.parcInfo.getBatiments());
 		this.jComboBoxSallesSupervision.setModel(this.parcInfo.getSalles());
+		this.jComboBoxSalleAjoutMachine.setModel(new DefaultComboBoxModel());
+		this.jComboBoxSalleAjoutMachine.addItem("Stock");
 		this.setLocationRelativeTo(null);
 	}
 
@@ -94,7 +97,13 @@ public class MainWindow extends javax.swing.JFrame {
         jLabelFabriquant = new javax.swing.JLabel();
         jTextFieldFabriquant = new javax.swing.JTextField();
         jMenuBar = new javax.swing.JMenuBar();
-        jMenuConfiguration = new javax.swing.JMenu();
+        jMenuFichier = new javax.swing.JMenu();
+        jMenuItemCharger = new javax.swing.JMenuItem();
+        jMenuItemSauvegarder = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        jMenuItemQuitter = new javax.swing.JMenuItem();
+        jMenuOptions = new javax.swing.JMenu();
+        jMenuItemConfiguration = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(810, 514));
@@ -126,7 +135,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addComponent(jLabelRecapSalles)
                 .addGap(8, 8, 8)
                 .addComponent(jLabelRecapOrdinateurs)
-                .addContainerGap(334, Short.MAX_VALUE))
+                .addContainerGap(366, Short.MAX_VALUE))
         );
 
         jTabLvlOnglets.addTab("Récapitulatif", jPaneRecapitulatif);
@@ -189,7 +198,7 @@ public class MainWindow extends javax.swing.JFrame {
                         .addComponent(jLabelBatiments1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jComboBoxBatSupervision1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 309, Short.MAX_VALUE)))
+                        .addGap(0, 328, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanelFiltresSupervisionLayout.setVerticalGroup(
@@ -210,7 +219,7 @@ public class MainWindow extends javax.swing.JFrame {
                         .addGroup(jPanelFiltresSupervisionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jComboBoxSallesSupervision, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabelSallesSupervision))))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(6, Short.MAX_VALUE))
         );
 
         jButtonDetails.setText("Détails");
@@ -235,7 +244,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanelFiltresSupervision, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPaneTableauSupervision, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
+                .addComponent(jScrollPaneTableauSupervision, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonDetails)
                 .addGap(33, 33, 33))
@@ -338,9 +347,9 @@ public class MainWindow extends javax.swing.JFrame {
             .addGroup(jPanelOrdinateurMaintenanceLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelOrdinateurMaintenanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelOSOrdinateur)
                     .addComponent(jLabelSalleOrdiMaintenance)
-                    .addComponent(jLabelEtatMaintenance))
+                    .addComponent(jLabelEtatMaintenance)
+                    .addComponent(jLabelOSOrdinateur))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelOrdinateurMaintenanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jProgressBarInstall, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -349,7 +358,7 @@ public class MainWindow extends javax.swing.JFrame {
                             .addComponent(jComboBoxStockMaintenance, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jComboBoxSallesMaintance, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jComboBoxOrdianteurMaintenance, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBoxOSMaintenance, 0, 1, Short.MAX_VALUE))
+                            .addComponent(jComboBoxOSMaintenance, 0, 0, Short.MAX_VALUE))
                         .addGroup(jPanelOrdinateurMaintenanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelOrdinateurMaintenanceLayout.createSequentialGroup()
                                 .addGap(38, 38, 38)
@@ -363,28 +372,31 @@ public class MainWindow extends javax.swing.JFrame {
         );
         jPanelOrdinateurMaintenanceLayout.setVerticalGroup(
             jPanelOrdinateurMaintenanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelOrdinateurMaintenanceLayout.createSequentialGroup()
+            .addGroup(jPanelOrdinateurMaintenanceLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelOrdinateurMaintenanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBoxOrdianteurMaintenance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonMaJMaintenance))
                 .addGap(18, 18, 18)
                 .addGroup(jPanelOrdinateurMaintenanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBoxSallesMaintance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonTransfererMaintenance)
+                    .addComponent(jComboBoxSallesMaintance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelSalleOrdiMaintenance))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelOrdinateurMaintenanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBoxStockMaintenance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelEtatMaintenance))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
-                .addGroup(jPanelOrdinateurMaintenanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBoxOSMaintenance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonChangerOS)
-                    .addComponent(jLabelOSOrdinateur))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(8, 8, 8)
+                .addGroup(jPanelOrdinateurMaintenanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelOrdinateurMaintenanceLayout.createSequentialGroup()
+                        .addComponent(jLabelEtatMaintenance)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanelOrdinateurMaintenanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonChangerOS)
+                            .addComponent(jLabelOSOrdinateur)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelOrdinateurMaintenanceLayout.createSequentialGroup()
+                        .addComponent(jComboBoxStockMaintenance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jComboBoxOSMaintenance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jProgressBarInstall, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
+                .addGap(18, 18, Short.MAX_VALUE))
         );
 
         jPanelFabriquant.setBorder(javax.swing.BorderFactory.createTitledBorder("Ajout Machine"));
@@ -398,8 +410,11 @@ public class MainWindow extends javax.swing.JFrame {
         jLabelOSAjoutMachine.setText("OS");
 
         jComboBoxEtatAjoutMachine.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Stock", "En Panne", "Installé" }));
-
-        jComboBoxSalleAjoutMachine.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "U2-211", "U2-212", "U2-213", "U3-209" }));
+        jComboBoxEtatAjoutMachine.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBoxEtatAjoutMachineItemStateChanged(evt);
+            }
+        });
 
         jListOS.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Windows XP", "Windows Vista", "Windows 7", "Windows 8", "Mac Os X", "Linux Debian" };
@@ -432,43 +447,40 @@ public class MainWindow extends javax.swing.JFrame {
         jPanelFabriquant.setLayout(jPanelFabriquantLayout);
         jPanelFabriquantLayout.setHorizontalGroup(
             jPanelFabriquantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFabriquantLayout.createSequentialGroup()
-                .addGroup(jPanelFabriquantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanelFabriquantLayout.createSequentialGroup()
+            .addGroup(jPanelFabriquantLayout.createSequentialGroup()
+                .addGroup(jPanelFabriquantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFabriquantLayout.createSequentialGroup()
                         .addGroup(jPanelFabriquantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelFabriquantLayout.createSequentialGroup()
-                                .addGap(16, 16, 16)
-                                .addGroup(jPanelFabriquantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabelSerial, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabelModele, javax.swing.GroupLayout.Alignment.TRAILING)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFabriquantLayout.createSequentialGroup()
+                                .addGap(14, 14, 14)
+                                .addComponent(jLabelHostname))
+                            .addGroup(jPanelFabriquantLayout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(jPanelFabriquantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabelFabriquant, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabelHostname, javax.swing.GroupLayout.Alignment.TRAILING))))
-                        .addGap(30, 30, 30)
+                                    .addComponent(jLabelFabriquant)
+                                    .addComponent(jLabelModele)))
+                            .addGroup(jPanelFabriquantLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabelSerial)))
+                        .addGap(18, 18, 18)
                         .addGroup(jPanelFabriquantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldFabriquant, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextFieldFabriquant)
                             .addComponent(jTextFieldSerial, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jTextFieldModele)
                             .addComponent(jTextFieldHostname)))
                     .addGroup(jPanelFabriquantLayout.createSequentialGroup()
+                        .addGap(19, 19, 19)
                         .addGroup(jPanelFabriquantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelFabriquantLayout.createSequentialGroup()
-                                .addGap(53, 53, 53)
-                                .addGroup(jPanelFabriquantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabelSalleAjoutMachine)
-                                    .addComponent(jLabelOSAjoutMachine)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFabriquantLayout.createSequentialGroup()
-                                .addGap(51, 51, 51)
-                                .addComponent(jLabelEtatAjoutMachine)))
-                        .addGap(31, 31, 31)
-                        .addGroup(jPanelFabriquantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButtonValiderAjoutMAchine, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPaneAjoutMachine, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
-                            .addComponent(jComboBoxSalleAjoutMachine, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBoxEtatAjoutMachine, javax.swing.GroupLayout.Alignment.LEADING, 0, 205, Short.MAX_VALUE))))
-                .addGap(116, 116, 116))
+                            .addComponent(jLabelEtatAjoutMachine)
+                            .addComponent(jLabelOSAjoutMachine)
+                            .addComponent(jLabelSalleAjoutMachine))
+                        .addGap(54, 54, 54)
+                        .addGroup(jPanelFabriquantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboBoxSalleAjoutMachine, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboBoxEtatAjoutMachine, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPaneAjoutMachine, javax.swing.GroupLayout.DEFAULT_SIZE, 341, Short.MAX_VALUE)
+                            .addComponent(jButtonValiderAjoutMAchine, javax.swing.GroupLayout.DEFAULT_SIZE, 341, Short.MAX_VALUE))))
+                .addContainerGap())
         );
         jPanelFabriquantLayout.setVerticalGroup(
             jPanelFabriquantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -477,35 +489,33 @@ public class MainWindow extends javax.swing.JFrame {
                     .addComponent(jTextFieldHostname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelHostname))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelFabriquantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldModele, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelModele))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelFabriquantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldSerial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelSerial))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelFabriquantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanelFabriquantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextFieldFabriquant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelFabriquant))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelFabriquantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextFieldModele, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelModele))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelFabriquantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelSerial)
+                    .addComponent(jTextFieldSerial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelFabriquantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanelFabriquantLayout.createSequentialGroup()
-                        .addComponent(jLabelEtatAjoutMachine)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE))
-                    .addGroup(jPanelFabriquantLayout.createSequentialGroup()
+                    .addComponent(jLabelEtatAjoutMachine, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelFabriquantLayout.createSequentialGroup()
                         .addComponent(jComboBoxEtatAjoutMachine, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanelFabriquantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBoxSalleAjoutMachine, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelSalleAjoutMachine))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                            .addComponent(jComboBoxSalleAjoutMachine, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelSalleAjoutMachine))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelFabriquantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPaneAjoutMachine, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelOSAjoutMachine))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonValiderAjoutMAchine)
-                .addContainerGap())
+                .addContainerGap(6, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanelMaintenanceLayout = new javax.swing.GroupLayout(jPanelMaintenance);
@@ -523,30 +533,59 @@ public class MainWindow extends javax.swing.JFrame {
         );
         jPanelMaintenanceLayout.setVerticalGroup(
             jPanelMaintenanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelMaintenanceLayout.createSequentialGroup()
+            .addGroup(jPanelMaintenanceLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelMaintenanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanelMaintenanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanelFabriquant, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanelMaintenanceLayout.createSequentialGroup()
                         .addComponent(jPanelFiltresMaintenance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanelOrdinateurMaintenance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(31, 31, 31))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanelOrdinateurMaintenance, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabLvlOnglets.addTab("Maintenance", jPanelMaintenance);
 
-        jMenuConfiguration.setText("Configuration");
-        jMenuConfiguration.addMenuListener(new javax.swing.event.MenuListener() {
-            public void menuSelected(javax.swing.event.MenuEvent evt) {
-                jMenuConfigurationMenuSelected(evt);
-            }
-            public void menuCanceled(javax.swing.event.MenuEvent evt) {
-            }
-            public void menuDeselected(javax.swing.event.MenuEvent evt) {
+        jMenuFichier.setText("Fichier");
+
+        jMenuItemCharger.setText("Charger");
+        jMenuItemCharger.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemChargerActionPerformed(evt);
             }
         });
-        jMenuBar.add(jMenuConfiguration);
+        jMenuFichier.add(jMenuItemCharger);
+
+        jMenuItemSauvegarder.setText("Sauvegarder");
+        jMenuItemSauvegarder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemSauvegarderActionPerformed(evt);
+            }
+        });
+        jMenuFichier.add(jMenuItemSauvegarder);
+        jMenuFichier.add(jSeparator1);
+
+        jMenuItemQuitter.setText("Quitter");
+        jMenuItemQuitter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemQuitterActionPerformed(evt);
+            }
+        });
+        jMenuFichier.add(jMenuItemQuitter);
+
+        jMenuBar.add(jMenuFichier);
+
+        jMenuOptions.setText("Options");
+
+        jMenuItemConfiguration.setText("Configuration");
+        jMenuItemConfiguration.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemConfigurationActionPerformed(evt);
+            }
+        });
+        jMenuOptions.add(jMenuItemConfiguration);
+
+        jMenuBar.add(jMenuOptions);
 
         setJMenuBar(jMenuBar);
 
@@ -563,8 +602,8 @@ public class MainWindow extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabLvlOnglets, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addComponent(jTabLvlOnglets)
+                .addContainerGap())
         );
 
         pack();
@@ -593,7 +632,6 @@ public class MainWindow extends javax.swing.JFrame {
 		// Pour tous les batiments
 		for (int i = 0; i < nbBatiments; i++) {
 			Vector ligne = null;
-			ligne = new Vector();
 			Batiment batiment = null;
 			batiment = (Batiment) this.parcInfo.getBatiments().getElementAt(i);
 			int nbSalles = batiment.getSalles().getSize();
@@ -606,27 +644,51 @@ public class MainWindow extends javax.swing.JFrame {
 
 					int nbOrdinateurs = salle.getOrdinateurs().getSize();
 
+					// Si la salle a au moins 1 ordinateur
 					if (nbOrdinateurs > 0) {
 						for (int k = 0; k < nbOrdinateurs; k++) {
 							Ordinateur ordinateur = (Ordinateur) salle.getOrdinateurs().getElementAt(k);
-							ligne.add(batiment);
-							ligne.add(salle);
-							ligne.add(ordinateur);
-							modele.addRow(ligne);
+
+							int nbOS = ordinateur.getOs().getSize();
+
+							// Si l'ordinateur a au moins 1 OS
+							if (nbOS > 0) {
+								for (int l = 0; l < nbOS; l++) {
+									OS os = (OS) ordinateur.getOs().getElementAt(l);
+									
+									ligne = new Vector();
+
+									ligne.add(batiment);
+									ligne.add(salle);
+									ligne.add(ordinateur);
+									ligne.add(os);
+									modele.addRow(ligne);
+								}
+							}
+							
+							if (nbOS == 0)
+							{
+								ligne = new Vector();
+								
+								ligne.add(batiment);
+								ligne.add(salle);
+								ligne.add(ordinateur);
+								modele.addRow(ligne);
+							}
 						}
 					}
 
 					if (nbOrdinateurs == 0) {
+						ligne = new Vector();
+
 						ligne.add(batiment);
 						ligne.add(salle);
 						modele.addRow(ligne);
 					}
-
-					salle = null;
-					ligne = null;
-					ligne = new Vector();
 				}
 			} else {
+				ligne = new Vector();
+
 				ligne.add(batiment);
 				modele.addRow(ligne);
 			}
@@ -640,24 +702,66 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void jButtonValiderAjoutMAchineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonValiderAjoutMAchineActionPerformed
 		// TODO add your handling code here:
-		Ordinateur ordinateur = new Ordinateur(this.jTextFieldHostname.getText(), "E6500", "DELL", "2634565365");
-		String NomOS = this.jComboBoxOSMaintenance.getSelectedItem().toString();
-		OS os = new OS();
+		Ordinateur ordinateur = new Ordinateur(this.jTextFieldHostname.getText(), this.jTextFieldModele.getText(), this.jTextFieldFabriquant.getText(), this.jTextFieldSerial.getText());
+		String NomOS = this.jListOS.getSelectedValue().toString();
+		
+		OS os = new OS(NomOS, "2");
+		
 		DefaultComboBoxModel<OS> modele = new DefaultComboBoxModel();
 		modele.addElement(os);
 		ordinateur.setOs(modele);
+		ordinateur.setEtat(this.jComboBoxEtatAjoutMachine.getSelectedItem().toString());
+
+		if (this.jComboBoxEtatAjoutMachine.getSelectedItem().toString() == "Stock") {
+			this.parcInfo.ajouterNouvelOrdinateur(ordinateur, ((Salle) this.parcInfo.getSalles().getElementAt(0)));
+		} else {
+			Salle salle = (Salle) this.jComboBoxSalleAjoutMachine.getSelectedItem();
+			this.parcInfo.ajouterNouvelOrdinateur(ordinateur, salle);
+		}
     }//GEN-LAST:event_jButtonValiderAjoutMAchineActionPerformed
 
-    private void jMenuConfigurationMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenuConfigurationMenuSelected
+    private void jTextFieldFabriquantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldFabriquantActionPerformed
+		// TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldFabriquantActionPerformed
+
+    private void jComboBoxEtatAjoutMachineItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxEtatAjoutMachineItemStateChanged
+		// TODO add your handling code here:
+		if (this.jComboBoxEtatAjoutMachine.getSelectedItem().toString() == "Stock") {
+			this.jComboBoxSalleAjoutMachine.setModel(new DefaultComboBoxModel());
+			this.jComboBoxSalleAjoutMachine.addItem("Stock");
+		} else {
+			this.jComboBoxSalleAjoutMachine.setModel(this.parcInfo.getSalles());
+		}
+    }//GEN-LAST:event_jComboBoxEtatAjoutMachineItemStateChanged
+
+    private void jMenuItemChargerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemChargerActionPerformed
+		// TODO add your handling code here:
+		FileDialog fileDialog = new FileDialog(this, "Choix du fichier à charger", FileDialog.LOAD);
+		fileDialog.setVisible(true);
+		String fichier = fileDialog.getDirectory() + fileDialog.getFile();
+		System.out.println(fichier);
+		this.parcInfo = null;
+		this.parcInfo = Sauvegarde.charger(fichier);
+    }//GEN-LAST:event_jMenuItemChargerActionPerformed
+
+    private void jMenuItemSauvegarderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSauvegarderActionPerformed
+		// TODO add your handling code here:
+		FileDialog fileDialog = new FileDialog(this, "Choix du fichier à sauvegarder", FileDialog.SAVE);
+		fileDialog.setVisible(true);
+		String fichier = fileDialog.getDirectory() + fileDialog.getFile();
+		Sauvegarde.sauvegarder(this.parcInfo, fichier);
+    }//GEN-LAST:event_jMenuItemSauvegarderActionPerformed
+
+    private void jMenuItemConfigurationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConfigurationActionPerformed
 		// TODO add your handling code here:
 		ConfigurationWindow configuration = new ConfigurationWindow(this);
 		configuration.setVisible(true);
-		//configuration.toFront();
-    }//GEN-LAST:event_jMenuConfigurationMenuSelected
+    }//GEN-LAST:event_jMenuItemConfigurationActionPerformed
 
-    private void jTextFieldFabriquantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldFabriquantActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldFabriquantActionPerformed
+    private void jMenuItemQuitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemQuitterActionPerformed
+		// TODO add your handling code here:
+		System.exit(0);
+    }//GEN-LAST:event_jMenuItemQuitterActionPerformed
 
 	/**
 	 * @param args the command line arguments
@@ -669,12 +773,12 @@ public class MainWindow extends javax.swing.JFrame {
 		 * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
 		 */
 		try {
-			
-				
-					javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getSystemLookAndFeelClassName());
-					
-				
-			
+
+
+			javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getSystemLookAndFeelClassName());
+
+
+
 		} catch (ClassNotFoundException ex) {
 			java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		} catch (InstantiationException ex) {
@@ -732,7 +836,12 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelSerial;
     private javax.swing.JList jListOS;
     private javax.swing.JMenuBar jMenuBar;
-    private javax.swing.JMenu jMenuConfiguration;
+    private javax.swing.JMenu jMenuFichier;
+    private javax.swing.JMenuItem jMenuItemCharger;
+    private javax.swing.JMenuItem jMenuItemConfiguration;
+    private javax.swing.JMenuItem jMenuItemQuitter;
+    private javax.swing.JMenuItem jMenuItemSauvegarder;
+    private javax.swing.JMenu jMenuOptions;
     private javax.swing.JPanel jPaneRecapitulatif;
     private javax.swing.JPanel jPanelFabriquant;
     private javax.swing.JPanel jPanelFiltresMaintenance;
@@ -743,6 +852,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JProgressBar jProgressBarInstall;
     private javax.swing.JScrollPane jScrollPaneAjoutMachine;
     private javax.swing.JScrollPane jScrollPaneTableauSupervision;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JTabbedPane jTabLvlOnglets;
     private javax.swing.JTable jTableauSupervision;
     private javax.swing.JTextField jTextFieldFabriquant;

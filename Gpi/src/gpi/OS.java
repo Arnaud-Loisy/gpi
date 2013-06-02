@@ -4,14 +4,22 @@
  */
 package gpi;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Arnaud Loisy
  */
-public class OS {
-    
+public class OS implements Serializable {
+	
+	private static final long serialVersionUID = 13L;
     private String Nom;
     private String Version;
+	
+	public OS(String nom, String version) {
+		this.Nom = nom;
+		this.Version = version;
+	}
     
     /**
      * 
@@ -43,5 +51,9 @@ public class OS {
     public void setVersion(String Version) {
         this.Version = Version;
     }
+	
+	public String toString() {
+		return this.Nom;
+	}
     
 }
