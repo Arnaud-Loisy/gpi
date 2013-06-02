@@ -84,7 +84,7 @@ public class DetailedWindow extends javax.swing.JFrame {
         jLabelModeleGeneralites.setText("Modèle :");
 
         jLabelNSerieGeneralites.setFont(new java.awt.Font("Cantarell", 1, 15)); // NOI18N
-        jLabelNSerieGeneralites.setText("N° Série :");
+        jLabelNSerieGeneralites.setText("N° de Série :");
 
         jLabelFabricantGeneralites.setFont(new java.awt.Font("Cantarell", 1, 15)); // NOI18N
         jLabelFabricantGeneralites.setText("Fabricant :");
