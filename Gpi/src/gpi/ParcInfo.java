@@ -5,6 +5,7 @@
 package gpi;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
 
 /**
@@ -135,6 +136,8 @@ public class ParcInfo implements Serializable {
 	 */
 	public void ajouterNouvelOrdinateur(Ordinateur ordinateur, Salle salle) {
 		int index = this.salles.getIndexOf(salle);
+		
+		ordinateur.setDateInstall(new Date());
 
 		((Salle) this.salles.getElementAt(index)).affecterOrdinateur(ordinateur);
 		this.ordinateurs.addElement(ordinateur);
