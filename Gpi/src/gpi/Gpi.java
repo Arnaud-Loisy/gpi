@@ -21,9 +21,11 @@ public class Gpi {
         // TODO code application logic here
 		ParcInfo parcInfo = new ParcInfo();
 		
+		Batiment batiment0 = new Batiment("Entrepot");
 		Batiment batiment1 = new Batiment("U4");
 		Batiment batiment2 = new Batiment("U3");
 		
+		Salle salle0 = new Salle("Stock");
 		Salle salle1 = new Salle("212");
 		Salle salle2 = new Salle("210");
 		Salle salle3 = new Salle("209");
@@ -37,21 +39,24 @@ public class Gpi {
 		Ordinateur ordi4 = new Ordinateur("Mars", "E6200", "Dell", "1265467899");
 		Ordinateur ordi5 = new Ordinateur("Pluton", "Zenbook", "Asus", "12965467");
 		
-		salle1.affecterOrdinateur(ordi1);
-		salle2.affecterOrdinateur(ordi2);
-		salle3.affecterOrdinateur(ordi3);
-		salle3.affecterOrdinateur(ordi4);
-		salle5.affecterOrdinateur(ordi5);
-		
+		parcInfo.ajouterNouveauBatiment(batiment0);
 		parcInfo.ajouterNouveauBatiment(batiment1);
 		parcInfo.ajouterNouveauBatiment(batiment2);
 		
+		parcInfo.ajouterNouvelleSalle(batiment0, salle0);
 		parcInfo.ajouterNouvelleSalle(batiment1, salle1);
 		parcInfo.ajouterNouvelleSalle(batiment1, salle2);
 		parcInfo.ajouterNouvelleSalle(batiment1, salle3);
 		parcInfo.ajouterNouvelleSalle(batiment2, salle4);
 		parcInfo.ajouterNouvelleSalle(batiment2, salle5);
 		parcInfo.ajouterNouvelleSalle(batiment2, salle6);
+		
+		parcInfo.ajouterNouvelOrdinateur(ordi1, salle1);
+		parcInfo.ajouterNouvelOrdinateur(ordi2, salle2);
+		parcInfo.ajouterNouvelOrdinateur(ordi3, salle3);
+		parcInfo.ajouterNouvelOrdinateur(ordi4, salle3);
+		parcInfo.ajouterNouvelOrdinateur(ordi5, salle5);
+		
         try {
             javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getSystemLookAndFeelClassName());
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {

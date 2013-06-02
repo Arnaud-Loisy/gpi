@@ -23,11 +23,13 @@ public class MainWindow extends javax.swing.JFrame {
 	 * Creates new form MainWindow
 	 */
 	public MainWindow(ParcInfo parcInfo) {
-            
+
 		initComponents();
 		this.parcInfo = parcInfo;
 		this.jComboBoxBatSupervision.setModel(this.parcInfo.getBatiments());
 		this.jComboBoxSallesSupervision.setModel(this.parcInfo.getSalles());
+		this.jComboBoxSalleAjoutMachine.setModel(new DefaultComboBoxModel());
+		this.jComboBoxSalleAjoutMachine.addItem("Stock");
 		this.setLocationRelativeTo(null);
 	}
 
@@ -401,8 +403,11 @@ public class MainWindow extends javax.swing.JFrame {
         jLabelOSAjoutMachine.setText("OS");
 
         jComboBoxEtatAjoutMachine.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Stock", "En Panne", "Installé" }));
-
-        jComboBoxSalleAjoutMachine.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "U2-211", "U2-212", "U2-213", "U3-209" }));
+        jComboBoxEtatAjoutMachine.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBoxEtatAjoutMachineItemStateChanged(evt);
+            }
+        });
 
         jListOS.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Windows XP", "Windows Vista", "Windows 7", "Windows 8", "Mac Os X", "Linux Debian" };
@@ -591,7 +596,6 @@ public class MainWindow extends javax.swing.JFrame {
 		// Pour tous les batiments
 		for (int i = 0; i < nbBatiments; i++) {
 			Vector ligne = null;
-			ligne = new Vector();
 			Batiment batiment = null;
 			batiment = (Batiment) this.parcInfo.getBatiments().getElementAt(i);
 			int nbSalles = batiment.getSalles().getSize();
@@ -607,6 +611,9 @@ public class MainWindow extends javax.swing.JFrame {
 					if (nbOrdinateurs > 0) {
 						for (int k = 0; k < nbOrdinateurs; k++) {
 							Ordinateur ordinateur = (Ordinateur) salle.getOrdinateurs().getElementAt(k);
+
+							ligne = new Vector();
+
 							ligne.add(batiment);
 							ligne.add(salle);
 							ligne.add(ordinateur);
@@ -615,16 +622,16 @@ public class MainWindow extends javax.swing.JFrame {
 					}
 
 					if (nbOrdinateurs == 0) {
+						ligne = new Vector();
+
 						ligne.add(batiment);
 						ligne.add(salle);
 						modele.addRow(ligne);
 					}
-
-					salle = null;
-					ligne = null;
-					ligne = new Vector();
 				}
 			} else {
+				ligne = new Vector();
+
 				ligne.add(batiment);
 				modele.addRow(ligne);
 			}
@@ -644,6 +651,14 @@ public class MainWindow extends javax.swing.JFrame {
 		DefaultComboBoxModel<OS> modele = new DefaultComboBoxModel();
 		modele.addElement(os);
 		ordinateur.setOs(modele);
+		ordinateur.setEtat(this.jComboBoxEtatAjoutMachine.getSelectedItem().toString());
+
+		if (this.jComboBoxEtatAjoutMachine.getSelectedItem().toString() == "Stock") {
+			this.parcInfo.ajouterNouvelOrdinateur(ordinateur, ((Salle) this.parcInfo.getSalles().getElementAt(0)));
+		} else {
+			Salle salle = (Salle) this.jComboBoxSalleAjoutMachine.getSelectedItem();
+			this.parcInfo.ajouterNouvelOrdinateur(ordinateur, salle);
+		}
     }//GEN-LAST:event_jButtonValiderAjoutMAchineActionPerformed
 
     private void jMenuConfigurationMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenuConfigurationMenuSelected
@@ -654,8 +669,18 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuConfigurationMenuSelected
 
     private void jTextFieldFabriquantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldFabriquantActionPerformed
-        // TODO add your handling code here:
+		// TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldFabriquantActionPerformed
+
+    private void jComboBoxEtatAjoutMachineItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxEtatAjoutMachineItemStateChanged
+		// TODO add your handling code here:
+		if (this.jComboBoxEtatAjoutMachine.getSelectedItem().toString() == "Stock") {
+			this.jComboBoxSalleAjoutMachine.setModel(new DefaultComboBoxModel());
+			this.jComboBoxSalleAjoutMachine.addItem("Stock");
+		} else {
+			this.jComboBoxSalleAjoutMachine.setModel(this.parcInfo.getSalles());
+		}
+    }//GEN-LAST:event_jComboBoxEtatAjoutMachineItemStateChanged
 
 	/**
 	 * @param args the command line arguments
@@ -667,12 +692,12 @@ public class MainWindow extends javax.swing.JFrame {
 		 * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
 		 */
 		try {
-			
-				
-					javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getSystemLookAndFeelClassName());
-					
-				
-			
+
+
+			javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getSystemLookAndFeelClassName());
+
+
+
 		} catch (ClassNotFoundException ex) {
 			java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		} catch (InstantiationException ex) {
