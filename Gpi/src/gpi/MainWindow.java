@@ -132,6 +132,7 @@ public class MainWindow extends javax.swing.JFrame {
         jLabelEtatMaintenance = new javax.swing.JLabel();
         jComboBoxEtatMaintenance = new javax.swing.JComboBox();
         jLabelSalleOrdiMaintenance1 = new javax.swing.JLabel();
+        jButtonChangerEtat = new javax.swing.JButton();
         jPanelFabriquant = new javax.swing.JPanel();
         jTextFieldHostname = new javax.swing.JTextField();
         jLabelHostname = new javax.swing.JLabel();
@@ -205,7 +206,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addComponent(jLabelRecapSalles)
                 .addGap(8, 8, 8)
                 .addComponent(jLabelRecapOrdinateurs)
-                .addContainerGap(382, Short.MAX_VALUE))
+                .addContainerGap(390, Short.MAX_VALUE))
         );
 
         jTabLvlOnglets.addTab("Récapitulatif", jPaneRecapitulatif);
@@ -254,7 +255,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         jLabelBatiments1.setText("OS");
 
-        jComboBoxOsSupervision.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tous", "Windows 7", "Windows 8", "Linux" }));
+        jComboBoxOsSupervision.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Windows 8", "Windows 7", "Windows XP", "Windows Vista", "Mac Os", "Linux", "Sans OS" }));
 
         jButtonPasFiltrerSupervision.setText("Affichage (Sans filtres)");
         jButtonPasFiltrerSupervision.addActionListener(new java.awt.event.ActionListener() {
@@ -337,7 +338,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanelFiltresSupervision, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPaneTableauSupervision, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE)
+                .addComponent(jScrollPaneTableauSupervision, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonDetails)
                 .addGap(33, 33, 33))
@@ -433,12 +434,22 @@ public class MainWindow extends javax.swing.JFrame {
         });
 
         jButtonChangerOS.setText("Changer l'OS");
+        jButtonChangerOS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonChangerOSActionPerformed(evt);
+            }
+        });
 
         jProgressBarInstall.setValue(20);
 
         jLabelEtatMaintenance.setText("Etat");
 
         jComboBoxEtatMaintenance.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Stock", "En Panne", "Installé" }));
+        jComboBoxEtatMaintenance.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jComboBoxEtatMaintenanceMouseClicked(evt);
+            }
+        });
         jComboBoxEtatMaintenance.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxEtatMaintenanceActionPerformed(evt);
@@ -446,6 +457,13 @@ public class MainWindow extends javax.swing.JFrame {
         });
 
         jLabelSalleOrdiMaintenance1.setText("Nom");
+
+        jButtonChangerEtat.setText("Changer l'OS");
+        jButtonChangerEtat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonChangerEtatActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelOrdinateurMaintenanceLayout = new javax.swing.GroupLayout(jPanelOrdinateurMaintenance);
         jPanelOrdinateurMaintenance.setLayout(jPanelOrdinateurMaintenanceLayout);
@@ -466,16 +484,13 @@ public class MainWindow extends javax.swing.JFrame {
                             .addComponent(jComboBoxEtatMaintenance, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jComboBoxSalleMaintenance, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jComboBoxOrdinateursMaintenance, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBoxOSMaintenance, 0, 0, Short.MAX_VALUE))
-                        .addGroup(jPanelOrdinateurMaintenanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelOrdinateurMaintenanceLayout.createSequentialGroup()
-                                .addGap(38, 38, 38)
-                                .addComponent(jButtonChangerOS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelOrdinateurMaintenanceLayout.createSequentialGroup()
-                                .addGap(42, 42, 42)
-                                .addGroup(jPanelOrdinateurMaintenanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButtonTransfererMaintenance, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButtonMaJMaintenance, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                            .addComponent(jComboBoxOSMaintenance, 0, 1, Short.MAX_VALUE))
+                        .addGap(42, 42, 42)
+                        .addGroup(jPanelOrdinateurMaintenanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButtonTransfererMaintenance, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonMaJMaintenance, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonChangerEtat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonChangerOS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanelOrdinateurMaintenanceLayout.setVerticalGroup(
@@ -492,17 +507,15 @@ public class MainWindow extends javax.swing.JFrame {
                     .addComponent(jComboBoxSalleMaintenance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelSalleOrdiMaintenance))
                 .addGap(8, 8, 8)
-                .addGroup(jPanelOrdinateurMaintenanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelOrdinateurMaintenanceLayout.createSequentialGroup()
-                        .addComponent(jLabelEtatMaintenance)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanelOrdinateurMaintenanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButtonChangerOS)
-                            .addComponent(jLabelOSOrdinateur)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelOrdinateurMaintenanceLayout.createSequentialGroup()
-                        .addComponent(jComboBoxEtatMaintenance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jComboBoxOSMaintenance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanelOrdinateurMaintenanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBoxEtatMaintenance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonChangerEtat)
+                    .addComponent(jLabelEtatMaintenance))
+                .addGap(14, 14, 14)
+                .addGroup(jPanelOrdinateurMaintenanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBoxOSMaintenance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonChangerOS)
+                    .addComponent(jLabelOSOrdinateur))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jProgressBarInstall, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, Short.MAX_VALUE))
@@ -650,7 +663,7 @@ public class MainWindow extends javax.swing.JFrame {
                         .addComponent(jPanelFiltresMaintenance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanelOrdinateurMaintenance, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(31, 46, Short.MAX_VALUE))
+                .addGap(31, 48, Short.MAX_VALUE))
         );
 
         jTabLvlOnglets.addTab("Maintenance", jPanelMaintenance);
@@ -998,9 +1011,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBoxBatSupervisionActionPerformed
 
     private void jComboBoxEtatMaintenanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxEtatMaintenanceActionPerformed
-		// TODO add your handling code here:
-		Ordinateur ordinateur = (Ordinateur) this.jComboBoxOrdinateursMaintenance.getSelectedItem();
-		ordinateur.setEtat(this.jComboBoxEtatMaintenance.getSelectedItem().toString());
+		// TODO add your handling code here:		
     }//GEN-LAST:event_jComboBoxEtatMaintenanceActionPerformed
 
     private void jComboBoxOrdinateursMaintenanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxOrdinateursMaintenanceActionPerformed
@@ -1049,6 +1060,45 @@ public class MainWindow extends javax.swing.JFrame {
 				+ this.parcInfo.nbOrdinateurs("En Panne") + " en panne");
 		this.jLabelRecapSalles.setText("Vous avez " + this.parcInfo.nbSalles() + " Salles en service");
     }//GEN-LAST:event_jTabLvlOngletsMouseClicked
+
+    private void jComboBoxEtatMaintenanceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBoxEtatMaintenanceMouseClicked
+		// TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxEtatMaintenanceMouseClicked
+
+    private void jButtonChangerOSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonChangerOSActionPerformed
+		// TODO add your handling code here:
+		Ordinateur ordinateur = (Ordinateur) this.jComboBoxOrdinateursMaintenance.getSelectedItem();
+
+		String osAvant = ordinateur.getOs().getNom();
+		String osApres = this.jComboBoxOSMaintenance.getSelectedItem().toString();
+
+		if (osAvant == osApres) {
+			return;
+		}
+
+		OS os = new OS(osApres, "2");
+		ordinateur.setOs(os);
+
+		ordinateur.ajouterOperationHistorique("Changement de système d'exploitation : \'" + osAvant + "\' -> \'" + osApres + "\'", new Date());
+		JOptionPane.showMessageDialog(this, "Changement de système d'exploitation effectué !", "Information", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_jButtonChangerOSActionPerformed
+
+    private void jButtonChangerEtatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonChangerEtatActionPerformed
+		// TODO add your handling code here:
+		Ordinateur ordinateur = (Ordinateur) this.jComboBoxOrdinateursMaintenance.getSelectedItem();
+
+		String etatAvant = ordinateur.getEtat();
+		String etatApres = this.jComboBoxEtatMaintenance.getSelectedItem().toString();
+
+		if (etatAvant == etatApres) {
+			return;
+		}
+
+		ordinateur.setEtat(this.jComboBoxEtatMaintenance.getSelectedItem().toString());
+
+		ordinateur.ajouterOperationHistorique("Changement d'état : \'" + etatAvant + "\' -> \'" + etatApres + "\'", new Date());
+		JOptionPane.showMessageDialog(this, "Changement de système d'exploitation effectué !", "Information", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_jButtonChangerEtatActionPerformed
 
 	/**
 	 * @param args the command line arguments
@@ -1099,6 +1149,7 @@ public class MainWindow extends javax.swing.JFrame {
 		});
 	}
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonChangerEtat;
     private javax.swing.JButton jButtonChangerOS;
     private javax.swing.JButton jButtonDetails;
     private javax.swing.JButton jButtonFiltrerMaintenance;

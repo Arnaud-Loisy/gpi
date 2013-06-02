@@ -92,7 +92,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="jTabLvlOnglets" pref="531" max="32767" attributes="0"/>
+              <Component id="jTabLvlOnglets" max="32767" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -380,11 +380,14 @@
                 <Component class="javax.swing.JComboBox" name="jComboBoxOsSupervision">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
-                        <StringItem index="0" value="Tous"/>
+                      <StringArray count="7">
+                        <StringItem index="0" value="Windows 8"/>
                         <StringItem index="1" value="Windows 7"/>
-                        <StringItem index="2" value="Windows 8"/>
-                        <StringItem index="3" value="Linux"/>
+                        <StringItem index="2" value="Windows XP"/>
+                        <StringItem index="3" value="Windows Vista"/>
+                        <StringItem index="4" value="Mac Os"/>
+                        <StringItem index="5" value="Linux"/>
+                        <StringItem index="6" value="Sans OS"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -587,18 +590,12 @@
                                       <Component id="jComboBoxOrdinateursMaintenance" alignment="0" max="32767" attributes="0"/>
                                       <Component id="jComboBoxOSMaintenance" alignment="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                                          <Component id="jButtonChangerOS" max="32767" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="jButtonTransfererMaintenance" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jButtonMaJMaintenance" alignment="0" max="32767" attributes="0"/>
-                                          </Group>
-                                      </Group>
+                                  <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jButtonTransfererMaintenance" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jButtonMaJMaintenance" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jButtonChangerEtat" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jButtonChangerOS" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -622,20 +619,16 @@
                               <Component id="jLabelSalleOrdiMaintenance" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="jLabelEtatMaintenance" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jButtonChangerOS" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabelOSOrdinateur" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="jComboBoxEtatMaintenance" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="jComboBoxOSMaintenance" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jComboBoxEtatMaintenance" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButtonChangerEtat" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelEtatMaintenance" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jComboBoxOSMaintenance" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButtonChangerOS" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelOSOrdinateur" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Component id="jProgressBarInstall" min="-2" max="-2" attributes="0"/>
@@ -697,6 +690,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Changer l&apos;OS"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonChangerOSActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JProgressBar" name="jProgressBarInstall">
                   <Properties>
@@ -719,6 +715,7 @@
                     </Property>
                   </Properties>
                   <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jComboBoxEtatMaintenanceMouseClicked"/>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxEtatMaintenanceActionPerformed"/>
                   </Events>
                 </Component>
@@ -726,6 +723,14 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Nom"/>
                   </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="jButtonChangerEtat">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Changer l&apos;OS"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonChangerEtatActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
