@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author Arnaud Loisy
+ * @author Arnaud
  */
 public class OS implements Serializable {
 	

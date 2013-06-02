@@ -18,7 +18,11 @@ import java.util.logging.Logger;
  * @author jeremy
  */
 public class Sauvegarde {
-
+        /**
+         * Classe permettant de sauvegarder le parc informatique via la serialization
+         * @param parcInfo le parc informatique à sauvegarder
+         * @param nomFichier le fichier dans lequel sera sauvegardé le parc informatique
+         */
 	public static void sauvegarder(ParcInfo parcInfo, String nomFichier) {
 		FileOutputStream fluxFichier = null;
 		try {
@@ -47,7 +51,11 @@ public class Sauvegarde {
 			}
 		}
 	}
-
+        /**
+         * Charge un parc informatique précédemment sauvegardé dans un fichier
+         * @param nomFichier le nom du fichier de sauvegarde à charger
+         * @return parcInfo le parc informatique chargé depuis le fichier de sauvegarde
+         */
 	public static ParcInfo charger(String nomFichier) {
 		FileInputStream fluxFichier = null;
 		ParcInfo parcInfo = null;

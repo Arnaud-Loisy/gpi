@@ -11,7 +11,7 @@ import javax.swing.DefaultComboBoxModel;
 
 /**
  *
- * @author darkey
+ * @author Arnaud
  */
 public class Ordinateur implements Serializable {
 

@@ -10,7 +10,7 @@ import javax.swing.DefaultComboBoxModel;
 
 /**
  *
- * @author darkey
+ * @author Arnaud
  */
 public class ParcInfo implements Serializable {
 

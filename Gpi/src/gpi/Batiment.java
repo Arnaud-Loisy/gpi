@@ -9,7 +9,7 @@ import javax.swing.DefaultComboBoxModel;
 
 /**
  *
- * @author Arnaud Loisy
+ * @author Arnaud
  */
 public class Batiment implements Serializable{
 
