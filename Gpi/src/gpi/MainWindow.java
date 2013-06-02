@@ -644,16 +644,37 @@ public class MainWindow extends javax.swing.JFrame {
 
 					int nbOrdinateurs = salle.getOrdinateurs().getSize();
 
+					// Si la salle a au moins 1 ordinateur
 					if (nbOrdinateurs > 0) {
 						for (int k = 0; k < nbOrdinateurs; k++) {
 							Ordinateur ordinateur = (Ordinateur) salle.getOrdinateurs().getElementAt(k);
 
-							ligne = new Vector();
+							int nbOS = ordinateur.getOs().getSize();
 
-							ligne.add(batiment);
-							ligne.add(salle);
-							ligne.add(ordinateur);
-							modele.addRow(ligne);
+							// Si l'ordinateur a au moins 1 OS
+							if (nbOS > 0) {
+								for (int l = 0; l < nbOS; l++) {
+									OS os = (OS) ordinateur.getOs().getElementAt(l);
+									
+									ligne = new Vector();
+
+									ligne.add(batiment);
+									ligne.add(salle);
+									ligne.add(ordinateur);
+									ligne.add(os);
+									modele.addRow(ligne);
+								}
+							}
+							
+							if (nbOS == 0)
+							{
+								ligne = new Vector();
+								
+								ligne.add(batiment);
+								ligne.add(salle);
+								ligne.add(ordinateur);
+								modele.addRow(ligne);
+							}
 						}
 					}
 
@@ -730,13 +751,13 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemSauvegarderActionPerformed
 
     private void jMenuItemConfigurationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConfigurationActionPerformed
-        // TODO add your handling code here:
+		// TODO add your handling code here:
 		ConfigurationWindow configuration = new ConfigurationWindow(this);
 		configuration.setVisible(true);
     }//GEN-LAST:event_jMenuItemConfigurationActionPerformed
 
     private void jMenuItemQuitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemQuitterActionPerformed
-        // TODO add your handling code here:
+		// TODO add your handling code here:
 		System.exit(0);
     }//GEN-LAST:event_jMenuItemQuitterActionPerformed
 

@@ -54,6 +54,7 @@ public class Ordinateur implements Serializable {
 		this.modele = modele;
 		this.fabriquant = fabriquant;
 		this.numSerie = numSerie;
+		this.Os = new DefaultComboBoxModel();
 	}
 
 	/**
@@ -86,7 +87,7 @@ public class Ordinateur implements Serializable {
 	 * @return le systeme d'exploitation d'un ordinateur
 	 */
 	public DefaultComboBoxModel getOs() {
-		return Os;
+		return this.Os;
 	}
 
 	/**
