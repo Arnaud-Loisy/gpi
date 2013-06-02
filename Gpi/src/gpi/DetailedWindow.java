@@ -26,10 +26,10 @@ public class DetailedWindow extends javax.swing.JFrame {
 		this.jLabelNSerieGeneralites.setText(this.jLabelNSerieGeneralites.getText() + " " + this.ordinateur.getNumSerie());
 		this.jLabelNomGeneralites.setText(this.jLabelNomGeneralites.getText() + " " + this.ordinateur.getNom());
 		this.jLabelDateInstallGeneralites.setText(this.jLabelDateInstallGeneralites.getText() + " " + this.ordinateur.getDateInstall().toString());
-                this.jLabelOSGeneralites.setText(this.jLabelOSGeneralites.getText() + " " + this.ordinateur.getOs().getNom());
-                this.jLabelEtatGeneralites.setText(this.jLabelEtatGeneralites.getText() + " " + this.ordinateur.getEtat());
+		this.jLabelDateAcquisitionGeneralites.setText(this.jLabelDateAcquisitionGeneralites.getText() + " " + this.ordinateur.getDateAcquisition().toString());
+		this.jLabelOSGeneralites.setText(this.jLabelOSGeneralites.getText() + " " + this.ordinateur.getOs().getNom());
+		this.jLabelEtatGeneralites.setText(this.jLabelEtatGeneralites.getText() + " " + this.ordinateur.getEtat());
 		int nbOperations = this.ordinateur.getHistorique().size();
-		System.out.println(this.ordinateur.getHistorique().size());
 
 		if (nbOperations != 0) {
 			DefaultTableModel modele = new DefaultTableModel();
@@ -72,6 +72,7 @@ public class DetailedWindow extends javax.swing.JFrame {
         jLabelNomGeneralites = new javax.swing.JLabel();
         jLabelOSGeneralites = new javax.swing.JLabel();
         jLabelEtatGeneralites = new javax.swing.JLabel();
+        jLabelDateAcquisitionGeneralites = new javax.swing.JLabel();
         jPanelHistorique = new javax.swing.JPanel();
         jScrollPaneHistorique = new javax.swing.JScrollPane();
         jTableHistorique = new javax.swing.JTable();
@@ -102,6 +103,9 @@ public class DetailedWindow extends javax.swing.JFrame {
         jLabelEtatGeneralites.setFont(new java.awt.Font("Cantarell", 1, 15)); // NOI18N
         jLabelEtatGeneralites.setText("Etat :");
 
+        jLabelDateAcquisitionGeneralites.setFont(new java.awt.Font("Cantarell", 1, 15)); // NOI18N
+        jLabelDateAcquisitionGeneralites.setText("Date d'acquisition :");
+
         javax.swing.GroupLayout jPanelGeneralitesLayout = new javax.swing.GroupLayout(jPanelGeneralites);
         jPanelGeneralites.setLayout(jPanelGeneralitesLayout);
         jPanelGeneralitesLayout.setHorizontalGroup(
@@ -116,8 +120,9 @@ public class DetailedWindow extends javax.swing.JFrame {
                 .addGap(225, 225, 225)
                 .addGroup(jPanelGeneralitesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelOSGeneralites)
+                    .addComponent(jLabelEtatGeneralites)
                     .addComponent(jLabelDateInstallGeneralites)
-                    .addComponent(jLabelEtatGeneralites))
+                    .addComponent(jLabelDateAcquisitionGeneralites))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelGeneralitesLayout.setVerticalGroup(
@@ -125,21 +130,20 @@ public class DetailedWindow extends javax.swing.JFrame {
             .addGroup(jPanelGeneralitesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelGeneralitesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelDateInstallGeneralites)
-                    .addComponent(jLabelNomGeneralites))
-                .addGroup(jPanelGeneralitesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelGeneralitesLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelFabricantGeneralites)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelModeleGeneralites, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelNSerieGeneralites))
-                    .addGroup(jPanelGeneralitesLayout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(jLabelOSGeneralites)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelEtatGeneralites)))
+                    .addComponent(jLabelNomGeneralites)
+                    .addComponent(jLabelDateAcquisitionGeneralites))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelGeneralitesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelFabricantGeneralites)
+                    .addComponent(jLabelDateInstallGeneralites))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelGeneralitesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelModeleGeneralites, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelOSGeneralites))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelGeneralitesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelNSerieGeneralites)
+                    .addComponent(jLabelEtatGeneralites))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
@@ -170,7 +174,7 @@ public class DetailedWindow extends javax.swing.JFrame {
         jPanelHistoriqueLayout.setVerticalGroup(
             jPanelHistoriqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelHistoriqueLayout.createSequentialGroup()
-                .addComponent(jScrollPaneHistorique, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)
+                .addComponent(jScrollPaneHistorique, javax.swing.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -234,6 +238,7 @@ public class DetailedWindow extends javax.swing.JFrame {
 		});
 	}
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabelDateAcquisitionGeneralites;
     private javax.swing.JLabel jLabelDateInstallGeneralites;
     private javax.swing.JLabel jLabelEtatGeneralites;
     private javax.swing.JLabel jLabelFabricantGeneralites;

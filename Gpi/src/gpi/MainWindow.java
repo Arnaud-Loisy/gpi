@@ -414,6 +414,11 @@ public class MainWindow extends javax.swing.JFrame {
         });
 
         jButtonTransfererMaintenance.setText("Transférer");
+        jButtonTransfererMaintenance.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTransfererMaintenanceActionPerformed(evt);
+            }
+        });
 
         jButtonMaJMaintenance.setText("Mettre à Jour");
         jButtonMaJMaintenance.addActionListener(new java.awt.event.ActionListener() {
@@ -862,9 +867,10 @@ public class MainWindow extends javax.swing.JFrame {
 		Ordinateur ordinateur = new Ordinateur(this.jTextFieldHostname.getText(), this.jTextFieldModele.getText(), this.jTextFieldFabriquant.getText(), this.jTextFieldSerial.getText(), os);
 
 		ordinateur.setEtat(this.jComboBoxEtatAjoutMachine.getSelectedItem().toString());
-		
-		if (ordinateur.getEtat() == "Stock")
+
+		if (ordinateur.getEtat() == "Stock") {
 			ordinateur.setDateAcquisition(new Date());
+		}
 
 		if (this.jComboBoxEtatAjoutMachine.getSelectedItem().toString() == "Stock") {
 			this.parcInfo.ajouterNouvelOrdinateur(ordinateur, ((Salle) this.parcInfo.getSalles().getElementAt(0)));
@@ -1111,6 +1117,43 @@ public class MainWindow extends javax.swing.JFrame {
 		ordinateur.ajouterOperationHistorique("Changement d'état : \'" + etatAvant + "\' -> \'" + etatApres + "\'", new Date());
 		JOptionPane.showMessageDialog(this, "Changement d'état effectué !", "Information", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jButtonChangerEtatActionPerformed
+
+    private void jButtonTransfererMaintenanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTransfererMaintenanceActionPerformed
+		// TODO add your handling code here:
+		Ordinateur ordinateur = (Ordinateur) this.jComboBoxOrdinateursMaintenance.getSelectedItem();
+
+		if (ordinateur == null) {
+			return;
+		}
+
+		int indexSalle = -1;
+		for (int i = 0; i < this.parcInfo.getSalles().getSize(); i++) {
+			if (((Salle) this.parcInfo.getSalles().getElementAt(i)).contientOrdinateur(ordinateur)) {
+				indexSalle = i;
+			}
+		}
+
+		if (indexSalle != -1) {
+			Salle salleAvant = (Salle) this.parcInfo.getSalles().getElementAt(indexSalle);
+			this.jComboBoxSalleMaintenance.setSelectedIndex(indexSalle);
+			this.jComboBoxOSMaintenance.setSelectedItem(new String(ordinateur.getOs().toString()));
+
+			Salle salleApres = (Salle) this.jComboBoxSalleMaintenance.getSelectedItem();
+
+			if (salleAvant == salleApres) {
+				return;
+			}
+			
+			if (salleAvant.toString() == "Stock")
+				ordinateur.setDateInstall(new Date());
+
+			salleAvant.getOrdinateurs().removeElement(ordinateur);
+			salleApres.affecterOrdinateur(ordinateur);
+			ordinateur.ajouterOperationHistorique("Transfert effectué : \'" + salleAvant.toString() + "\' -> \'" + salleApres.toString() + "\'", new Date());
+			JOptionPane.showMessageDialog(this, "Transfert effectué !", "Information", JOptionPane.INFORMATION_MESSAGE);
+		}
+
+    }//GEN-LAST:event_jButtonTransfererMaintenanceActionPerformed
 
 	/**
 	 * @param args the command line arguments
