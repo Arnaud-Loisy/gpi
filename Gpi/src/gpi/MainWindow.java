@@ -743,7 +743,7 @@ public class MainWindow extends javax.swing.JFrame {
 				this.jComboBoxOrdinateursMaintenance.setModel(salle.getOrdinateurs());
 				indexSalle = -1;
 				for (int i = 0; i < this.parcInfo.getSalles().getSize(); i++) {
-					if (((Salle) this.parcInfo.getSalles().getElementAt(i)).contientOrdinateur((Ordinateur)this.jComboBoxOrdinateursMaintenance.getSelectedItem())) {
+					if (((Salle) this.parcInfo.getSalles().getElementAt(i)).contientOrdinateur((Ordinateur) this.jComboBoxOrdinateursMaintenance.getSelectedItem())) {
 						indexSalle = i;
 					}
 				}
@@ -839,14 +839,11 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void jButtonValiderAjoutMAchineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonValiderAjoutMAchineActionPerformed
 		// TODO add your handling code here:
-		Ordinateur ordinateur = new Ordinateur(this.jTextFieldHostname.getText(), this.jTextFieldModele.getText(), this.jTextFieldFabriquant.getText(), this.jTextFieldSerial.getText());
 		String NomOS = this.jListOS.getSelectedValue().toString();
 
 		OS os = new OS(NomOS, "2");
+		Ordinateur ordinateur = new Ordinateur(this.jTextFieldHostname.getText(), this.jTextFieldModele.getText(), this.jTextFieldFabriquant.getText(), this.jTextFieldSerial.getText(), os);
 
-		DefaultComboBoxModel<OS> modele = new DefaultComboBoxModel();
-		modele.addElement(os);
-		ordinateur.setOs(modele);
 		ordinateur.setEtat(this.jComboBoxEtatAjoutMachine.getSelectedItem().toString());
 
 		if (this.jComboBoxEtatAjoutMachine.getSelectedItem().toString() == "Stock") {
@@ -940,31 +937,16 @@ public class MainWindow extends javax.swing.JFrame {
 						for (int k = 0; k < nbOrdinateurs; k++) {
 							Ordinateur ordinateur = (Ordinateur) salle.getOrdinateurs().getElementAt(k);
 
-							int nbOS = ordinateur.getOs().getSize();
-
 							// Si l'ordinateur a au moins 1 OS
-							if (nbOS > 0) {
-								for (int l = 0; l < nbOS; l++) {
-									OS os = (OS) ordinateur.getOs().getElementAt(l);
+							OS os = ordinateur.getOs();
 
-									ligne = new Vector();
+							ligne = new Vector();
 
-									ligne.add(batiment);
-									ligne.add(salle);
-									ligne.add(ordinateur);
-									ligne.add(os);
-									modele.addRow(ligne);
-								}
-							}
-
-							if (nbOS == 0) {
-								ligne = new Vector();
-
-								ligne.add(batiment);
-								ligne.add(salle);
-								ligne.add(ordinateur);
-								modele.addRow(ligne);
-							}
+							ligne.add(batiment);
+							ligne.add(salle);
+							ligne.add(ordinateur);
+							ligne.add(os);
+							modele.addRow(ligne);
 						}
 					}
 
@@ -986,7 +968,7 @@ public class MainWindow extends javax.swing.JFrame {
 		this.jTableauSupervision.setModel(modele);
 
 		this.jComboBoxSallesSupervision.setModel(this.parcInfo.getSalles());
-		
+
 		this.jComboBoxBatSupervision.setSelectedIndex(-1);
 		this.jComboBoxSallesSupervision.setSelectedIndex(-1);
 		this.jComboBoxOsSupervision.setSelectedIndex(-1);
