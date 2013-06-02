@@ -458,7 +458,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         jLabelSalleOrdiMaintenance1.setText("Nom");
 
-        jButtonChangerEtat.setText("Changer l'OS");
+        jButtonChangerEtat.setText("Changer l'état");
         jButtonChangerEtat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonChangerEtatActionPerformed(evt);
@@ -600,8 +600,8 @@ public class MainWindow extends javax.swing.JFrame {
                         .addGroup(jPanelFabriquantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jComboBoxSalleAjoutMachine, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jComboBoxEtatAjoutMachine, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPaneAjoutMachine, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
-                            .addComponent(jButtonValiderAjoutMAchine, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE))))
+                            .addComponent(jScrollPaneAjoutMachine, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
+                            .addComponent(jButtonValiderAjoutMAchine, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanelFabriquantLayout.setVerticalGroup(
@@ -623,14 +623,13 @@ public class MainWindow extends javax.swing.JFrame {
                     .addComponent(jLabelSerial)
                     .addComponent(jTextFieldSerial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelFabriquantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabelEtatAjoutMachine, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelFabriquantLayout.createSequentialGroup()
-                        .addComponent(jComboBoxEtatAjoutMachine, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanelFabriquantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBoxSalleAjoutMachine, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelSalleAjoutMachine))))
+                .addGroup(jPanelFabriquantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBoxEtatAjoutMachine, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelEtatAjoutMachine))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelFabriquantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBoxSalleAjoutMachine, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelSalleAjoutMachine))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelFabriquantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPaneAjoutMachine, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -724,7 +723,7 @@ public class MainWindow extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabLvlOnglets)
+                .addComponent(jTabLvlOnglets, javax.swing.GroupLayout.DEFAULT_SIZE, 531, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -763,6 +762,11 @@ public class MainWindow extends javax.swing.JFrame {
 
 				if (indexSalle != -1) {
 					this.jComboBoxSalleMaintenance.setSelectedIndex(indexSalle);
+				}
+
+				Ordinateur ordinateur = (Ordinateur) this.jComboBoxOrdinateursMaintenance.getSelectedItem();
+				if (ordinateur != null) {
+					this.jComboBoxOSMaintenance.setSelectedItem(new String());
 				}
 			} else { // Si une salle n'est pas selectionnee
 				JOptionPane.showMessageDialog(this, "Vous devez sélectionner une salle", "Information", JOptionPane.ERROR_MESSAGE);
@@ -858,6 +862,9 @@ public class MainWindow extends javax.swing.JFrame {
 		Ordinateur ordinateur = new Ordinateur(this.jTextFieldHostname.getText(), this.jTextFieldModele.getText(), this.jTextFieldFabriquant.getText(), this.jTextFieldSerial.getText(), os);
 
 		ordinateur.setEtat(this.jComboBoxEtatAjoutMachine.getSelectedItem().toString());
+		
+		if (ordinateur.getEtat() == "Stock")
+			ordinateur.setDateAcquisition(new Date());
 
 		if (this.jComboBoxEtatAjoutMachine.getSelectedItem().toString() == "Stock") {
 			this.parcInfo.ajouterNouvelOrdinateur(ordinateur, ((Salle) this.parcInfo.getSalles().getElementAt(0)));
@@ -1037,6 +1044,11 @@ public class MainWindow extends javax.swing.JFrame {
 
 		if (indexSalle != -1) {
 			this.jComboBoxSalleMaintenance.setSelectedIndex(indexSalle);
+			this.jComboBoxOSMaintenance.setSelectedItem(new String(ordinateur.getOs().toString()));
+		}
+
+		if (ordinateur != null) {
+			this.jComboBoxOSMaintenance.setSelectedItem(new String(ordinateur.getOs().toString()));
 		}
     }//GEN-LAST:event_jComboBoxOrdinateursMaintenanceActionPerformed
 
@@ -1097,7 +1109,7 @@ public class MainWindow extends javax.swing.JFrame {
 		ordinateur.setEtat(this.jComboBoxEtatMaintenance.getSelectedItem().toString());
 
 		ordinateur.ajouterOperationHistorique("Changement d'état : \'" + etatAvant + "\' -> \'" + etatApres + "\'", new Date());
-		JOptionPane.showMessageDialog(this, "Changement de système d'exploitation effectué !", "Information", JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(this, "Changement d'état effectué !", "Information", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jButtonChangerEtatActionPerformed
 
 	/**
