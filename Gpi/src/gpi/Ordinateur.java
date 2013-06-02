@@ -98,6 +98,7 @@ public class Ordinateur implements Serializable {
 	 * @param Os
 	 */
 	public void setOs(OS Os) {
+                this.Os = null;
 		this.Os = Os;
 	}
 
