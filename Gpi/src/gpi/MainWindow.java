@@ -98,7 +98,7 @@ public class MainWindow extends javax.swing.JFrame {
         jComboBoxBatimentMaintenance = new javax.swing.JComboBox();
         jPanelOrdinateurMaintenance = new javax.swing.JPanel();
         jComboBoxSallesMaintance = new javax.swing.JComboBox();
-        jComboBoxOrdianteurMaintenance = new javax.swing.JComboBox();
+        jComboBoxOrdinateursMaintenance = new javax.swing.JComboBox();
         jButtonTransfererMaintenance = new javax.swing.JButton();
         jButtonMaJMaintenance = new javax.swing.JButton();
         jLabelSalleOrdiMaintenance = new javax.swing.JLabel();
@@ -359,7 +359,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         jComboBoxSallesMaintance.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "U2-211", "U2-212", "U2-213", "U3-209" }));
 
-        jComboBoxOrdianteurMaintenance.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Dagobah", "Tatoïne", "Corruscant", "Hoth" }));
+        jComboBoxOrdinateursMaintenance.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Dagobah", "Tatoïne", "Corruscant", "Hoth" }));
 
         jButtonTransfererMaintenance.setText("Transférer");
 
@@ -406,7 +406,7 @@ public class MainWindow extends javax.swing.JFrame {
                         .addGroup(jPanelOrdinateurMaintenanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jComboBoxStockMaintenance, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jComboBoxSallesMaintance, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBoxOrdianteurMaintenance, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboBoxOrdinateursMaintenance, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jComboBoxOSMaintenance, 0, 0, Short.MAX_VALUE))
                         .addGroup(jPanelOrdinateurMaintenanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelOrdinateurMaintenanceLayout.createSequentialGroup()
@@ -424,7 +424,7 @@ public class MainWindow extends javax.swing.JFrame {
             .addGroup(jPanelOrdinateurMaintenanceLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelOrdinateurMaintenanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBoxOrdianteurMaintenance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxOrdinateursMaintenance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonMaJMaintenance))
                 .addGap(18, 18, 18)
                 .addGroup(jPanelOrdinateurMaintenanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -727,11 +727,8 @@ public class MainWindow extends javax.swing.JFrame {
 				// Alors on regarde Si un OS est selectionne
 				if (indexOs > -1) {
 				} else { // Un OS n'est pas selectionne
-
 					JOptionPane.showMessageDialog(this, "Vous n'avez sélectionné aucun filtre", "Information", JOptionPane.ERROR_MESSAGE);
 				}
-
-
 			}
 		}
 
@@ -966,7 +963,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JComboBox jComboBoxBatimentMaintenance;
     private javax.swing.JComboBox jComboBoxEtatAjoutMachine;
     private javax.swing.JComboBox jComboBoxOSMaintenance;
-    private javax.swing.JComboBox jComboBoxOrdianteurMaintenance;
+    private javax.swing.JComboBox jComboBoxOrdinateursMaintenance;
     private javax.swing.JComboBox jComboBoxOsSupervision;
     private javax.swing.JComboBox jComboBoxSalleAjoutMachine;
     private javax.swing.JComboBox jComboBoxSallesMaintance;

@@ -572,7 +572,7 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jComboBoxStockMaintenance" alignment="0" max="32767" attributes="0"/>
                                       <Component id="jComboBoxSallesMaintance" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jComboBoxOrdianteurMaintenance" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jComboBoxOrdinateursMaintenance" alignment="0" max="32767" attributes="0"/>
                                       <Component id="jComboBoxOSMaintenance" alignment="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -599,7 +599,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jComboBoxOrdianteurMaintenance" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jComboBoxOrdinateursMaintenance" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jButtonMaJMaintenance" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -644,7 +644,7 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="jComboBoxOrdianteurMaintenance">
+                <Component class="javax.swing.JComboBox" name="jComboBoxOrdinateursMaintenance">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="4">
