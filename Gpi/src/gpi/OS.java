@@ -30,7 +30,7 @@ public class OS implements Serializable {
     }
     /**
      * définit le nom d'un systeme d'exploitation
-     * @param Nom 
+     * @param Nom le nouveau nom du systeme d'exploitation 
      */
     public void setNom(String Nom) {
         this.Nom = Nom;
@@ -46,7 +46,7 @@ public class OS implements Serializable {
 
     /**
      * definit la version d'un système d'exploitation
-     * @param Version 
+     * @param Version la nouvelle version du systeme d'exploitation
      */
     public void setVersion(String Version) {
         this.Version = Version;
