@@ -20,6 +20,12 @@ public class Gpi {
 	public static void main(String[] args) {
 		// TODO code application logic here
 		ParcInfo parcInfo = new ParcInfo();
+                
+                Batiment entrepot = new Batiment("Entrepot");
+                Salle stock = new Salle("Stock");
+                
+                parcInfo.ajouterNouveauBatiment(entrepot);
+                parcInfo.ajouterNouvelleSalle(entrepot, stock);
 /*
 		Batiment batiment0 = new Batiment("Entrepot");
 		Batiment batiment1 = new Batiment("U4");
