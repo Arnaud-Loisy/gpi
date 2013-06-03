@@ -1005,9 +1005,34 @@ public class MainWindow extends javax.swing.JFrame {
 		FileDialog fileDialog = new FileDialog(this, "Choix du fichier à charger", FileDialog.LOAD);
 		fileDialog.setVisible(true);
 		String fichier = fileDialog.getDirectory() + fileDialog.getFile();
-		System.out.println(fichier);
 		this.parcInfo = null;
 		this.parcInfo = Sauvegarde.charger(fichier);
+		
+		this.jComboBoxBatSupervision.setModel(this.parcInfo.getBatiments());
+		this.jComboBoxSallesSupervision.setModel(this.parcInfo.getSalles());
+		this.jComboBoxSalleAjoutMachine.setModel(new DefaultComboBoxModel());
+		this.jComboBoxSalleAjoutMachine.addItem("Stock");
+
+		this.jComboBoxBatimentMaintenance.setModel(this.parcInfo.getBatiments());
+		this.jComboBoxSallesMaintenance.setModel(this.parcInfo.getSalles());
+		this.jComboBoxSalleMaintenance.setModel(this.parcInfo.getSalles());
+
+		this.jComboBoxBatSupervision.setSelectedIndex(-1);
+		this.jComboBoxSallesSupervision.setSelectedIndex(-1);
+		this.jComboBoxOsSupervision.setSelectedIndex(-1);
+
+		this.jComboBoxBatimentMaintenance.setSelectedIndex(-1);
+		this.jComboBoxSallesMaintenance.setSelectedIndex(-1);
+		this.jComboBoxSalleMaintenance.setSelectedIndex(-1);
+
+		this.jLabelRecapBatiment.setText("Vous avez " + this.parcInfo.nbBatiments() + " Batiments en service");
+		this.jLabelRecapOrdinateurs.setText("Vous avez " + this.parcInfo.nbOrdinateurs() + " Ordinateurs dont "
+				+ this.parcInfo.nbOrdinateurs("Installé") + " en Service, "
+				+ this.parcInfo.nbOrdinateurs("Stock") + " en Stock et "
+				+ this.parcInfo.nbOrdinateurs("En Panne") + " en panne");
+		this.jLabelRecapSalles.setText("Vous avez " + this.parcInfo.nbSalles() + " Salles en service");
+		
+		
     }//GEN-LAST:event_jMenuItemChargerActionPerformed
 
     private void jMenuItemSauvegarderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSauvegarderActionPerformed
