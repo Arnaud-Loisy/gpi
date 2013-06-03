@@ -82,6 +82,7 @@ public class DetailedWindow extends javax.swing.JFrame {
         jTableHistorique = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Affichage Détaillé & Historique");
         setResizable(false);
 
         jPanelGeneralites.setBorder(javax.swing.BorderFactory.createTitledBorder("Généralités"));
