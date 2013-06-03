@@ -31,7 +31,7 @@ public class ParcInfo implements Serializable {
 	/**
 	 * Constructeur a partir de liste de batiments
 	 *
-	 * @param batiments la liste de batiments du parc info 
+	 * @param batiments la liste de batiments du parc info
 	 */
 	public ParcInfo(DefaultComboBoxModel batiments) {
 		this.batiments = batiments;
@@ -133,24 +133,33 @@ public class ParcInfo implements Serializable {
 	 * ajoute un nouvel ordinateur
 	 *
 	 * @param ordinateur l'ordinateur à ajouter
-         * @param salle la salle dans laquelle ajouter le nouvel ordinateur
+	 * @param salle la salle dans laquelle ajouter le nouvel ordinateur
 	 */
 	public void ajouterNouvelOrdinateur(Ordinateur ordinateur, Salle salle) {
 		int index = this.salles.getIndexOf(salle);
-		
+
 		Date date = new Date();
-		
-		ordinateur.setDateInstall(date);
+
+		if (ordinateur.getEtat() == "Stock") {
+			ordinateur.setDateAcquisition(date);
+		} else {
+			ordinateur.setDateAcquisition(date);
+			ordinateur.setDateInstall(date);
+		}
+
 		ordinateur.ajouterOperationHistorique("Installation initiale", date);
 
 		((Salle) this.salles.getElementAt(index)).affecterOrdinateur(ordinateur);
 		this.ordinateurs.addElement(ordinateur);
 	}
-        /**
-         * renvoi le nombre d'ordinateur du parc informatique dans l'état passé en paramètre
-         * @param etat l'état dont on veut le nombre d'ordinateur
-         * @return somme le nombre d'ordinateur dans l'état voulu
-         */
+
+	/**
+	 * renvoi le nombre d'ordinateur du parc informatique dans l'état passé en
+	 * paramètre
+	 *
+	 * @param etat l'état dont on veut le nombre d'ordinateur
+	 * @return somme le nombre d'ordinateur dans l'état voulu
+	 */
 	public int nbOrdinateurs(String etat) {
 		int somme = 0;
 		for (int i = 0; i < this.ordinateurs.getSize(); i++) {
@@ -161,32 +170,40 @@ public class ParcInfo implements Serializable {
 
 		return somme;
 	}
-        /**
-         * renvoie le nombre d'ordinateurs du parc informatique
-         * @return ordinateurs.getSize() le nombre d'ordinateurs du parc informatique
-         */
+
+	/**
+	 * renvoie le nombre d'ordinateurs du parc informatique
+	 *
+	 * @return ordinateurs.getSize() le nombre d'ordinateurs du parc
+	 * informatique
+	 */
 	public int nbOrdinateurs() {
 		return this.ordinateurs.getSize();
 	}
-        /**
-         * renvoie le nombre de salles du parc informatique
-         * @return salles.getSize() le nombre de salles du parc informatique
-         */
+
+	/**
+	 * renvoie le nombre de salles du parc informatique
+	 *
+	 * @return salles.getSize() le nombre de salles du parc informatique
+	 */
 	public int nbSalles() {
 		return this.salles.getSize();
 	}
-        /**
-         * renvoie le nombre de batiments du parc informatique
-         * @return batiments.getSize() le nombre de batiments du parc informatique
-         */
+
+	/**
+	 * renvoie le nombre de batiments du parc informatique
+	 *
+	 * @return batiments.getSize() le nombre de batiments du parc informatique
+	 */
 	public int nbBatiments() {
 		int size = this.batiments.getSize();
 		return size;
 	}
+
 	/**
-         * 
-         * @return ordinateurs la liste d'ordinateurs du parc informatique
-         */
+	 *
+	 * @return ordinateurs la liste d'ordinateurs du parc informatique
+	 */
 	public DefaultComboBoxModel getOrdinateurs() {
 		return this.ordinateurs;
 	}

@@ -25,8 +25,12 @@ public class DetailedWindow extends javax.swing.JFrame {
 		this.jLabelModeleGeneralites.setText(this.jLabelModeleGeneralites.getText() + " " + this.ordinateur.getModele());
 		this.jLabelNSerieGeneralites.setText(this.jLabelNSerieGeneralites.getText() + " " + this.ordinateur.getNumSerie());
 		this.jLabelNomGeneralites.setText(this.jLabelNomGeneralites.getText() + " " + this.ordinateur.getNom());
-		this.jLabelDateInstallGeneralites.setText(this.jLabelDateInstallGeneralites.getText() + " " + this.ordinateur.getDateInstall().toString());
-		this.jLabelDateAcquisitionGeneralites.setText(this.jLabelDateAcquisitionGeneralites.getText() + " " + this.ordinateur.getDateAcquisition().toString());
+		if (this.ordinateur.getDateInstall() != null) {
+			this.jLabelDateInstallGeneralites.setText(this.jLabelDateInstallGeneralites.getText() + " " + this.ordinateur.getDateInstall().toString());
+		}
+		if (this.ordinateur.getDateAcquisition() != null) {
+			this.jLabelDateAcquisitionGeneralites.setText(this.jLabelDateAcquisitionGeneralites.getText() + " " + this.ordinateur.getDateAcquisition().toString());
+		}
 		this.jLabelOSGeneralites.setText(this.jLabelOSGeneralites.getText() + " " + this.ordinateur.getOs().getNom());
 		this.jLabelEtatGeneralites.setText(this.jLabelEtatGeneralites.getText() + " " + this.ordinateur.getEtat());
 		int nbOperations = this.ordinateur.getHistorique().size();

@@ -771,7 +771,16 @@ public class MainWindow extends javax.swing.JFrame {
 
 				Ordinateur ordinateur = (Ordinateur) this.jComboBoxOrdinateursMaintenance.getSelectedItem();
 				if (ordinateur != null) {
-					this.jComboBoxOSMaintenance.setSelectedItem(new String());
+					this.jComboBoxOSMaintenance.setSelectedItem(new String(ordinateur.getOs().toString()));
+					if (ordinateur.getEtat() == "Stock") {
+						this.jComboBoxEtatMaintenance.setSelectedIndex(0);
+					}
+					if (ordinateur.getEtat() == "En Panne") {
+						this.jComboBoxEtatMaintenance.setSelectedIndex(1);
+					}
+					if (ordinateur.getEtat() == "Installé") {
+						this.jComboBoxEtatMaintenance.setSelectedIndex(2);
+					}
 				}
 			} else { // Si une salle n'est pas selectionnee
 				JOptionPane.showMessageDialog(this, "Vous devez sélectionner une salle", "Information", JOptionPane.ERROR_MESSAGE);
@@ -870,7 +879,11 @@ public class MainWindow extends javax.swing.JFrame {
 
 		if (ordinateur.getEtat() == "Stock") {
 			ordinateur.setDateAcquisition(new Date());
+		} else {
+			ordinateur.setDateAcquisition(new Date());
+			ordinateur.setDateInstall(new Date());
 		}
+
 
 		if (this.jComboBoxEtatAjoutMachine.getSelectedItem().toString() == "Stock") {
 			this.parcInfo.ajouterNouvelOrdinateur(ordinateur, ((Salle) this.parcInfo.getSalles().getElementAt(0)));
@@ -1112,6 +1125,10 @@ public class MainWindow extends javax.swing.JFrame {
 			return;
 		}
 
+		if ((etatAvant == "Stock") && (ordinateur.getDateInstall() == null)) {
+			ordinateur.setDateInstall(new Date());
+		}
+
 		ordinateur.setEtat(this.jComboBoxEtatMaintenance.getSelectedItem().toString());
 
 		ordinateur.ajouterOperationHistorique("Changement d'état : \'" + etatAvant + "\' -> \'" + etatApres + "\'", new Date());
@@ -1143,9 +1160,6 @@ public class MainWindow extends javax.swing.JFrame {
 			if (salleAvant == salleApres) {
 				return;
 			}
-			
-			if (salleAvant.toString() == "Stock")
-				ordinateur.setDateInstall(new Date());
 
 			salleAvant.getOrdinateurs().removeElement(ordinateur);
 			salleApres.affecterOrdinateur(ordinateur);
