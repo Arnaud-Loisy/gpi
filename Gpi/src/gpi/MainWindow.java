@@ -742,6 +742,10 @@ public class MainWindow extends javax.swing.JFrame {
 		Date date = new Date();
 		Ordinateur ordinateur = (Ordinateur) this.jComboBoxOrdinateursMaintenance.getSelectedItem();
 
+		if (ordinateur == null) {
+			return;
+		}
+
 		ordinateur.ajouterOperationHistorique("Mise à jour du système", date);
 
 		JOptionPane.showMessageDialog(this, "Opération effectuée avec succès !", "Information", JOptionPane.INFORMATION_MESSAGE);
@@ -804,8 +808,9 @@ public class MainWindow extends javax.swing.JFrame {
 		int indexSalle = this.jComboBoxSallesSupervision.getSelectedIndex();
 		int indexOs = this.jComboBoxOsSupervision.getSelectedIndex();
 
-		if ((indexBatiment != -1) || (indexSalle != -1) || (indexOs != -1))
+		if ((indexBatiment != -1) || (indexSalle != -1) || (indexOs != -1)) {
 			jButtonPasFiltrerSupervisionActionPerformed(evt);
+		}
 
 		// Si un batiment est selectionne
 		if (indexBatiment > -1) {
@@ -948,6 +953,16 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void jButtonValiderAjoutMAchineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonValiderAjoutMAchineActionPerformed
 		// TODO add your handling code here:
+
+		if ((this.jTextFieldFabriquant.getText() == null)
+				|| (this.jTextFieldHostname.getText() == null)
+				|| (this.jTextFieldModele.getText() == null)
+				|| (this.jTextFieldSerial.getText() == null)
+				|| (this.jListOS.getSelectedValue() == null)) {
+			JOptionPane.showMessageDialog(this, "Tous les champs sont obligatoires", "Attention", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+
 		String NomOS = this.jListOS.getSelectedValue().toString();
 
 		OS os = new OS(NomOS, "2");
@@ -1122,9 +1137,10 @@ public class MainWindow extends javax.swing.JFrame {
     private void jComboBoxOrdinateursMaintenanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxOrdinateursMaintenanceActionPerformed
 		// TODO add your handling code here:
 		Ordinateur ordinateur = (Ordinateur) this.jComboBoxOrdinateursMaintenance.getSelectedItem();
-		
-		if (ordinateur == null)
+
+		if (ordinateur == null) {
 			return;
+		}
 
 		if (ordinateur.getEtat() == "Stock") {
 			this.jComboBoxEtatMaintenance.setSelectedIndex(0);
@@ -1236,9 +1252,10 @@ public class MainWindow extends javax.swing.JFrame {
 			Salle salleAvant = (Salle) this.parcInfo.getSalles().getElementAt(indexSalle);
 			Salle salleApres = (Salle) this.jComboBoxSalleMaintenance.getSelectedItem();
 
-			if ((salleAvant == null) || (salleApres == null))
+			if ((salleAvant == null) || (salleApres == null)) {
 				return;
-			
+			}
+
 			if (salleAvant == salleApres) {
 				return;
 			}
