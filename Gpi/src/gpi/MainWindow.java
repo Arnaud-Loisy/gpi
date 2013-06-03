@@ -798,62 +798,139 @@ public class MainWindow extends javax.swing.JFrame {
     private void jButtonFiltrerSupervisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFiltrerSupervisionActionPerformed
 		// TODO add your handling code here:
 
+
 		int indexBatiment = this.jComboBoxBatSupervision.getSelectedIndex();
 		int indexSalle = this.jComboBoxSallesSupervision.getSelectedIndex();
 		int indexOs = this.jComboBoxOsSupervision.getSelectedIndex();
+
+		if ((indexBatiment != -1) || (indexSalle != -1) || (indexOs != -1))
+			jButtonPasFiltrerSupervisionActionPerformed(evt);
 
 		// Si un batiment est selectionne
 		if (indexBatiment > -1) {
 			// Alors on regarde Si une salle est selectionnee
 			if (indexSalle > -1) { // Si une salle est selectionnee
-				DefaultTableModel modele = (DefaultTableModel) this.jTableauSupervision.getModel();
+				// Alors on regarde si un OS est seletionne
+				if (indexOs > -1) { // Si un OS est selectionne
+					DefaultTableModel modele = (DefaultTableModel) this.jTableauSupervision.getModel();
 
-				String nomBatiment = ((Batiment) this.jComboBoxBatSupervision.getSelectedItem()).getNom();
-				String nomSalle = ((Salle) this.jComboBoxSallesSupervision.getSelectedItem()).getNom();
+					String nomBatiment = ((Batiment) this.jComboBoxBatSupervision.getSelectedItem()).getNom();
+					String nomSalle = ((Salle) this.jComboBoxSallesSupervision.getSelectedItem()).getNom();
+					String nomOS = (String) this.jComboBoxOsSupervision.getSelectedItem();
 
-				// Creation des filtres
-				ArrayList<String> arguments = new ArrayList<String>();
-				arguments.add(nomSalle);
-				arguments.add(nomBatiment);
+					// Creation des filtres
+					ArrayList<String> arguments = new ArrayList<String>();
+					arguments.add(nomSalle);
+					arguments.add(nomBatiment);
+					arguments.add(nomOS);
 
-				// On applique les filtres
-				TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<DefaultTableModel>(modele);
-				sorter.setRowFilter(CreerListeFiltres(arguments));
+					// On applique les filtres
+					TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<DefaultTableModel>(modele);
+					sorter.setRowFilter(CreerListeFiltres(arguments));
 
-				this.jTableauSupervision.setRowSorter(sorter);
+					this.jTableauSupervision.setRowSorter(sorter);
+				} else { // Si un OS n'est pas selectionne
+					DefaultTableModel modele = (DefaultTableModel) this.jTableauSupervision.getModel();
+
+					String nomBatiment = ((Batiment) this.jComboBoxBatSupervision.getSelectedItem()).getNom();
+					String nomSalle = ((Salle) this.jComboBoxSallesSupervision.getSelectedItem()).getNom();
+
+					// Creation des filtres
+					ArrayList<String> arguments = new ArrayList<String>();
+					arguments.add(nomSalle);
+					arguments.add(nomBatiment);
+
+					// On applique les filtres
+					TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<DefaultTableModel>(modele);
+					sorter.setRowFilter(CreerListeFiltres(arguments));
+
+					this.jTableauSupervision.setRowSorter(sorter);
+
+				}
 			} else { // Si une salle n'est pas selectionnee
-				DefaultTableModel modele = (DefaultTableModel) this.jTableauSupervision.getModel();
+				// Alors on regarde si un OS est seletionne
+				if (indexOs > -1) { // Si un OS est selectionne
+					DefaultTableModel modele = (DefaultTableModel) this.jTableauSupervision.getModel();
 
-				String nomBatiment = ((Batiment) this.jComboBoxBatSupervision.getSelectedItem()).getNom();
+					String nomBatiment = ((Batiment) this.jComboBoxBatSupervision.getSelectedItem()).getNom();
+					String nomOS = (String) this.jComboBoxOsSupervision.getSelectedItem();
 
-				// Creation des filtres
-				ArrayList<String> arguments = new ArrayList<String>();
-				arguments.add(nomBatiment);
+					// Creation des filtres
+					ArrayList<String> arguments = new ArrayList<String>();
+					arguments.add(nomBatiment);
+					arguments.add(nomOS);
 
-				// On applique les filtres
-				TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<DefaultTableModel>(modele);
-				sorter.setRowFilter(CreerListeFiltres(arguments));
-				this.jTableauSupervision.setRowSorter(sorter);
+					// On applique les filtres
+					TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<DefaultTableModel>(modele);
+					sorter.setRowFilter(CreerListeFiltres(arguments));
+
+					this.jTableauSupervision.setRowSorter(sorter);
+				} else { // Un OS n'est pas selectionne
+					DefaultTableModel modele = (DefaultTableModel) this.jTableauSupervision.getModel();
+
+					String nomBatiment = ((Batiment) this.jComboBoxBatSupervision.getSelectedItem()).getNom();
+
+					// Creation des filtres
+					ArrayList<String> arguments = new ArrayList<String>();
+					arguments.add(nomBatiment);
+
+					// On applique les filtres
+					TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<DefaultTableModel>(modele);
+					sorter.setRowFilter(CreerListeFiltres(arguments));
+					this.jTableauSupervision.setRowSorter(sorter);
+				}
 			}
 		} else {
 			// Sinon, Si une salle est selectionnee et pas un batiment
 			if (indexSalle > -1) {
-				DefaultTableModel modele = (DefaultTableModel) this.jTableauSupervision.getModel();
+				// Alors on regarde si un OS est seletionne
+				if (indexOs > -1) { // Si un OS est selectionne
+					DefaultTableModel modele = (DefaultTableModel) this.jTableauSupervision.getModel();
 
-				RowFilter<DefaultTableModel, Object> filter = null;
+					String nomSalle = ((Salle) this.jComboBoxSallesSupervision.getSelectedItem()).getNom();
+					String nomOS = (String) this.jComboBoxOsSupervision.getSelectedItem();
 
-				String nomSalle = ((Salle) this.jComboBoxSallesSupervision.getSelectedItem()).getNom();
+					// Creation des filtres
+					ArrayList<String> arguments = new ArrayList<String>();
+					arguments.add(nomSalle);
+					arguments.add(nomOS);
 
-				// Creation des filtres
-				ArrayList<String> arguments = new ArrayList<String>();
-				arguments.add(nomSalle);
+					// On applique les filtres
+					TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<DefaultTableModel>(modele);
+					sorter.setRowFilter(CreerListeFiltres(arguments));
 
-				TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<DefaultTableModel>(modele);
-				sorter.setRowFilter(CreerListeFiltres(arguments));
-				this.jTableauSupervision.setRowSorter(sorter);
-			} else {
+					this.jTableauSupervision.setRowSorter(sorter);
+				} else { // Si un OS n'est pas selectionne
+					DefaultTableModel modele = (DefaultTableModel) this.jTableauSupervision.getModel();
+
+					RowFilter<DefaultTableModel, Object> filter = null;
+
+					String nomSalle = ((Salle) this.jComboBoxSallesSupervision.getSelectedItem()).getNom();
+
+					// Creation des filtres
+					ArrayList<String> arguments = new ArrayList<String>();
+					arguments.add(nomSalle);
+
+					TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<DefaultTableModel>(modele);
+					sorter.setRowFilter(CreerListeFiltres(arguments));
+					this.jTableauSupervision.setRowSorter(sorter);
+				}
+			} else { // Si pas de salle, pas de batiment
 				// Alors on regarde Si un OS est selectionne
 				if (indexOs > -1) {
+					DefaultTableModel modele = (DefaultTableModel) this.jTableauSupervision.getModel();
+
+					RowFilter<DefaultTableModel, Object> filter = null;
+
+					String nomOS = (String) this.jComboBoxOsSupervision.getSelectedItem();
+
+					// Creation des filtres
+					ArrayList<String> arguments = new ArrayList<String>();
+					arguments.add(nomOS);
+
+					TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<DefaultTableModel>(modele);
+					sorter.setRowFilter(CreerListeFiltres(arguments));
+					this.jTableauSupervision.setRowSorter(sorter);
 				} else { // Un OS n'est pas selectionne
 					JOptionPane.showMessageDialog(this, "Vous n'avez sélectionné aucun filtre", "Information", JOptionPane.ERROR_MESSAGE);
 				}
@@ -1008,9 +1085,9 @@ public class MainWindow extends javax.swing.JFrame {
 
 		this.jComboBoxSallesSupervision.setModel(this.parcInfo.getSalles());
 
-		this.jComboBoxBatSupervision.setSelectedIndex(-1);
-		this.jComboBoxSallesSupervision.setSelectedIndex(-1);
-		this.jComboBoxOsSupervision.setSelectedIndex(-1);
+		//this.jComboBoxBatSupervision.setSelectedIndex(-1);
+		//this.jComboBoxSallesSupervision.setSelectedIndex(-1);
+		//this.jComboBoxOsSupervision.setSelectedIndex(-1);
     }//GEN-LAST:event_jButtonPasFiltrerSupervisionActionPerformed
 
     private void jButtonDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDetailsActionPerformed
@@ -1034,6 +1111,7 @@ public class MainWindow extends javax.swing.JFrame {
 		Batiment batiment = (Batiment) this.jComboBoxBatSupervision.getSelectedItem();
 
 		this.jComboBoxSallesSupervision.setModel(batiment.getSalles());
+		this.jComboBoxSallesSupervision.setSelectedIndex(-1);
     }//GEN-LAST:event_jComboBoxBatSupervisionActionPerformed
 
     private void jComboBoxEtatMaintenanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxEtatMaintenanceActionPerformed
@@ -1043,6 +1121,9 @@ public class MainWindow extends javax.swing.JFrame {
     private void jComboBoxOrdinateursMaintenanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxOrdinateursMaintenanceActionPerformed
 		// TODO add your handling code here:
 		Ordinateur ordinateur = (Ordinateur) this.jComboBoxOrdinateursMaintenance.getSelectedItem();
+		
+		if (ordinateur == null)
+			return;
 
 		if (ordinateur.getEtat() == "Stock") {
 			this.jComboBoxEtatMaintenance.setSelectedIndex(0);
@@ -1152,11 +1233,11 @@ public class MainWindow extends javax.swing.JFrame {
 
 		if (indexSalle != -1) {
 			Salle salleAvant = (Salle) this.parcInfo.getSalles().getElementAt(indexSalle);
-			this.jComboBoxSalleMaintenance.setSelectedIndex(indexSalle);
-			this.jComboBoxOSMaintenance.setSelectedItem(new String(ordinateur.getOs().toString()));
-
 			Salle salleApres = (Salle) this.jComboBoxSalleMaintenance.getSelectedItem();
 
+			if ((salleAvant == null) || (salleApres == null))
+				return;
+			
 			if (salleAvant == salleApres) {
 				return;
 			}
