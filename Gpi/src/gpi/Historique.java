@@ -14,6 +14,11 @@ import java.util.Date;
 public class Historique implements Serializable {
         
 	private static final long serialVersionUID = 12L;
+        /**
+         * Constructeur d'historique
+         * @param Action la chaine décrivant l'action effectuée 
+         * @param date la date d'un evènement dans l'historique d'un ordinateur
+         */
     public Historique(String Action, Date date) {
         this.Action = Action;
         this.date = date;
