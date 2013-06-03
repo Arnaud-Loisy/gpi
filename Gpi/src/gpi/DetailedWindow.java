@@ -163,7 +163,15 @@ public class DetailedWindow extends javax.swing.JFrame {
             new String [] {
                 "Date", "Opération"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPaneHistorique.setViewportView(jTableHistorique);
 
         javax.swing.GroupLayout jPanelHistoriqueLayout = new javax.swing.GroupLayout(jPanelHistorique);
@@ -172,7 +180,7 @@ public class DetailedWindow extends javax.swing.JFrame {
             jPanelHistoriqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelHistoriqueLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPaneHistorique, javax.swing.GroupLayout.DEFAULT_SIZE, 756, Short.MAX_VALUE)
+                .addComponent(jScrollPaneHistorique, javax.swing.GroupLayout.DEFAULT_SIZE, 789, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanelHistoriqueLayout.setVerticalGroup(
