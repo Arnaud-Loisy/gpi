@@ -777,13 +777,13 @@ public class MainWindow extends javax.swing.JFrame {
 				Ordinateur ordinateur = (Ordinateur) this.jComboBoxOrdinateursMaintenance.getSelectedItem();
 				if (ordinateur != null) {
 					this.jComboBoxOSMaintenance.setSelectedItem(new String(ordinateur.getOs().toString()));
-					if (ordinateur.getEtat() == "Stock") {
+					if (ordinateur.getEtat().equalsIgnoreCase("Stock")) {
 						this.jComboBoxEtatMaintenance.setSelectedIndex(0);
 					}
-					if (ordinateur.getEtat() == "En Panne") {
+					if (ordinateur.getEtat().equalsIgnoreCase("En Panne")) {
 						this.jComboBoxEtatMaintenance.setSelectedIndex(1);
 					}
-					if (ordinateur.getEtat() == "Installé") {
+					if (ordinateur.getEtat().equalsIgnoreCase("Installé")) {
 						this.jComboBoxEtatMaintenance.setSelectedIndex(2);
 					}
 				}
@@ -970,7 +970,7 @@ public class MainWindow extends javax.swing.JFrame {
 
 		ordinateur.setEtat(this.jComboBoxEtatAjoutMachine.getSelectedItem().toString());
 
-		if (ordinateur.getEtat() == "Stock") {
+		if (ordinateur.getEtat().equalsIgnoreCase("Stock")) {
 			ordinateur.setDateAcquisition(new Date());
 		} else {
 			ordinateur.setDateAcquisition(new Date());
@@ -1166,14 +1166,14 @@ public class MainWindow extends javax.swing.JFrame {
 		if (ordinateur == null) {
 			return;
 		}
-
-		if (ordinateur.getEtat() == "Stock") {
+                
+		if (ordinateur.getEtat().equalsIgnoreCase("Stock")) {
 			this.jComboBoxEtatMaintenance.setSelectedIndex(0);
 		}
-		if (ordinateur.getEtat() == "En Panne") {
+		if (ordinateur.getEtat().equalsIgnoreCase("En Panne")) {
 			this.jComboBoxEtatMaintenance.setSelectedIndex(1);
 		}
-		if (ordinateur.getEtat() == "Installé") {
+		if (ordinateur.getEtat().equalsIgnoreCase("Installé")) {
 			this.jComboBoxEtatMaintenance.setSelectedIndex(2);
 		}
 

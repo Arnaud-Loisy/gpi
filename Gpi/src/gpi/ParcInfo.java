@@ -140,7 +140,7 @@ public class ParcInfo implements Serializable {
 
 		Date date = new Date();
 
-		if (ordinateur.getEtat() == "Stock") {
+		if (ordinateur.getEtat().equalsIgnoreCase("Stock")) {
 			ordinateur.setDateAcquisition(date);
 		} else {
 			ordinateur.setDateAcquisition(date);
@@ -163,7 +163,7 @@ public class ParcInfo implements Serializable {
 	public int nbOrdinateurs(String etat) {
 		int somme = 0;
 		for (int i = 0; i < this.ordinateurs.getSize(); i++) {
-			if (this.ordinateurs.getElementAt(i).getEtat() == etat) {
+			if (this.ordinateurs.getElementAt(i).getEtat().equalsIgnoreCase(etat)) {
 				somme += 1;
 			}
 		}
