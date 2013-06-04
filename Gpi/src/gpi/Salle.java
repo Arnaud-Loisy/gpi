@@ -68,8 +68,8 @@ public class Salle implements Serializable {
 
 	/**
          * verifie si un ordinateur est présent dans une salle
-         * @param salle la salle verifiée.
-         * @return true si la salle est contenue dans le batiment,
+         * @param ordinateur l'ordinateur a verifier.
+         * @return true si l'ordinateur est contenu dans la salle
          * @return false sinon
          */
 	public boolean contientOrdinateur(Ordinateur ordinateur) {
